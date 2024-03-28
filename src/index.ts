@@ -2,12 +2,14 @@ import {DEFAULT_HOST} from './common/constants';
 import createRequestInstance from './common/request';
 
 // Import all API functions
-import {auth} from './lib/auth'; // Authorization
-import {payments} from './lib/payments'; // Payments Management
-import {escrow} from './lib/escrow'; // Escrow Secure Payments
-import {paymentSchedules} from './lib/payment-schedules'; // Scheduled Payments Management
-import {billingKeys} from './lib/billing-keys'; // Billing Key Management
-import {cashReceipts} from './lib/cash-receipts'; // Cash Receipts Management
+import {auth} from './lib/auth'; // 인증 관련 API
+import {payments} from './lib/payments'; // 결제 관련 API
+import {escrow} from './lib/escrow'; // 에스크로 관련 API
+import {paymentSchedules} from './lib/payment-schedules'; // 결제 예약 관련 API
+import {billingKeys} from './lib/billing-keys'; // 빌링키 관련 API
+import {cashReceipts} from './lib/cash-receipts'; // 현금 영수증 관련 API
+import {identifyVerifications} from './lib/identify-verifications'; // 본인인증 관련 API
+import {forSpecificPg} from './lib/pg-specific'; // 특정 PG사 관련 API (카카오페이)
 
 /**
  * PortOne RestAPI v2 SDK Class.
@@ -87,4 +89,8 @@ export class PortOne {
   public readonly cashReceipts = cashReceipts(this._request, {
     storeId: this.storeId || undefined,
   });
+  public readonly identifyVerifications = identifyVerifications(this._request, {
+    storeId: this.storeId || undefined,
+  });
+  public readonly forSpecificPg = forSpecificPg(this._request);
 }
