@@ -1,0 +1,9 @@
+{
+    "name": "@kms0219kms/portone",
+    "version": "2.0.0",
+    "description": "PortOne (Korea) V2 RestApi Library for Node.js",
+    "exports": "./src/index.ts",
+    "publish": {
+        "exclude": [".github/"]
+    }
+}
