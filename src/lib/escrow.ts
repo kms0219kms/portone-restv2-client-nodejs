@@ -21,16 +21,14 @@ export const escrow = (
       params: paths['/payments/{paymentId}/escrow/logistics']['post']['parameters']['path'],
       body: paths['/payments/{paymentId}/escrow/logistics']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.POST('/payments/{paymentId}/escrow/logistics', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
     /**
@@ -43,16 +41,14 @@ export const escrow = (
       params: paths['/payments/{paymentId}/escrow/logistics']['patch']['parameters']['path'],
       body: paths['/payments/{paymentId}/escrow/logistics']['patch']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.PATCH('/payments/{paymentId}/escrow/logistics', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
     /**
@@ -65,18 +61,16 @@ export const escrow = (
       params: paths['/payments/{paymentId}/escrow/complete']['post']['parameters']['path'],
       body?: paths['/payments/{paymentId}/escrow/complete']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = body
-        ? {
-            ...body,
-            storeId: body.storeId || options?.storeId || undefined,
-          }
-        : {};
-
       return _request.POST('/payments/{paymentId}/escrow/complete', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: body
+          ? {
+              ...body,
+              storeId: body.storeId || options?.storeId || undefined,
+            }
+          : {},
       });
     },
   };

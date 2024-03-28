@@ -17,11 +17,7 @@ export const auth = (_request: RequestInstance) => {
     token: (
       body: paths['/login/api-secret']['post']['requestBody']['content']['application/json']
     ) => {
-      return _request.POST('/login/api-secret', {
-        body: {
-          apiSecret: body.apiSecret,
-        },
-      });
+      return _request.POST('/login/api-secret', {body});
     },
     /**
      * 토큰 갱신
@@ -32,11 +28,7 @@ export const auth = (_request: RequestInstance) => {
     tokenRefresh: (
       body: paths['/token/refresh']['post']['requestBody']['content']['application/json']
     ) => {
-      return _request.POST('/token/refresh', {
-        body: {
-          refreshToken: body.refreshToken,
-        },
-      });
+      return _request.POST('/token/refresh', {body});
     },
   };
 };

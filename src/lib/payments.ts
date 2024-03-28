@@ -38,21 +38,18 @@ export const payments = (
         | paths['/payments']['get']['requestBody']['content']['application/json']
         | undefined
     ) => {
-      const processedBody = body
-        ? {
-            page: {
-              ...body.page,
-            },
-            filter: {
-              ...body.filter,
-              storeId: body.filter?.storeId || options?.storeId || undefined,
-            },
-          }
-        : {};
-
       return _request.GET('/payments', {
-        body: processedBody || {},
-        query: {storeId: options?.storeId},
+        body: body
+          ? {
+              page: {
+                ...body.page,
+              },
+              filter: {
+                ...body.filter,
+                storeId: body.filter?.storeId || options?.storeId || undefined,
+              },
+            }
+          : {},
       });
     },
     /**
@@ -68,15 +65,13 @@ export const payments = (
         | paths['/payments-by-cursor']['get']['requestBody']['content']['application/json']
         | undefined
     ) => {
-      const processedBody = body
-        ? {
-            ...body,
-            storeId: body.storeId || options?.storeId || undefined,
-          }
-        : {};
-
       return _request.GET('/payments-by-cursor', {
-        body: processedBody,
+        body: body
+          ? {
+              ...body,
+              storeId: body.storeId || options?.storeId || undefined,
+            }
+          : {},
         query: {storeId: options?.storeId},
       });
     },
@@ -90,16 +85,14 @@ export const payments = (
       params: paths['/payments/{paymentId}/cancel']['post']['parameters']['path'],
       body: paths['/payments/{paymentId}/cancel']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.POST('/payments/{paymentId}/cancel', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
     /**
@@ -112,16 +105,14 @@ export const payments = (
       params: paths['/payments/{paymentId}/billing-key']['post']['parameters']['path'],
       body: paths['/payments/{paymentId}/billing-key']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.POST('/payments/{paymentId}/billing-key', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
     /**
@@ -134,16 +125,14 @@ export const payments = (
       params: paths['/payments/{paymentId}/instant']['post']['parameters']['path'],
       body: paths['/payments/{paymentId}/instant']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.POST('/payments/{paymentId}/instant', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
     /**
@@ -156,16 +145,14 @@ export const payments = (
       params: paths['/payments/{paymentId}/resend-webhook']['post']['parameters']['path'],
       body: paths['/payments/{paymentId}/resend-webhook']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.POST('/payments/{paymentId}/resend-webhook', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
     /**
@@ -196,16 +183,14 @@ export const payments = (
       params: paths['/payments/{paymentId}/register-store-receipt']['post']['parameters']['path'],
       body: paths['/payments/{paymentId}/register-store-receipt']['post']['requestBody']['content']['application/json']
     ) => {
-      const processedBody = {
-        ...body,
-        storeId: body.storeId || options?.storeId || undefined,
-      };
-
       return _request.POST('/payments/{paymentId}/register-store-receipt', {
         params: {
           path: {paymentId: params.paymentId},
         },
-        body: processedBody,
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
       });
     },
   };

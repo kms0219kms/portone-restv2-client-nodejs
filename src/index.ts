@@ -3,6 +3,9 @@ import createRequestInstance from './common/request';
 
 import {auth} from './lib/auth';
 import {payments} from './lib/payments';
+import {escrow} from './lib/escrow';
+import {paymentSchedules} from './lib/payment-schedules';
+import {billingKeys} from './lib/billing-keys';
 
 /**
  * PortOne RestAPI v2 SDK Class.
@@ -68,6 +71,15 @@ export class PortOne {
 
   public readonly auth = auth(this._request);
   public readonly payments = payments(this._request, {
+    storeId: this.storeId || undefined,
+  });
+  public readonly escrow = escrow(this._request, {
+    storeId: this.storeId || undefined,
+  });
+  public readonly paymentSchedules = paymentSchedules(this._request, {
+    storeId: this.storeId || undefined,
+  });
+  public readonly billingKeys = billingKeys(this._request, {
     storeId: this.storeId || undefined,
   });
 }
