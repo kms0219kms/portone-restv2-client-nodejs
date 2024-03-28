@@ -39,6 +39,7 @@
     "clean": "gts clean",
     "check": "gts check",
     "compile": "tsup src/index.ts",
+    "prepublish": "npm run compile",
     "openapi": "openapi-typescript https://github.com/portone-io/developers.portone.io/raw/main/src/schema/v2.openapi.json -o src/types/v2.d.ts"
   },
   "dependencies": {
