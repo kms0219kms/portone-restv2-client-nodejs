@@ -1,11 +1,13 @@
 import {DEFAULT_HOST} from './common/constants';
 import createRequestInstance from './common/request';
 
-import {auth} from './lib/auth';
-import {payments} from './lib/payments';
-import {escrow} from './lib/escrow';
-import {paymentSchedules} from './lib/payment-schedules';
-import {billingKeys} from './lib/billing-keys';
+// Import all API functions
+import {auth} from './lib/auth'; // Authorization
+import {payments} from './lib/payments'; // Payments Management
+import {escrow} from './lib/escrow'; // Escrow Secure Payments
+import {paymentSchedules} from './lib/payment-schedules'; // Scheduled Payments Management
+import {billingKeys} from './lib/billing-keys'; // Billing Key Management
+import {cashReceipts} from './lib/cash-receipts'; // Cash Receipts Management
 
 /**
  * PortOne RestAPI v2 SDK Class.
@@ -80,6 +82,9 @@ export class PortOne {
     storeId: this.storeId || undefined,
   });
   public readonly billingKeys = billingKeys(this._request, {
+    storeId: this.storeId || undefined,
+  });
+  public readonly cashReceipts = cashReceipts(this._request, {
     storeId: this.storeId || undefined,
   });
 }
