@@ -27,13 +27,19 @@
   "devDependencies": {
     "@types/node": "20.11.5",
     "gts": "^5.3.0",
+    "openapi-typescript": "^6.7.5",
     "tsup": "^8.0.2",
     "typescript": "~5.4.3"
   },
   "tsup": {
-    "entry": ["src/index.ts"],
+    "entry": [
+      "src/index.ts"
+    ],
     "sourcemap": true,
     "clean": true,
     "dts": true
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.9.3"
   }
 }
