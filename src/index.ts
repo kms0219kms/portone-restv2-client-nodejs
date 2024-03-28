@@ -94,3 +94,5 @@ export class PortOne {
   });
   public readonly forSpecificPg = forSpecificPg(this._request);
 }
+
+export default PortOne;

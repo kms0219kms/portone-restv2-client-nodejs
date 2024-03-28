@@ -12,6 +12,26 @@ export const payments = (
 ) => {
   return {
     /**
+     * 결제 정보 사전 등록
+     *
+     * @description 결제 정보 사전 등록
+     * 결제 정보를 사전 등록합니다.
+     */
+    preRegisterPayment: (
+      params: paths['/payments/{paymentId}/pre-register']['post']['parameters']['path'],
+      body: paths['/payments/{paymentId}/pre-register']['post']['requestBody']['content']['application/json']
+    ) => {
+      return _request.POST('/payments/{paymentId}/pre-register', {
+        params: {
+          path: {paymentId: params.paymentId},
+        },
+        body: {
+          ...body,
+          storeId: body.storeId || options?.storeId || undefined,
+        },
+      });
+    },
+    /**
      * 결제 단건 조회
      *
      * @description 결제 단건 조회

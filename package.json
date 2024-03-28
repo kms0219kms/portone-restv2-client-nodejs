@@ -1,28 +1,48 @@
 {
   "name": "portone",
   "version": "2.0.0",
-  "description": "",
+  "description": "PortOne (Korea) V2 RestApi Library for Node.js",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
     "dist/src"
   ],
-  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kms0219kms/portone-restv2-client-nodejs.git"
+  },
   "keywords": [
     "iamport",
     "portone",
     "rest",
     "sdk"
   ],
+  "author": {
+    "email": "minsu.kim@hanarin.uk",
+    "name": "Minsu Kim",
+    "url": "https://github.com/kms0219kms"
+  },
+  "contributors": [
+    {
+      "email": "minsu.kim@hanarin.uk",
+      "name": "Minsu Kim",
+      "url": "https://github.com/kms0219kms"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/kms0219kms/portone-restv2-client-nodejs/issues"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "fix": "gts fix",
     "lint": "gts lint",
     "clean": "gts clean",
+    "check": "gts check",
     "compile": "tsup src/index.ts",
-    "fix": "gts fix",
-    "prepare": "npm run compile",
-    "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "openapi": "openapi-typescript https://github.com/portone-io/developers.portone.io/raw/main/src/schema/v2.openapi.json -o src/types/v2.d.ts"
+  },
+  "dependencies": {
+    "openapi-fetch": "^0.9.3"
   },
   "devDependencies": {
     "@types/node": "20.11.5",
@@ -39,7 +59,5 @@
     "clean": true,
     "dts": true
   },
-  "dependencies": {
-    "openapi-fetch": "^0.9.3"
-  }
+  "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
 }
