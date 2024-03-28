@@ -1,5 +1,5 @@
 import {DEFAULT_HOST} from './common/constants';
-import createRequestInstance from './common/request';
+import createRequestInstance, {type RequestInstance} from './common/request';
 
 // Import all API functions
 import {auth} from './lib/auth'; // 인증 관련 API
@@ -31,24 +31,39 @@ import {forSpecificPg} from './lib/pg-specific'; // 특정 PG사 관련 API (카
  * })
  */
 export class PortOne {
-  private _request = createRequestInstance(
-    this.host,
-    `PortOne ${this.authorization.secret}`
-  );
+  host: string;
+  authorization: {
+    type: 'SECRET' | 'ACCESS_TOKEN';
+    secret: string;
+  };
+  storeId?: string;
+
+  private _request!: RequestInstance;
 
   constructor(
-    public host: string,
-    public authorization: {
+    host: string,
+    authorization: {
       type: 'SECRET' | 'ACCESS_TOKEN';
       secret: string;
     },
-    public storeId?: string
+    storeId?: string
   ) {
     /**
      * Set default values.
      */
-    this.authorization.type = this.authorization.type || 'SECRET';
-    this.host = this.host || DEFAULT_HOST;
+
+    this.host = host || DEFAULT_HOST;
+    this.authorization = {
+      ...authorization,
+      type: authorization.type || 'SECRET',
+    };
+    this.storeId = storeId;
+
+    this._request = createRequestInstance(
+      this.host,
+      `PortOne ${this.authorization.secret}`
+    );
+
     this._init();
   }
 
