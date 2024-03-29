@@ -23,12 +23,7 @@ import {forSpecificPg} from './lib/pg-specific'; // 특정 PG사 관련 API (카
  * @default host = "https://api.portone.io"
  *
  * @example
- * const portOne = new PortOne({
- *    authorization: {
- *       type: "SECRET",
- *       secret: "MY_API_SECRET"
- *    }
- * })
+ * const portOne = new PortOne()
  */
 export class PortOne {
   host: string;
