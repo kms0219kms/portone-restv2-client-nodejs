@@ -34,18 +34,20 @@ export const identifyVerifications = (
      * SMS 또는 APP 방식을 이용하여 본인인증 요청을 전송합니다.
      */
     sendIdentityVerification: (
-      params: paths['/identity-verifications/{identityVerificationId}/send']['post']['parameters']['path'],
-      body: paths['/identity-verifications/{identityVerificationId}/send']['post']['requestBody']['content']['application/json']
+      body: paths['/identity-verifications/{identityVerificationId}/send']['post']['parameters']['path'] &
+        paths['/identity-verifications/{identityVerificationId}/send']['post']['requestBody']['content']['application/json']
     ) => {
+      const {identityVerificationId, ...processedBody} = body;
+
       return _request.POST(
         '/identity-verifications/{identityVerificationId}/send',
         {
           params: {
-            path: {identityVerificationId: params.identityVerificationId},
+            path: {identityVerificationId},
           },
           body: {
-            ...body,
-            storeId: body.storeId || options?.storeId || undefined,
+            ...processedBody,
+            storeId: processedBody.storeId || options?.storeId || undefined,
           },
         }
       );
@@ -57,18 +59,20 @@ export const identifyVerifications = (
      * 요청된 본인인증에 대한 확인을 진행합니다.
      */
     confirmIdentityVerification: (
-      params: paths['/identity-verifications/{identityVerificationId}/confirm']['post']['parameters']['path'],
-      body: paths['/identity-verifications/{identityVerificationId}/confirm']['post']['requestBody']['content']['application/json']
+      body: paths['/identity-verifications/{identityVerificationId}/confirm']['post']['parameters']['path'] &
+        paths['/identity-verifications/{identityVerificationId}/confirm']['post']['requestBody']['content']['application/json']
     ) => {
+      const {identityVerificationId, ...processedBody} = body;
+
       return _request.POST(
         '/identity-verifications/{identityVerificationId}/confirm',
         {
           params: {
-            path: {identityVerificationId: params.identityVerificationId},
+            path: {identityVerificationId},
           },
           body: {
-            ...body,
-            storeId: body.storeId || options?.storeId || undefined,
+            ...processedBody,
+            storeId: processedBody.storeId || options?.storeId || undefined,
           },
         }
       );

@@ -18,16 +18,18 @@ export const escrow = (
      * 에스크로 배송 정보를 등록합니다.
      */
     registerEscrowLogistics: (
-      params: paths['/payments/{paymentId}/escrow/logistics']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/escrow/logistics']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/escrow/logistics']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/escrow/logistics']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/escrow/logistics', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -38,16 +40,18 @@ export const escrow = (
      * 에스크로 배송 정보를 수정합니다.
      */
     updateEscrowLogistics: (
-      params: paths['/payments/{paymentId}/escrow/logistics']['patch']['parameters']['path'],
-      body: paths['/payments/{paymentId}/escrow/logistics']['patch']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/escrow/logistics']['patch']['parameters']['path'] &
+        paths['/payments/{paymentId}/escrow/logistics']['patch']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.PATCH('/payments/{paymentId}/escrow/logistics', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -58,19 +62,19 @@ export const escrow = (
      * 에스크로 결제를 구매 확정 처리합니다
      */
     confirmEscrow: (
-      params: paths['/payments/{paymentId}/escrow/complete']['post']['parameters']['path'],
-      body?: paths['/payments/{paymentId}/escrow/complete']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/escrow/complete']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/escrow/complete']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/escrow/complete', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
-        body: body
-          ? {
-              ...body,
-              storeId: body.storeId || options?.storeId || undefined,
-            }
-          : {},
+        body: {
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
+        },
       });
     },
   };

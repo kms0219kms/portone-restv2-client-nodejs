@@ -77,18 +77,21 @@ export const paymentSchedules = (
      * 결제를 예약합니다.
      */
     schedulePayment: (
-      params: paths['/payments/{paymentId}/schedule']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/schedule']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/schedule']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/schedule']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/schedule', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
+          ...processedBody,
           payment: {
-            ...body.payment,
-            storeId: body.payment.storeId || options?.storeId || undefined,
+            ...processedBody.payment,
+            storeId:
+              processedBody.payment.storeId || options?.storeId || undefined,
           },
         },
       });

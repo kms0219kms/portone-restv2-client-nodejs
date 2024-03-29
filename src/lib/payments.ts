@@ -18,16 +18,18 @@ export const payments = (
      * 결제 정보를 사전 등록합니다.
      */
     preRegisterPayment: (
-      params: paths['/payments/{paymentId}/pre-register']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/pre-register']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/pre-register']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/pre-register']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/pre-register', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -92,7 +94,6 @@ export const payments = (
               storeId: body.storeId || options?.storeId || undefined,
             }
           : {},
-        query: {storeId: options?.storeId},
       });
     },
     /**
@@ -102,16 +103,18 @@ export const payments = (
      * 결제 취소를 요청합니다.
      */
     cancelPayment: (
-      params: paths['/payments/{paymentId}/cancel']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/cancel']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/cancel']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/cancel']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/cancel', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -122,16 +125,18 @@ export const payments = (
      * 빌링키로 결제를 진행합니다.
      */
     payWithBillingKey: (
-      params: paths['/payments/{paymentId}/billing-key']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/billing-key']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/billing-key']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/billing-key']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/billing-key', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -142,16 +147,18 @@ export const payments = (
      * 수기 결제를 진행합니다.
      */
     keyInPayment: (
-      params: paths['/payments/{paymentId}/instant']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/instant']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/instant']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/instant']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/instant', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -162,16 +169,18 @@ export const payments = (
      * 웹훅을 재발송합니다.
      */
     resendWebhook: (
-      params: paths['/payments/{paymentId}/resend-webhook']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/resend-webhook']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/resend-webhook']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/resend-webhook']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/resend-webhook', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },
@@ -200,16 +209,18 @@ export const payments = (
      * KG이니시스(이용 전 콘솔 -&gt; 결제연동 탭에서 INIApi Key 등록 필요)
      */
     registerStoreReceipt: (
-      params: paths['/payments/{paymentId}/register-store-receipt']['post']['parameters']['path'],
-      body: paths['/payments/{paymentId}/register-store-receipt']['post']['requestBody']['content']['application/json']
+      body: paths['/payments/{paymentId}/register-store-receipt']['post']['parameters']['path'] &
+        paths['/payments/{paymentId}/register-store-receipt']['post']['requestBody']['content']['application/json']
     ) => {
+      const {paymentId, ...processedBody} = body;
+
       return _request.POST('/payments/{paymentId}/register-store-receipt', {
         params: {
-          path: {paymentId: params.paymentId},
+          path: {paymentId},
         },
         body: {
-          ...body,
-          storeId: body.storeId || options?.storeId || undefined,
+          ...processedBody,
+          storeId: processedBody.storeId || options?.storeId || undefined,
         },
       });
     },

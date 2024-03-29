@@ -32,45 +32,76 @@ import {forSpecificPg} from './lib/pg-specific'; // 특정 PG사 관련 API (카
  */
 export class PortOne {
   host: string;
-  authorization: {
+  authorization?: {
     type: 'SECRET' | 'ACCESS_TOKEN';
     secret: string;
   };
   storeId?: string;
 
-  private _request!: RequestInstance;
+  public declare auth: ReturnType<typeof auth>;
+  public declare payments: ReturnType<typeof payments>;
+  public declare escrow: ReturnType<typeof escrow>;
+  public declare paymentSchedules: ReturnType<typeof paymentSchedules>;
+  public declare billingKeys: ReturnType<typeof billingKeys>;
+  public declare cashReceipts: ReturnType<typeof cashReceipts>;
+  public declare identifyVerifications: ReturnType<
+    typeof identifyVerifications
+  >;
+  public declare forSpecificPg: ReturnType<typeof forSpecificPg>;
 
-  constructor(
-    host: string,
-    authorization: {
-      type: 'SECRET' | 'ACCESS_TOKEN';
-      secret: string;
-    },
-    storeId?: string
-  ) {
-    /**
-     * Set default values.
-     */
+  private declare _request: RequestInstance;
 
-    this.host = host || DEFAULT_HOST;
-    this.authorization = {
-      ...authorization,
-      type: authorization.type || 'SECRET',
-    };
-    this.storeId = storeId;
-
+  constructor(options?: {host: string}) {
+    this.host = options?.host || DEFAULT_HOST;
     this._request = createRequestInstance(
       this.host,
-      `PortOne ${this.authorization.secret}`
+      undefined,
+      true // withoutAuthorization
     );
 
     this._init();
   }
 
-  private async _init() {
-    if (this.authorization.type === 'ACCESS_TOKEN') {
-      const token = await this.auth.token({
-        apiSecret: this.authorization.secret,
+  private _init() {
+    // init all API functions
+    const initializationParams = {
+      storeId: this.storeId || undefined,
+    };
+
+    this.auth = auth(this._request);
+    this.payments = payments(this._request, initializationParams);
+    this.escrow = escrow(this._request, initializationParams);
+    this.paymentSchedules = paymentSchedules(
+      this._request,
+      initializationParams
+    );
+    this.billingKeys = billingKeys(this._request, initializationParams);
+    this.cashReceipts = cashReceipts(this._request, initializationParams);
+    this.identifyVerifications = identifyVerifications(
+      this._request,
+      initializationParams
+    );
+    this.forSpecificPg = forSpecificPg(this._request);
+  }
+
+  public async login(options: {
+    authorization: {
+      type: 'SECRET' | 'ACCESS_TOKEN';
+      secret: string;
+    };
+    storeId?: string;
+  }) {
+    /**
+     * Set default values.
+     */
+
+    this.storeId = options.storeId;
+
+    if (options.authorization.type === 'ACCESS_TOKEN') {
+      const token = await this._request.POST('/login/api-secret', {
+        body: {
+          apiSecret: options.authorization.secret,
+        },
       });
 
       if (!token.data?.accessToken || token.error)
@@ -80,34 +111,25 @@ export class PortOne {
             : 'Failed to get access token'
         );
 
-      this.authorization.secret = token.data.accessToken;
+      this.authorization = {
+        secret: token.data.accessToken,
+        type: options.authorization.type || 'SECRET',
+      };
+
       this._request = createRequestInstance(
         this.host,
         `Bearer ${this.authorization.secret}`
       );
+    } else {
+      this.authorization = options.authorization;
+      this._request = createRequestInstance(
+        this.host,
+        `PortOne ${this.authorization.secret}`
+      );
     }
-  }
 
-  public readonly auth = auth(this._request);
-  public readonly payments = payments(this._request, {
-    storeId: this.storeId || undefined,
-  });
-  public readonly escrow = escrow(this._request, {
-    storeId: this.storeId || undefined,
-  });
-  public readonly paymentSchedules = paymentSchedules(this._request, {
-    storeId: this.storeId || undefined,
-  });
-  public readonly billingKeys = billingKeys(this._request, {
-    storeId: this.storeId || undefined,
-  });
-  public readonly cashReceipts = cashReceipts(this._request, {
-    storeId: this.storeId || undefined,
-  });
-  public readonly identifyVerifications = identifyVerifications(this._request, {
-    storeId: this.storeId || undefined,
-  });
-  public readonly forSpecificPg = forSpecificPg(this._request);
+    this._init();
+  }
 }
 
 export default PortOne;

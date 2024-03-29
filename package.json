@@ -1,7 +1,7 @@
 {
   "name": "portone",
-  "version": "2.0.0",
-  "description": "PortOne (Korea) V2 RestApi Library for Node.js",
+  "version": "2.1.0",
+  "description": "PortOne (Korea) V2 RestApi Client for Node.js (Unofficial)",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
   "files": [
