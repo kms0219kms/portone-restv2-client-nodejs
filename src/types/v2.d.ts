@@ -1405,6 +1405,14 @@ export interface components {
       type: string;
       message?: string;
     };
+    /**
+     * 사업자가 이미 연동되어 있는 경우
+     * @description <p>사업자가 이미 연동되어 있는 경우</p>
+     */
+    B2bCompanyAlreadyRegisteredError: {
+      type: string;
+      message?: string;
+    };
     B2bCompanyContact: {
       /**
        * 담당자 ID
@@ -1457,14 +1465,14 @@ export interface components {
      */
     B2bCompanyState: {
       /** 사업자 과세 유형 */
-      taxationType?: components["schemas"]["B2bCompanyStateTaxationType"];
+      taxationType: components["schemas"]["B2bCompanyStateTaxationType"];
       /**
        * 과세 유형 변경 일자
        * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
        */
       taxationTypeDate?: string;
       /** 사업자 영업 상태 */
-      businessStatus?: components["schemas"]["B2bCompanyStateBusinessStatus"];
+      businessStatus: components["schemas"]["B2bCompanyStateBusinessStatus"];
       /**
        * 휴폐업 일자
        * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
@@ -1530,6 +1538,22 @@ export interface components {
      * @description <p>계좌 정보 조회가 불가능한 외화 계좌인 경우</p>
      */
     B2bForeignExchangeAccountError: {
+      type: string;
+      message?: string;
+    };
+    /**
+     * 홈택스가 점검중이거나 순단이 발생한 경우
+     * @description <p>홈택스가 점검중이거나 순단이 발생한 경우</p>
+     */
+    B2bHometaxUnderMaintenanceError: {
+      type: string;
+      message?: string;
+    };
+    /**
+     * ID가 이미 사용중인 경우
+     * @description <p>ID가 이미 사용중인 경우</p>
+     */
+    B2bIdAlreadyExistsError: {
       type: string;
       message?: string;
     };
@@ -5349,7 +5373,7 @@ export interface components {
       /** 인증서 등록 URL */
       url: string;
     };
-    GetB2bCompanyStateError: components["schemas"]["B2bCompanyNotFoundError"] | components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetB2bCompanyStateError: components["schemas"]["B2bCompanyNotFoundError"] | components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bHometaxUnderMaintenanceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 담당자 ID 존재 여부 응답 정보
      * @description <p>담당자 ID 존재 여부 응답 정보</p>
@@ -9117,7 +9141,7 @@ export interface components {
       /** 담당자 정보 */
       contact: components["schemas"]["B2bCompanyContactInput"];
     };
-    RegisterB2bMemberCompanyError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    RegisterB2bMemberCompanyError: components["schemas"]["B2bCompanyAlreadyRegisteredError"] | components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bIdAlreadyExistsError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 사업자 연동 응답 정보
      * @description <p>사업자 연동 응답 정보</p>
@@ -10473,6 +10497,11 @@ export interface operations {
   loginViaApiSecret: {
     requestBody: {
       content: {
+        /**
+         * @example {
+         *   "apiSecret": "your-api-secret"
+         * }
+         */
         "application/json": components["schemas"]["LoginViaApiSecretBody"];
       };
     };
@@ -10514,6 +10543,11 @@ export interface operations {
   refreshToken: {
     requestBody: {
       content: {
+        /**
+         * @example {
+         *   "refreshToken": "previous-refresh-token"
+         * }
+         */
         "application/json": components["schemas"]["RefreshTokenBody"];
       };
     };
@@ -13207,11 +13241,17 @@ export interface operations {
         /**
          * @description <p>상점 아이디</p>
          * <p>접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다.</p>
+         *
+         * @example your-store-id
          */
         storeId?: string;
       };
       path: {
-        /** @description <p>조회할 본인인증 아이디</p> */
+        /**
+         * @description <p>조회할 본인인증 아이디</p>
+         *
+         * @example your-identity-verification-id
+         */
         identityVerificationId: string;
       };
     };
@@ -16096,6 +16136,17 @@ export interface operations {
       };
       /**
        * @description <ul>
+       * <li><code>B2bIdAlreadyExistsError</code>: ID가 이미 사용중인 경우</li>
+       * <li><code>B2bCompanyAlreadyRegisteredError</code>: 사업자가 이미 연동되어 있는 경우</li>
+       * </ul>
+       */
+      409: {
+        content: {
+          "application/json": components["schemas"]["RegisterB2bMemberCompanyError"];
+        };
+      };
+      /**
+       * @description <ul>
        * <li><code>B2bExternalServiceError</code>: 외부 서비스에서 에러가 발생한 경우</li>
        * </ul>
        */
@@ -16583,6 +16634,16 @@ export interface operations {
        * </ul>
        */
       502: {
+        content: {
+          "application/json": components["schemas"]["GetB2bCompanyStateError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bHometaxUnderMaintenanceError</code>: 홈택스가 점검중이거나 순단이 발생한 경우</li>
+       * </ul>
+       */
+      503: {
         content: {
           "application/json": components["schemas"]["GetB2bCompanyStateError"];
         };
