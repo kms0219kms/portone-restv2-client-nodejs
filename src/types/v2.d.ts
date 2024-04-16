@@ -13940,7 +13940,12 @@ export interface operations {
    * <p>주어진 조건에 맞는 결제 건들을 페이지 기반으로 조회합니다.</p>
    */
   getPayments: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetPaymentsBody"];
       };
@@ -13991,7 +13996,12 @@ export interface operations {
    * <p>기간 내 모든 결제 건을 커서 기반으로 조회합니다. 결제 건의 생성일시를 기준으로 주어진 기간 내 존재하는 모든 결제 건이 조회됩니다.</p>
    */
   getAllPaymentsByCursor: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetAllPaymentsByCursorBody"];
       };
@@ -14111,7 +14121,12 @@ export interface operations {
    * <p>주어진 조건에 맞는 결제 예약 건들을 조회합니다.</p>
    */
   getPaymentSchedules: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetPaymentSchedulesBody"];
       };
@@ -14162,7 +14177,12 @@ export interface operations {
    * <p>결제 예약 건을 취소합니다.</p>
    */
   revokePaymentSchedule: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["RevokePaymentScheduleBody"];
       };

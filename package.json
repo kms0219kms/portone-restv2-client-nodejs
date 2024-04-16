@@ -1,6 +1,6 @@
 {
   "name": "portone",
-  "version": "2.1.0-oas02042024",
+  "version": "2.1.0-oas16042024",
   "description": "PortOne (Korea) V2 RestApi Client for Node.js (Unofficial)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
