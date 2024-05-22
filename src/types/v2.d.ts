@@ -516,6 +516,13 @@ export interface paths {
      * <p>포트원 B2B 서비스에 연동된 사업자를 조회합니다.</p>
      */
     get: operations["getB2bMemberCompany"];
+    /**
+     * <p>연동 사업자 정보 수정</p>
+     *
+     * @description <p>연동 사업자 정보 수정</p>
+     * <p>연동 사업자 정보를 수정합니다.</p>
+     */
+    patch: operations["updateB2bMemberCompany"];
   };
   "/b2b-preview/member-companies": {
     /**
@@ -534,6 +541,13 @@ export interface paths {
      * <p>연동 사업자에 등록된 담당자를 조회합니다.</p>
      */
     get: operations["getB2bMemberCompanyContact"];
+    /**
+     * <p>담당자 정보 수정</p>
+     *
+     * @description <p>담당자 정보 수정</p>
+     * <p>담당자 정보를 수정합니다.</p>
+     */
+    patch: operations["updateB2bMemberCompanyContact"];
   };
   "/b2b-preview/member-companies/{brn}/certificate/registration-url": {
     /**
@@ -694,6 +708,42 @@ export interface paths {
      * <p>임시저장(REGISTERED) 상태의 역발행 세금계산서를 공급자에게 발행 요청합니다.</p>
      */
     post: operations["requestB2bTaxInvoice"];
+  };
+  "/b2b-preview/tax-invoices/file-upload-link": {
+    /**
+     * <p>세금계산서 파일 업로드 링크 생성</p>
+     *
+     * @description <p>세금계산서 파일 업로드 링크 생성</p>
+     * <p>세금계산서의 첨부파일를 업로드할 링크를 생성합니다.</p>
+     */
+    post: operations["createB2bTaxInvoiceFileUploadLink"];
+  };
+  "/b2b-preview/tax-invoices/attach-file": {
+    /**
+     * <p>세금계산서 파일 첨부</p>
+     *
+     * @description <p>세금계산서 파일 첨부</p>
+     * <p>세금계산서에 파일을 첨부합니다.</p>
+     */
+    post: operations["attachB2bTaxInvoiceFile"];
+  };
+  "/b2b-preview/tax-invoices/{documentKey}/attachments": {
+    /**
+     * <p>세금계산서 첨부파일 목록 조회</p>
+     *
+     * @description <p>세금계산서 첨부파일 목록 조회</p>
+     * <p>세금계산서에 첨부된 파일 목록을 조회합니다.</p>
+     */
+    get: operations["getB2bTaxInvoiceAttachments"];
+  };
+  "/b2b-preview/tax-invoices/{documentKey}/attachments/{attachmentId}": {
+    /**
+     * <p>세금계산서 첨부파일 삭제</p>
+     *
+     * @description <p>세금계산서 첨부파일 삭제</p>
+     * <p>세금계산서 첨부파일을 삭제합니다.</p>
+     */
+    delete: operations["deleteB2bTaxInvoiceAttachment"];
   };
   "/kakaopay/payment/order": {
     /**
@@ -1359,6 +1409,29 @@ export interface components {
       partner: components["schemas"]["PlatformPartner"];
     };
     /**
+     * 세금계산서 파일 첨부 정보
+     * @description <p>세금계산서 파일 첨부 정보</p>
+     */
+    AttachB2bTaxInvoiceFileBody: {
+      /**
+       * 사업자등록번호
+       * @description <ul>
+       * <li>없이 숫자 10자리로 구성됩니다.</li>
+       * </ul>
+       */
+      brn: string;
+      /** 세금계산서 문서 번호 */
+      documentKey: string;
+      /**
+       * 문서 번호 유형
+       * @description <p>기본 값은 RECIPIENT이며 SUPPLIER, RECIPIENT을 지원합니다.</p>
+       */
+      documentKeyType?: components["schemas"]["B2bTaxInvoiceDocumentKeyType"];
+      /** 파일 아이디 */
+      fileId: string;
+    };
+    AttachB2bTaxInvoiceFileError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bFileNotFoundError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["B2bTaxInvoiceNotRegisteredStatusError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
      * 계좌가 존재하지 않는 경우
      * @description <p>계좌가 존재하지 않는 경우</p>
      */
@@ -1510,6 +1583,14 @@ export interface components {
       message: string;
     };
     /**
+     * 업로드한 파일을 찾을 수 없는 경우
+     * @description <p>업로드한 파일을 찾을 수 없는 경우</p>
+     */
+    B2bFileNotFoundError: {
+      type: string;
+      message?: string;
+    };
+    /**
      * 금융기관과의 통신에 실패한 경우
      * @description <p>금융기관과의 통신에 실패한 경우</p>
      */
@@ -1654,6 +1735,29 @@ export interface components {
       name?: string;
       /** 이메일 */
       email: string;
+    };
+    /**
+     * 세금계산서 첨부파일
+     * @description <p>세금계산서 첨부파일</p>
+     */
+    B2bTaxInvoiceAttachment: {
+      /** 첨부 파일 아이디 */
+      id: string;
+      /** 첨부 파일명 */
+      name: string;
+      /**
+       * 첨부 일시
+       * Format: date-time
+       */
+      attachedAt: string;
+    };
+    /**
+     * 세금계산서의 첨부파일을 찾을 수 없는 경우
+     * @description <p>세금계산서의 첨부파일을 찾을 수 없는 경우</p>
+     */
+    B2bTaxInvoiceAttachmentNotFoundError: {
+      type: string;
+      message?: string;
     };
     B2bTaxInvoiceBeforeSending: {
       /** 세금계산서 상태 */
@@ -3489,6 +3593,11 @@ export interface components {
       /** 취소 사유 */
       reason: string;
       /**
+       * 취소 요청자
+       * @description <p>고객에 의한 취소일 경우 Customer, 관리자에 의한 취소일 경우 Admin으로 입력합니다.</p>
+       */
+      requester?: components["schemas"]["CancelRequester"];
+      /**
        * 결제 건의 취소 가능 잔액
        * Format: int64
        * @description <p>본 취소 요청 이전의 취소 가능 잔액으로써, 값을 입력하면 잔액이 일치하는 경우에만 취소가 진행됩니다. 값을 입력하지 않으면 별도의 검증 처리를 수행하지 않습니다.</p>
@@ -3547,6 +3656,8 @@ export interface components {
      * @description <p>파트너 예약 업데이트 취소 성공 응답</p>
      */
     CancelPlatformPartnerScheduleResponse: Record<string, never>;
+    /** @enum {string} */
+    CancelRequester: "Admin" | "Customer";
     /**
      * 취소 과세 금액이 취소 가능한 과세 금액을 초과한 경우
      * @description <p>취소 과세 금액이 취소 가능한 과세 금액을 초과한 경우</p>
@@ -3710,6 +3821,8 @@ export interface components {
        * Format: date-time
        */
       paidAt?: string;
+      /** PG사 거래 아이디 */
+      pgTxId?: string;
       /** 현금영수증 */
       cashReceipt?: components["schemas"]["PaymentCashReceipt"];
       /** 거래 영수증 URL */
@@ -3823,15 +3936,15 @@ export interface components {
      * @description <p>카드 인증 관련 정보</p>
      */
     CardCredential: {
-      /** 카드 번호 */
+      /** 카드 번호 (숫자만) */
       number: string;
-      /** 유효 기간 만료 연도 */
+      /** 유효 기간 만료 연도 (2자리) */
       expiryYear: string;
-      /** 유효 기간 만료 월 */
+      /** 유효 기간 만료 월 (2자리) */
       expiryMonth: string;
-      /** 생년월일 또는 사업자 등록 번호 */
+      /** 생년월일 (yyMMdd) 또는 사업자 등록 번호 (10자리, 숫자만) */
       birthOrBusinessRegistrationNumber?: string;
-      /** 비밀번호 앞 두자리 */
+      /** 비밀번호 앞 2자리 */
       passwordTwoDigits?: string;
     };
     /**
@@ -3922,50 +4035,23 @@ export interface components {
      */
     Channel: {
       /** 채널 아이디 */
-      channelId: string;
+      id: string;
       /** 채널명 */
-      channelName: string;
-      /** V2 결제가 가능한 PG사 */
+      name: string;
+      /** PG사 모듈 */
       pgProvider: components["schemas"]["PgProvider"];
+      /** PG사 모듈에 해당하는 PG사 */
+      pgCompany: components["schemas"]["PgCompany"];
       /** 채널 유형 */
-      channelType: components["schemas"]["ChannelType"];
+      type: components["schemas"]["ChannelType"];
       /** PG사 상점 아이디 */
       pgMerchantId: string;
       /** 결제용 채널 여부 */
       isForPayment: boolean;
       /** 본인인증용 채널 여부 */
-      isForIdentityCertification: boolean;
+      isForIdentityVerification: boolean;
       /** 채널키 */
-      channelKey: string;
-      /** PG사 인증 정보 */
-      pgCredential?: components["schemas"]["ChannelPgCredential"];
-    };
-    /**
-     * 다날 인증 정보
-     * @description <p>다날 인증 정보</p>
-     */
-    ChannelDanalCredential: {
-      type: string;
-      cppwd?: string;
-      itemCode?: string;
-    };
-    /**
-     * KSNET 인증 정보
-     * @description <p>KSNET 인증 정보</p>
-     */
-    ChannelKsnetCredential: {
-      type: string;
-      apiKey?: string;
-    };
-    /**
-     * 네이버페이 인증 정보
-     * @description <p>네이버페이 인증 정보</p>
-     */
-    ChannelNaverPayCredential: {
-      type: string;
-      clientId?: string;
-      clientSecret?: string;
-      chainId?: string;
+      key: string;
     };
     /**
      * 요청된 채널이 존재하지 않는 경우
@@ -3974,31 +4060,6 @@ export interface components {
     ChannelNotFoundError: {
       type: string;
       message?: string;
-    };
-    /**
-     * PG사 인증 정보
-     * @description <p>PG사 인증 정보</p>
-     */
-    ChannelPgCredential: components["schemas"]["ChannelDanalCredential"] | components["schemas"]["ChannelKsnetCredential"] | components["schemas"]["ChannelNaverPayCredential"] | components["schemas"]["ChannelSmartroV2Credential"] | components["schemas"]["ChannelTossPaymentsCredential"];
-    /**
-     * 스마트로V2 인증 정보
-     * @description <p>스마트로V2 인증 정보</p>
-     */
-    ChannelSmartroV2Credential: {
-      type: string;
-      merchantKey?: string;
-      cancelPassword?: string;
-      sspMallId?: string;
-      apiKey?: string;
-    };
-    /**
-     * 토스페이먼츠 인증 정보
-     * @description <p>토스페이먼츠 인증 정보</p>
-     */
-    ChannelTossPaymentsCredential: {
-      type: string;
-      secretKey?: string;
-      clientKey?: string;
     };
     /**
      * 채널 유형
@@ -4108,6 +4169,25 @@ export interface components {
      * @enum {string}
      */
     Country: "AD" | "AE" | "AF" | "AG" | "AI" | "AL" | "AM" | "AO" | "AQ" | "AR" | "AS" | "AT" | "AU" | "AW" | "AX" | "AZ" | "BA" | "BB" | "BD" | "BE" | "BF" | "BG" | "BH" | "BI" | "BJ" | "BL" | "BM" | "BN" | "BO" | "BQ" | "BR" | "BS" | "BT" | "BV" | "BW" | "BY" | "BZ" | "CA" | "CC" | "CD" | "CF" | "CG" | "CH" | "CI" | "CK" | "CL" | "CM" | "CN" | "CO" | "CR" | "CU" | "CV" | "CW" | "CX" | "CY" | "CZ" | "DE" | "DJ" | "DK" | "DM" | "DO" | "DZ" | "EC" | "EE" | "EG" | "EH" | "ER" | "ES" | "ET" | "FI" | "FJ" | "FK" | "FM" | "FO" | "FR" | "GA" | "GB" | "GD" | "GE" | "GF" | "GG" | "GH" | "GI" | "GL" | "GM" | "GN" | "GP" | "GQ" | "GR" | "GS" | "GT" | "GU" | "GW" | "GY" | "HK" | "HM" | "HN" | "HR" | "HT" | "HU" | "ID" | "IE" | "IL" | "IM" | "IN" | "IO" | "IQ" | "IR" | "IS" | "IT" | "JE" | "JM" | "JO" | "JP" | "KE" | "KG" | "KH" | "KI" | "KM" | "KN" | "KP" | "KR" | "KW" | "KY" | "KZ" | "LA" | "LB" | "LC" | "LI" | "LK" | "LR" | "LS" | "LT" | "LU" | "LV" | "LY" | "MA" | "MC" | "MD" | "ME" | "MF" | "MG" | "MH" | "MK" | "ML" | "MM" | "MN" | "MO" | "MP" | "MQ" | "MR" | "MS" | "MT" | "MU" | "MV" | "MW" | "MX" | "MY" | "MZ" | "NA" | "NC" | "NE" | "NF" | "NG" | "NI" | "NL" | "NO" | "NP" | "NR" | "NU" | "NZ" | "OM" | "PA" | "PE" | "PF" | "PG" | "PH" | "PK" | "PL" | "PM" | "PN" | "PR" | "PS" | "PT" | "PW" | "PY" | "QA" | "RE" | "RO" | "RS" | "RU" | "RW" | "SA" | "SB" | "SC" | "SD" | "SE" | "SG" | "SH" | "SI" | "SJ" | "SK" | "SL" | "SM" | "SN" | "SO" | "SR" | "SS" | "ST" | "SV" | "SX" | "SY" | "SZ" | "TC" | "TD" | "TF" | "TG" | "TH" | "TJ" | "TK" | "TL" | "TM" | "TN" | "TO" | "TR" | "TT" | "TV" | "TW" | "TZ" | "UA" | "UG" | "UM" | "US" | "UY" | "UZ" | "VA" | "VC" | "VE" | "VG" | "VI" | "VN" | "VU" | "WF" | "WS" | "YE" | "YT" | "ZA" | "ZM" | "ZW";
+    /**
+     * 세금계산서 파일 업로드 링크 생성
+     * @description <p>세금계산서 파일 업로드 링크 생성</p>
+     */
+    CreateB2bTaxInvoiceFileUploadLinkBody: {
+      /** 파일 이름 */
+      fileName: string;
+    };
+    CreateB2bTaxInvoiceFileUploadLinkCreateError: components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 세금계산서 파일 업로드 링크 생성 성공 응답
+     * @description <p>세금계산서 파일 업로드 링크 생성 성공 응답</p>
+     */
+    CreateB2bTaxInvoiceFileUploadLinkResponse: {
+      /** 파일 아이디 */
+      fileId: string;
+      /** 파일 업로드 링크 */
+      url: string;
+    };
     CreateManualTransferResponse: {
       transfer: components["schemas"]["PlatformManualTransfer"];
     };
@@ -4130,7 +4210,7 @@ export interface components {
        */
       timeToPay: string;
     };
-    CreatePaymentScheduleError: components["schemas"]["AlreadyPaidOrWaitingError"] | components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PastPaymentScheduleError"] | components["schemas"]["PaymentScheduleAlreadyExistsError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["UnauthorizedError"];
+    CreatePaymentScheduleError: components["schemas"]["AlreadyPaidOrWaitingError"] | components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentScheduleAlreadyExistsError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 결제 예약 성공 응답
      * @description <p>결제 예약 성공 응답</p>
@@ -4565,6 +4645,7 @@ export interface components {
      * @enum {string}
      */
     DayOfWeek: "FRI" | "MON" | "SAT" | "SUN" | "THU" | "TUE" | "WED";
+    DeleteB2bTaxInvoiceAttachmentError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceAttachmentNotFoundError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["B2bTaxInvoiceNotRegisteredStatusError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     DeleteB2bTaxInvoiceError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceNonDeletableStatusError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     DeleteBillingKeyError: components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["BillingKeyNotIssuedError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentScheduleAlreadyExistsError"] | components["schemas"]["PgProviderError"] | components["schemas"]["UnauthorizedError"];
     /**
@@ -4786,7 +4867,7 @@ export interface components {
     FailedPaymentSchedule: {
       /** 결제 예약 건 상태 */
       status: string;
-      /** 결제 예약건 아이디 */
+      /** 결제 예약 건 아이디 */
       id: string;
       /** 가맹점 아이디 */
       merchantId: string;
@@ -4816,6 +4897,11 @@ export interface components {
        * Format: int64
        */
       taxFreeAmount?: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount?: number;
       /** 통화 */
       currency: components["schemas"]["Currency"];
       /**
@@ -4827,6 +4913,11 @@ export interface components {
       noticeUrls?: string[];
       /** 상품 정보 */
       products?: components["schemas"]["PaymentProduct"][];
+      /**
+       * 결제 예약 등록 시점
+       * Format: date-time
+       */
+      createdAt: string;
       /**
        * 결제 예정 시점
        * Format: date-time
@@ -5384,6 +5475,15 @@ export interface components {
     };
     GetB2bMemberCompanyContactError: components["schemas"]["B2bContactNotFoundError"] | components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bMemberCompanyNotFoundError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetB2bMemberCompanyError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bMemberCompanyNotFoundError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetB2bTaxInvoiceAttachmentsError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 세금계산서 첨부파일 목록 조회 성공 응답
+     * @description <p>세금계산서 첨부파일 목록 조회 성공 응답</p>
+     */
+    GetB2bTaxInvoiceAttachmentsResponse: {
+      /** 첨부파일 목록 */
+      attachments: components["schemas"]["B2bTaxInvoiceAttachment"][];
+    };
     GetB2bTaxInvoiceError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetB2bTaxInvoicePdfDownloadUrlError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
@@ -5425,15 +5525,6 @@ export interface components {
     };
     GetBillingKeyInfoError: components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetCashReceiptError: components["schemas"]["CashReceiptNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
-    GetChannelsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
-    /**
-     * 채널 다건 조회 성공 응답 정보
-     * @description <p>채널 다건 조회 성공 응답 정보</p>
-     */
-    GetChannelsResponse: {
-      /** 조회된 채널 리스트 */
-      items: components["schemas"]["Channel"][];
-    };
     GetIdentityVerificationError: components["schemas"]["ForbiddenError"] | components["schemas"]["IdentityVerificationNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetKakaopayPaymentOrderError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
@@ -5465,6 +5556,11 @@ export interface components {
        * @description <p>미 입력 시 number: 0, size: 10 으로 기본값이 적용됩니다.</p>
        */
       page?: components["schemas"]["PageInput"];
+      /**
+       * 정렬 조건
+       * @description <p>미 입력 시 sortBy: TIME_TO_PAY, sortOrder: DESC 으로 기본값이 적용됩니다.</p>
+       */
+      sort?: components["schemas"]["PaymentScheduleSortInput"];
       /** 조회할 결제 예약 건의 조건 필터 */
       filter?: components["schemas"]["PaymentScheduleFilterInput"];
     };
@@ -5683,6 +5779,15 @@ export interface components {
       transferSummaries: components["schemas"]["PlatformTransferSummary"][];
       page: components["schemas"]["PageInfo"];
     };
+    GetV2SupportedChannelsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 채널 다건 조회 성공 응답 정보
+     * @description <p>채널 다건 조회 성공 응답 정보</p>
+     */
+    GetV2SupportedChannelsResponse: {
+      /** 조회된 채널 리스트 */
+      items: components["schemas"]["Channel"][];
+    };
     /**
      * 본인인증 내역
      * @description <p>본인인증 내역</p>
@@ -5758,6 +5863,8 @@ export interface components {
       id?: string;
       /** 이름 */
       name: string;
+      /** 통신사 */
+      operator?: components["schemas"]["IdentityVerificationOperator"];
       /**
        * 전화번호
        * @description <p>특수 문자(-) 없이 숫자로만 이루어진 번호 형식입니다.</p>
@@ -6533,6 +6640,8 @@ export interface components {
        * Format: date-time
        */
       paidAt?: string;
+      /** PG사 거래 아이디 */
+      pgTxId?: string;
       /** 현금영수증 */
       cashReceipt?: components["schemas"]["PaymentCashReceipt"];
       /** 거래 영수증 URL */
@@ -6544,14 +6653,6 @@ export interface components {
        * Format: date-time
        */
       cancelledAt: string;
-    };
-    /**
-     * 결제 예약 시점이 과거로 지정된 경우
-     * @description <p>결제 예약 시점이 과거로 지정된 경우</p>
-     */
-    PastPaymentScheduleError: {
-      type: string;
-      message?: string;
     };
     PayInstantlyError: components["schemas"]["AlreadyPaidError"] | components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["UnauthorizedError"];
     /**
@@ -6839,7 +6940,7 @@ export interface components {
       /** 결제 건 정렬 기준 */
       sortBy?: components["schemas"]["PaymentSortBy"];
       /** 결제 건 정렬 방식 */
-      sortOrder?: components["schemas"]["PaymentSortOrder"];
+      sortOrder?: components["schemas"]["SortOrder"];
       /** 포트원 버전 */
       version?: components["schemas"]["PortOneVersion"];
       /** 웹훅 상태 */
@@ -7111,7 +7212,7 @@ export interface components {
      * 결제 예약 건
      * @description <p>결제 예약 건</p>
      */
-    PaymentSchedule: components["schemas"]["FailedPaymentSchedule"] | components["schemas"]["RevokedPaymentSchedule"] | components["schemas"]["ScheduledPaymentSchedule"] | components["schemas"]["StartedPaymentSchedule"] | components["schemas"]["SucceededPaymentSchedule"];
+    PaymentSchedule: components["schemas"]["FailedPaymentSchedule"] | components["schemas"]["PendingPaymentSchedule"] | components["schemas"]["RevokedPaymentSchedule"] | components["schemas"]["ScheduledPaymentSchedule"] | components["schemas"]["StartedPaymentSchedule"] | components["schemas"]["SucceededPaymentSchedule"];
     /**
      * 결제 예약건이 이미 존재하는 경우
      * @description <p>결제 예약건이 이미 존재하는 경우</p>
@@ -7160,7 +7261,10 @@ export interface components {
        * @description <p>값을 입력하지 않으면 현재 시점으로 설정됩니다.</p>
        */
       until?: string;
-      /** 결제 예약 건 상태 리스트 */
+      /**
+       * 결제 예약 건 상태 리스트
+       * @description <p>값을 입력하지 않으면 상태 필터링이 적용되지 않습니다.</p>
+       */
       status?: components["schemas"]["PaymentScheduleStatus"][];
     };
     /**
@@ -7172,12 +7276,35 @@ export interface components {
       message?: string;
     };
     /**
+     * 결제 예약 건 정렬 기준
+     * @description <p>결제 예약 건 정렬 기준</p>
+     *
+     * @enum {string}
+     */
+    PaymentScheduleSortBy: "COMPLETED_AT" | "CREATED_AT" | "TIME_TO_PAY";
+    /**
+     * 결제 예약 건 다건 조회 시 정렬 조건
+     * @description <p>결제 예약 건 다건 조회 시 정렬 조건</p>
+     */
+    PaymentScheduleSortInput: {
+      /**
+       * 정렬 기준 필드
+       * @description <p>어떤 필드를 기준으로 정렬할 지 결정합니다. 비워서 보낼 경우, TIME_TO_PAY가 기본값으로 설정됩니다.</p>
+       */
+      by?: components["schemas"]["PaymentScheduleSortBy"];
+      /**
+       * 정렬 순서
+       * @description <p>어떤 순서로 정렬할 지 결정합니다. 비워서 보낼 경우, DESC(내림차순)가 기본값으로 설정됩니다.</p>
+       */
+      order?: components["schemas"]["SortOrder"];
+    };
+    /**
      * 결제 예약 건 상태
      * @description <p>결제 예약 건 상태</p>
      *
      * @enum {string}
      */
-    PaymentScheduleStatus: "FAILED" | "REVOKED" | "SCHEDULED" | "STARTED" | "SUCCEEDED";
+    PaymentScheduleStatus: "FAILED" | "PENDING" | "REVOKED" | "SCHEDULED" | "STARTED" | "SUCCEEDED";
     /**
      * 결제 예약 건
      * @description <p>결제 예약 건</p>
@@ -7193,13 +7320,6 @@ export interface components {
      * @enum {string}
      */
     PaymentSortBy: "REQUESTED_AT" | "STATUS_CHANGED_AT";
-    /**
-     * 결제 건 정렬 방식
-     * @description <p>결제 건 정렬 방식</p>
-     *
-     * @enum {string}
-     */
-    PaymentSortOrder: "ASC" | "DESC";
     /**
      * 결제 건 상태
      * @description <p>결제 건 상태</p>
@@ -7357,6 +7477,80 @@ export interface components {
       settlementCurrency: components["schemas"]["Currency"];
       payoutCurrency: components["schemas"]["Currency"];
       name: string;
+    };
+    /**
+     * 결제 대기 상태
+     * @description <p>결제 대기 상태</p>
+     */
+    PendingPaymentSchedule: {
+      /** 결제 예약 건 상태 */
+      status: string;
+      /** 결제 예약 건 아이디 */
+      id: string;
+      /** 가맹점 아이디 */
+      merchantId: string;
+      /** 상점 아이디 */
+      storeId: string;
+      /** 결제 건 아이디 */
+      paymentId: string;
+      /** 빌링키 */
+      billingKey: string;
+      /** 주문명 */
+      orderName: string;
+      /** 문화비 지출 여부 */
+      isCulturalExpense: boolean;
+      /** 에스크로 결제 여부 */
+      isEscrow: boolean;
+      /** 고객 정보 */
+      customer: components["schemas"]["Customer"];
+      /** 사용자 지정 데이터 */
+      customData: string;
+      /**
+       * 결제 총 금액
+       * Format: int64
+       */
+      totalAmount: number;
+      /**
+       * 면세액
+       * Format: int64
+       */
+      taxFreeAmount?: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount?: number;
+      /** 통화 */
+      currency: components["schemas"]["Currency"];
+      /**
+       * 할부 개월 수
+       * Format: int32
+       */
+      installmentMonth?: number;
+      /** 웹훅 주소 */
+      noticeUrls?: string[];
+      /** 상품 정보 */
+      products?: components["schemas"]["PaymentProduct"][];
+      /**
+       * 결제 예약 등록 시점
+       * Format: date-time
+       */
+      createdAt: string;
+      /**
+       * 결제 예정 시점
+       * Format: date-time
+       */
+      timeToPay: string;
+      /**
+       * 결제 시작 시점
+       * Format: date-time
+       */
+      startedAt: string;
+      /**
+       * 결제 완료 시점
+       * Format: date-time
+       */
+      completedAt: string;
     };
     /**
      * PG사
@@ -9507,26 +9701,6 @@ export interface components {
       /** 재발송 웹훅 정보 */
       webhook: components["schemas"]["PaymentWebhook"];
     };
-    /**
-     * 결제 예약 건 취소 요청 입력 정보
-     * @description <p>결제 예약 건 취소 요청 입력 정보</p>
-     * <p>billingKey, scheduleIds 중 하나 이상은 필수로 입력합니다.
-     * billingKey 만 입력된 경우 -&gt; 해당 빌링키로 예약된 모든 결제 예약 건들이 취소됩니다.
-     * scheduleIds 만 입력된 경우 -&gt; 입력된 결제 예약 건 아이디에 해당하는 예약 건들이 취소됩니다.
-     * billingKey, scheduleIds 모두 입력된 경우 -&gt; 입력된 결제 예약 건 아이디에 해당하는 예약 건들이 취소됩니다. 그리고 예약한 빌링키가 입력된 빌링키와 일치하는지 검증합니다.
-     * 위 정책에 따라 선택된 결제 예약 건들 중 하나라도 취소에 실패할 경우, 모든 취소 요청이 실패합니다.</p>
-     */
-    RevokePaymentScheduleBody: {
-      /**
-       * 상점 아이디
-       * @description <p>접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다.</p>
-       */
-      storeId?: string;
-      /** 빌링키 */
-      billingKey?: string;
-      /** 결제 예약 건 아이디 목록 */
-      scheduleIds?: string[];
-    };
     RevokePaymentScheduleError: components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentScheduleAlreadyProcessedError"] | components["schemas"]["PaymentScheduleAlreadyRevokedError"] | components["schemas"]["PaymentScheduleNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 결제 예약 건 취소 성공 응답
@@ -9540,6 +9714,26 @@ export interface components {
        * Format: date-time
        */
       revokedAt?: string;
+    };
+    /**
+     * 결제 예약 건 취소 요청 입력 정보
+     * @description <p>결제 예약 건 취소 요청 입력 정보</p>
+     * <p>billingKey, scheduleIds 중 하나 이상은 필수로 입력합니다.
+     * billingKey 만 입력된 경우 -&gt; 해당 빌링키로 예약된 모든 결제 예약 건들이 취소됩니다.
+     * scheduleIds 만 입력된 경우 -&gt; 입력된 결제 예약 건 아이디에 해당하는 예약 건들이 취소됩니다.
+     * billingKey, scheduleIds 모두 입력된 경우 -&gt; 입력된 결제 예약 건 아이디에 해당하는 예약 건들이 취소됩니다. 그리고 예약한 빌링키가 입력된 빌링키와 일치하는지 검증합니다.
+     * 위 정책에 따라 선택된 결제 예약 건들 중 하나라도 취소에 실패할 경우, 모든 취소 요청이 실패합니다.</p>
+     */
+    RevokePaymentSchedulesBody: {
+      /**
+       * 상점 아이디
+       * @description <p>접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다.</p>
+       */
+      storeId?: string;
+      /** 빌링키 */
+      billingKey?: string;
+      /** 결제 예약 건 아이디 목록 */
+      scheduleIds?: string[];
     };
     /**
      * 결제 예약 취소 상태
@@ -9578,6 +9772,11 @@ export interface components {
        * Format: int64
        */
       taxFreeAmount?: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount?: number;
       /** 통화 */
       currency: components["schemas"]["Currency"];
       /**
@@ -9589,6 +9788,11 @@ export interface components {
       noticeUrls?: string[];
       /** 상품 정보 */
       products?: components["schemas"]["PaymentProduct"][];
+      /**
+       * 결제 예약 등록 시점
+       * Format: date-time
+       */
+      createdAt: string;
       /**
        * 결제 예정 시점
        * Format: date-time
@@ -9798,6 +10002,11 @@ export interface components {
        * Format: int64
        */
       taxFreeAmount?: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount?: number;
       /** 통화 */
       currency: components["schemas"]["Currency"];
       /**
@@ -9809,6 +10018,11 @@ export interface components {
       noticeUrls?: string[];
       /** 상품 정보 */
       products?: components["schemas"]["PaymentProduct"][];
+      /**
+       * 결제 예약 등록 시점
+       * Format: date-time
+       */
+      createdAt: string;
       /**
        * 결제 예정 시점
        * Format: date-time
@@ -9927,6 +10141,13 @@ export interface components {
       country?: components["schemas"]["Country"];
     };
     /**
+     * 정렬 방식
+     * @description <p>정렬 방식</p>
+     *
+     * @enum {string}
+     */
+    SortOrder: "ASC" | "DESC";
+    /**
      * 결제 시작 상태
      * @description <p>결제 시작 상태</p>
      */
@@ -9963,6 +10184,11 @@ export interface components {
        * Format: int64
        */
       taxFreeAmount?: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount?: number;
       /** 통화 */
       currency: components["schemas"]["Currency"];
       /**
@@ -9974,6 +10200,11 @@ export interface components {
       noticeUrls?: string[];
       /** 상품 정보 */
       products?: components["schemas"]["PaymentProduct"][];
+      /**
+       * 결제 예약 등록 시점
+       * Format: date-time
+       */
+      createdAt: string;
       /**
        * 결제 예정 시점
        * Format: date-time
@@ -10038,7 +10269,7 @@ export interface components {
     SucceededPaymentSchedule: {
       /** 결제 예약 건 상태 */
       status: string;
-      /** 결제 예약건 아이디 */
+      /** 결제 예약 건 아이디 */
       id: string;
       /** 가맹점 아이디 */
       merchantId: string;
@@ -10068,6 +10299,11 @@ export interface components {
        * Format: int64
        */
       taxFreeAmount?: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount?: number;
       /** 통화 */
       currency: components["schemas"]["Currency"];
       /**
@@ -10079,6 +10315,11 @@ export interface components {
       noticeUrls?: string[];
       /** 상품 정보 */
       products?: components["schemas"]["PaymentProduct"][];
+      /**
+       * 결제 예약 등록 시점
+       * Format: date-time
+       */
+      createdAt: string;
       /**
        * 결제 예정 시점
        * Format: date-time
@@ -10118,6 +10359,54 @@ export interface components {
     UnauthorizedError: {
       type: string;
       message?: string;
+    };
+    /**
+     * 연동 사업자 정보 수정 요청
+     * @description <p>연동 사업자 정보 수정 요청</p>
+     */
+    UpdateB2bMemberCompanyBody: {
+      /** 회사명 */
+      name?: string;
+      /** 대표자 성명 */
+      ceoName?: string;
+      /** 회사 주소 */
+      address?: string;
+      /** 업태 */
+      businessType?: string;
+      /** 업종 */
+      businessClass?: string;
+    };
+    /**
+     * 담당자 정보 수정 요청
+     * @description <p>담당자 정보 수정 요청</p>
+     */
+    UpdateB2bMemberCompanyContactBody: {
+      /** 비밀번호 */
+      password?: string;
+      /** 담당자 성명 */
+      name?: string;
+      /** 담당자 핸드폰 번호 */
+      phoneNumber?: string;
+      /** 담당자 이메일 */
+      email?: string;
+    };
+    UpdateB2bMemberCompanyContactError: components["schemas"]["B2bContactNotFoundError"] | components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bMemberCompanyNotFoundError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 담당자 정보 수정 응답
+     * @description <p>담당자 정보 수정 응답</p>
+     */
+    UpdateB2bMemberCompanyContactResponse: {
+      /** 담당자 정보 */
+      contact: components["schemas"]["B2bCompanyContact"];
+    };
+    UpdateB2bMemberCompanyError: components["schemas"]["B2bMemberCompanyNotFoundError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 연동 사업자 정보 수정 응답
+     * @description <p>연동 사업자 정보 수정 응답</p>
+     */
+    UpdateB2bMemberCompanyResponse: {
+      /** 연동 사업자 정보 */
+      memberCompany: components["schemas"]["B2bMemberCompany"];
     };
     UpdatePayoutAllPartnerSettlementsBody: {
       status: components["schemas"]["PlatformPayoutPartnerSettlementStatus"];
@@ -14184,7 +14473,7 @@ export interface operations {
     };
     requestBody?: {
       content: {
-        "application/json": components["schemas"]["RevokePaymentScheduleBody"];
+        "application/json": components["schemas"]["RevokePaymentSchedulesBody"];
       };
     };
     responses: {
@@ -14320,7 +14609,6 @@ export interface operations {
        * <li><code>SumOfPartsExceedsTotalAmountError</code>: 면세 금액 등 하위 항목들의 합이 전체 결제 금액을 초과한 경우</li>
        * <li><code>BillingKeyAlreadyDeletedError</code>: 빌링키가 이미 삭제된 경우</li>
        * <li><code>PaymentScheduleAlreadyExistsError</code>: 결제 예약건이 이미 존재하는 경우</li>
-       * <li><code>PastPaymentScheduleError</code>: 결제 예약 시점이 과거로 지정된 경우</li>
        * </ul>
        */
       409: {
@@ -16097,6 +16385,80 @@ export interface operations {
     };
   };
   /**
+   * <p>연동 사업자 정보 수정</p>
+   *
+   * @description <p>연동 사업자 정보 수정</p>
+   * <p>연동 사업자 정보를 수정합니다.</p>
+   */
+  updateB2bMemberCompany: {
+    parameters: {
+      query?: {
+        /**
+         * @description <p>테스트 모드 여부</p>
+         * <p>true 이면 테스트 모드로 실행되며, false 이거나 주어지지 않은 경우 테스트 모드를 사용하지 않습니다.</p>
+         */
+        test?: boolean;
+      };
+      path: {
+        /** @description <p>사업자등록번호</p> */
+        brn: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UpdateB2bMemberCompanyBody"];
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bNotEnabledError</code>: B2B 기능이 활성화되지 않은 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bMemberCompanyNotFoundError</code>: 연동 사업자가 존재하지 않는 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyError"];
+        };
+      };
+    };
+  };
+  /**
    * <p>사업자 연동</p>
    *
    * @description <p>사업자 연동</p>
@@ -16255,6 +16617,93 @@ export interface operations {
       502: {
         content: {
           "application/json": components["schemas"]["GetB2bMemberCompanyContactError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>담당자 정보 수정</p>
+   *
+   * @description <p>담당자 정보 수정</p>
+   * <p>담당자 정보를 수정합니다.</p>
+   */
+  updateB2bMemberCompanyContact: {
+    parameters: {
+      query?: {
+        /**
+         * @description <p>테스트 모드 여부</p>
+         * <p>true 이면 테스트 모드로 실행되며, false 이거나 주어지지 않은 경우 테스트 모드를 사용하지 않습니다.</p>
+         */
+        test?: boolean;
+      };
+      path: {
+        /** @description <p>사업자등록번호</p> */
+        brn: string;
+        /** @description <p>담당자 ID</p> */
+        contactId: string;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UpdateB2bMemberCompanyContactBody"];
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyContactResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyContactError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyContactError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bNotEnabledError</code>: B2B 기능이 활성화되지 않은 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyContactError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bContactNotFoundError</code>: 담당자가 존재하지 않는 경우</li>
+       * <li><code>B2bMemberCompanyNotFoundError</code>: 연동 사업자가 존재하지 않는 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyContactError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bExternalServiceError</code>: 외부 서비스에서 에러가 발생한 경우</li>
+       * </ul>
+       */
+      502: {
+        content: {
+          "application/json": components["schemas"]["UpdateB2bMemberCompanyContactError"];
         };
       };
     };
@@ -17743,6 +18192,316 @@ export interface operations {
       502: {
         content: {
           "application/json": components["schemas"]["requestB2bTaxInvoiceError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>세금계산서 파일 업로드 링크 생성</p>
+   *
+   * @description <p>세금계산서 파일 업로드 링크 생성</p>
+   * <p>세금계산서의 첨부파일를 업로드할 링크를 생성합니다.</p>
+   */
+  createB2bTaxInvoiceFileUploadLink: {
+    parameters: {
+      query?: {
+        /**
+         * @description <p>테스트 모드 여부</p>
+         * <p>true 이면 테스트 모드로 실행되며, false 이거나 주어지지 않은 경우 테스트 모드를 사용하지 않습니다.</p>
+         */
+        test?: boolean;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["CreateB2bTaxInvoiceFileUploadLinkBody"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["CreateB2bTaxInvoiceFileUploadLinkResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["CreateB2bTaxInvoiceFileUploadLinkCreateError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["CreateB2bTaxInvoiceFileUploadLinkCreateError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bNotEnabledError</code>: B2B 기능이 활성화되지 않은 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["CreateB2bTaxInvoiceFileUploadLinkCreateError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>세금계산서 파일 첨부</p>
+   *
+   * @description <p>세금계산서 파일 첨부</p>
+   * <p>세금계산서에 파일을 첨부합니다.</p>
+   */
+  attachB2bTaxInvoiceFile: {
+    parameters: {
+      query?: {
+        /**
+         * @description <p>테스트 모드 여부</p>
+         * <p>true 이면 테스트 모드로 실행되며, false 이거나 주어지지 않은 경우 테스트 모드를 사용하지 않습니다.</p>
+         */
+        test?: boolean;
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["AttachB2bTaxInvoiceFileBody"];
+      };
+    };
+    responses: {
+      200: {
+        content: never;
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>B2bTaxInvoiceNotRegisteredStatusError</code>: 세금계산서가 임시저장 상태가 아닌 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["AttachB2bTaxInvoiceFileError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["AttachB2bTaxInvoiceFileError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bNotEnabledError</code>: B2B 기능이 활성화되지 않은 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["AttachB2bTaxInvoiceFileError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bTaxInvoiceNotFoundError</code>: 세금계산서가 존재하지 않은 경우</li>
+       * <li><code>B2bFileNotFoundError</code>: 업로드한 파일을 찾을 수 없는 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["AttachB2bTaxInvoiceFileError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bExternalServiceError</code>: 외부 서비스에서 에러가 발생한 경우</li>
+       * </ul>
+       */
+      502: {
+        content: {
+          "application/json": components["schemas"]["AttachB2bTaxInvoiceFileError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>세금계산서 첨부파일 목록 조회</p>
+   *
+   * @description <p>세금계산서 첨부파일 목록 조회</p>
+   * <p>세금계산서에 첨부된 파일 목록을 조회합니다.</p>
+   */
+  getB2bTaxInvoiceAttachments: {
+    parameters: {
+      query: {
+        /** @description <p>사업자등록번호</p> */
+        brn: string;
+        /**
+         * @description <p>문서 번호 유형</p>
+         * <p>path 파라미터로 전달된 문서번호 유형. 기본 값은 RECIPIENT이며 SUPPLIER, RECIPIENT을 지원합니다.</p>
+         */
+        documentKeyType?: components["schemas"]["B2bTaxInvoiceDocumentKeyType"];
+        /**
+         * @description <p>테스트 모드 여부</p>
+         * <p>true 이면 테스트 모드로 실행되며, false 이거나 주어지지 않은 경우 테스트 모드를 사용하지 않습니다.</p>
+         */
+        test?: boolean;
+      };
+      path: {
+        /** @description <p>세금계산서 문서 번호</p> */
+        documentKey: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetB2bTaxInvoiceAttachmentsResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["GetB2bTaxInvoiceAttachmentsError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["GetB2bTaxInvoiceAttachmentsError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bNotEnabledError</code>: B2B 기능이 활성화되지 않은 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["GetB2bTaxInvoiceAttachmentsError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bTaxInvoiceNotFoundError</code>: 세금계산서가 존재하지 않은 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["GetB2bTaxInvoiceAttachmentsError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bExternalServiceError</code>: 외부 서비스에서 에러가 발생한 경우</li>
+       * </ul>
+       */
+      502: {
+        content: {
+          "application/json": components["schemas"]["GetB2bTaxInvoiceAttachmentsError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>세금계산서 첨부파일 삭제</p>
+   *
+   * @description <p>세금계산서 첨부파일 삭제</p>
+   * <p>세금계산서 첨부파일을 삭제합니다.</p>
+   */
+  deleteB2bTaxInvoiceAttachment: {
+    parameters: {
+      query: {
+        /** @description <p>사업자등록번호</p> */
+        brn: string;
+        /**
+         * @description <p>문서 번호 유형</p>
+         * <p>path 파라미터로 전달된 문서번호 유형. 기본 값은 RECIPIENT이며 SUPPLIER, RECIPIENT을 지원합니다.</p>
+         */
+        documentKeyType?: components["schemas"]["B2bTaxInvoiceDocumentKeyType"];
+        /**
+         * @description <p>테스트 모드 여부</p>
+         * <p>true 이면 테스트 모드로 실행되며, false 이거나 주어지지 않은 경우 테스트 모드를 사용하지 않습니다.</p>
+         */
+        test?: boolean;
+      };
+      path: {
+        /** @description <p>세금계산서 문서 번호</p> */
+        documentKey: string;
+        /** @description <p>첨부파일 아이디</p> */
+        attachmentId: string;
+      };
+    };
+    responses: {
+      200: {
+        content: never;
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>B2bTaxInvoiceNotRegisteredStatusError</code>: 세금계산서가 임시저장 상태가 아닌 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["DeleteB2bTaxInvoiceAttachmentError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["DeleteB2bTaxInvoiceAttachmentError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bNotEnabledError</code>: B2B 기능이 활성화되지 않은 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["DeleteB2bTaxInvoiceAttachmentError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bTaxInvoiceNotFoundError</code>: 세금계산서가 존재하지 않은 경우</li>
+       * <li><code>B2bTaxInvoiceAttachmentNotFoundError</code>: 세금계산서의 첨부파일을 찾을 수 없는 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["DeleteB2bTaxInvoiceAttachmentError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>B2bExternalServiceError</code>: 외부 서비스에서 에러가 발생한 경우</li>
+       * </ul>
+       */
+      502: {
+        content: {
+          "application/json": components["schemas"]["DeleteB2bTaxInvoiceAttachmentError"];
         };
       };
     };

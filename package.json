@@ -1,6 +1,6 @@
 {
   "name": "portone",
-  "version": "2.1.0-oas16042024",
+  "version": "2.1.0-oas22052024",
   "description": "PortOne (Korea) V2 RestApi Client for Node.js (Unofficial)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -44,23 +44,25 @@
     "openapi": "openapi-typescript https://github.com/portone-io/developers.portone.io/raw/main/src/schema/v2.openapi.json -o src/types/v2.d.ts"
   },
   "dependencies": {
-    "openapi-fetch": "^0.9.3"
+    "openapi-fetch": "^0.9.7"
   },
   "devDependencies": {
-    "@types/node": "20.11.5",
+    "@types/node": "20.12.12",
     "gts": "^5.3.0",
-    "jsr": "^0.12.1",
-    "openapi-typescript": "^6.7.5",
+    "jsr": "^0.12.4",
+    "openapi-typescript": "^6.7.6",
     "tsup": "^8.0.2",
-    "typescript": "~5.4.3"
+    "typescript": "~5.4.5"
   },
   "tsup": {
     "entry": [
       "src/index.ts"
     ],
     "sourcemap": true,
+    "treeshake": true,
     "clean": true,
+    "minify": true,
     "dts": true
   },
-  "packageManager": "pnpm@8.15.5+sha256.4b4efa12490e5055d59b9b9fc9438b7d581a6b7af3b5675eb5c5f447cee1a589"
+  "packageManager": "pnpm@9.1.2+sha256.19c17528f9ca20bd442e4ca42f00f1b9808a9cb419383cd04ba32ef19322aba7"
 }

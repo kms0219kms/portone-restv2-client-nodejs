@@ -1,6 +1,6 @@
 {
     "name": "@kms0219kms/portone",
-    "version": "2.1.0-oas16042024",
+    "version": "2.1.0-oas22052024",
     "description": "PortOne (Korea) V2 RestApi Client for Node.js (Unofficial)",
     "exports": "./src/index.ts",
     "publish": {

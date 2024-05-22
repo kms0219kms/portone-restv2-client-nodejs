@@ -5,7 +5,7 @@ export function createRequestInstance(
   baseURL: string,
   Authorization?: string,
   withoutAuthorization?: boolean
-) {
+): ReturnType<typeof createClient<paths>> {
   if (!Authorization && withoutAuthorization) {
     const defaultFunction = () => {
       throw new Error(
@@ -15,10 +15,15 @@ export function createRequestInstance(
 
     return {
       GET: defaultFunction,
-      POST: defaultFunction,
       PUT: defaultFunction,
-      PATCH: defaultFunction,
+      POST: defaultFunction,
       DELETE: defaultFunction,
+      OPTIONS: defaultFunction,
+      HEAD: defaultFunction,
+      PATCH: defaultFunction,
+      TRACE: defaultFunction,
+      use: () => {},
+      eject: () => {}
     };
   }
 
