@@ -3,6 +3,10 @@
 이 라이브러리는 [PortOne](https://portone-landing.vercel.app/korea/ko)에서 제공하는 v2 API를 쉽게 이용할 수 있는 TypeScript/JavaScript Client이에요.<br />
 B2B 서비스 API(Alpha)를 제외한 모든 최신 v2 API에 대한 요청을 지원해요.
 
+## 잠깐! 이 라이브러리를 사용하시기 전 아래 내용을 확인해 주세요!
+
+이 라이브러리는 [PortOne v2](https://developers.portone.io/api/rest-v2?v=v2)를 이용하시는 가맹점에서만 사용할 수 있습니다.<br />단, PortOne v2가 모든 PG사를 지원하지 않기 때문에, 지원하는 PG사를 반드시 확인하시고 이용해 주시기 바랍니다.<br />지원하는 PG사는 [여기](https://developers.portone.io/docs/ko/v2-payment/v2?v=v2#사용-가능한-pg사)에서 확인하실 수 있습니다.
+
 ## 설치하기
 
 ```sh
