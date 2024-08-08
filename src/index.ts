@@ -8,7 +8,7 @@ import {escrow} from './lib/escrow'; // 에스크로 관련 API
 import {paymentSchedules} from './lib/payment-schedules'; // 결제 예약 관련 API
 import {billingKeys} from './lib/billing-keys'; // 빌링키 관련 API
 import {cashReceipts} from './lib/cash-receipts'; // 현금 영수증 관련 API
-import {identifyVerifications} from './lib/identify-verifications'; // 본인인증 관련 API
+import {identityVerifications} from './lib/identity-verifications'; // 본인인증 관련 API
 import {forSpecificPg} from './lib/pg-specific'; // 특정 PG사 관련 API (카카오페이)
 
 /**
@@ -40,7 +40,7 @@ export class PortOne {
   public declare billingKeys: ReturnType<typeof billingKeys>;
   public declare cashReceipts: ReturnType<typeof cashReceipts>;
   public declare identifyVerifications: ReturnType<
-    typeof identifyVerifications
+    typeof identityVerifications
   >;
   public declare forSpecificPg: ReturnType<typeof forSpecificPg>;
 
@@ -72,7 +72,7 @@ export class PortOne {
     );
     this.billingKeys = billingKeys(this._request, initializationParams);
     this.cashReceipts = cashReceipts(this._request, initializationParams);
-    this.identifyVerifications = identifyVerifications(
+    this.identifyVerifications = identityVerifications(
       this._request,
       initializationParams
     );

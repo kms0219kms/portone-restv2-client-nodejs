@@ -29,13 +29,13 @@ export interface paths {
   };
   "/platform": {
     /**
-     * @description <p>가맹점의 플랫폼 정보를 조회합니다.
-     * 요청된 Authorization header 를 통해 자동으로 요청자의 가맹점을 특정합니다.</p>
+     * @description <p>고객사의 플랫폼 정보를 조회합니다.
+     * 요청된 Authorization header 를 통해 자동으로 요청자의 고객사를 특정합니다.</p>
      */
     get: operations["getPlatform"];
     /**
-     * @description <p>가맹점의 플랫폼 관련 정보를 업데이트합니다.
-     * 요청된 Authorization header 를 통해 자동으로 요청자의 가맹점을 특정합니다.</p>
+     * @description <p>고객사의 플랫폼 관련 정보를 업데이트합니다.
+     * 요청된 Authorization header 를 통해 자동으로 요청자의 고객사를 특정합니다.</p>
      */
     patch: operations["updatePlatform"];
   };
@@ -44,15 +44,35 @@ export interface paths {
     get: operations["getPlatformDiscountSharePolicyFilterOptions"];
   };
   "/platform/discount-share-policies": {
-    /** @description <p>여러 할인 분담을 조회합니다.</p> */
+    /**
+     * <p>할인 분담 정책 다건 조회</p>
+     *
+     * @description <p>할인 분담 정책 다건 조회</p>
+     * <p>여러 할인 분담을 조회합니다.</p>
+     */
     get: operations["getPlatformDiscountSharePolicies"];
-    /** @description <p>새로운 할인 분담을 생성합니다.</p> */
+    /**
+     * <p>할인 분담 정책 생성</p>
+     *
+     * @description <p>할인 분담 정책 생성</p>
+     * <p>새로운 할인 분담을 생성합니다.</p>
+     */
     post: operations["createPlatformDiscountSharePolicy"];
   };
   "/platform/discount-share-policies/{id}": {
-    /** @description <p>주어진 아이디에 대응되는 할인 분담을 조회합니다.</p> */
+    /**
+     * <p>할인 분담 정책 조회</p>
+     *
+     * @description <p>할인 분담 정책 조회</p>
+     * <p>주어진 아이디에 대응되는 할인 분담을 조회합니다.</p>
+     */
     get: operations["getPlatformDiscountSharePolicy"];
-    /** @description <p>주어진 아이디에 대응되는 할인 분담을 업데이트합니다.</p> */
+    /**
+     * <p>할인 분담 정책 수정</p>
+     *
+     * @description <p>할인 분담 정책 수정</p>
+     * <p>주어진 아이디에 대응되는 할인 분담을 업데이트합니다.</p>
+     */
     patch: operations["updatePlatformDiscountSharePolicy"];
   };
   "/platform/discount-share-policies/{id}/schedule": {
@@ -66,19 +86,53 @@ export interface paths {
     delete: operations["cancelPlatformDiscountSharePolicySchedule"];
   };
   "/platform/discount-share-policies/{id}/archive": {
+    /**
+     * <p>할인 분담 정책 보관</p>
+     *
+     * @description <p>할인 분담 정책 보관</p>
+     * <p>주어진 아이디에 대응되는 할인 분담을 보관합니다.</p>
+     */
+    post: operations["archivePlatformDiscountSharePolicy"];
   };
   "/platform/discount-share-policies/{id}/recover": {
+    /**
+     * <p>할인 분담 정책 복원</p>
+     *
+     * @description <p>할인 분담 정책 복원</p>
+     * <p>주어진 아이디에 대응되는 할인 분담을 복원합니다.</p>
+     */
+    post: operations["recoverPlatformDiscountSharePolicy"];
   };
   "/platform/additional-fee-policies": {
-    /** @description <p>여러 추가 수수료 정책을 조회합니다.</p> */
+    /**
+     * <p>추가 수수료 정책 다건 조회</p>
+     *
+     * @description <p>추가 수수료 정책 다건 조회</p>
+     * <p>여러 추가 수수료 정책을 조회합니다.</p>
+     */
     get: operations["getPlatformAdditionalFeePolicies"];
-    /** @description <p>새로운 추가 수수료 정책을 생성합니다.</p> */
+    /**
+     * <p>추가 수수료 정책 생성</p>
+     *
+     * @description <p>추가 수수료 정책 생성</p>
+     * <p>새로운 추가 수수료 정책을 생성합니다.</p>
+     */
     post: operations["createPlatformAdditionalFeePolicy"];
   };
   "/platform/additional-fee-policies/{id}": {
-    /** @description <p>주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.</p> */
+    /**
+     * <p>추가 수수료 정책 조회</p>
+     *
+     * @description <p>추가 수수료 정책 조회</p>
+     * <p>주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.</p>
+     */
     get: operations["getPlatformAdditionalFeePolicy"];
-    /** @description <p>주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.</p> */
+    /**
+     * <p>추가 수수료 정책 수정</p>
+     *
+     * @description <p>추가 수수료 정책 수정</p>
+     * <p>주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.</p>
+     */
     patch: operations["updatePlatformAdditionalFeePolicy"];
   };
   "/platform/additional-fee-policies/{id}/schedule": {
@@ -91,29 +145,68 @@ export interface paths {
     delete: operations["cancelPlatformAdditionalFeePolicySchedule"];
   };
   "/platform/additional-fee-policies/{id}/archive": {
+    /**
+     * <p>추가 수수료 정책 보관</p>
+     *
+     * @description <p>추가 수수료 정책 보관</p>
+     * <p>주어진 아이디에 대응되는 추가 수수료 정책을 보관합니다.</p>
+     */
+    post: operations["archivePlatformAdditionalFeePolicy"];
   };
   "/platform/additional-fee-policies/{id}/recover": {
+    /**
+     * <p>추가 수수료 정책 복원</p>
+     *
+     * @description <p>추가 수수료 정책 복원</p>
+     * <p>주어진 아이디에 대응되는 추가 수수료 정책을 복원합니다.</p>
+     */
+    post: operations["recoverPlatformAdditionalFeePolicy"];
   };
   "/platform/partner-filter-options": {
     /** @description <p>파트너 다건 조회 시 필요한 필터 옵션을 조회합니다.</p> */
     get: operations["getPlatformPartnerFilterOptions"];
   };
   "/platform/partners": {
-    /** @description <p>여러 파트너를 조회합니다.</p> */
+    /**
+     * <p>파트너 다건 조회</p>
+     *
+     * @description <p>파트너 다건 조회</p>
+     * <p>여러 파트너를 조회합니다.</p>
+     */
     get: operations["getPlatformPartners"];
-    /** @description <p>새로운 파트너를 생성합니다.</p> */
+    /**
+     * <p>파트너 생성</p>
+     *
+     * @description <p>파트너 생성</p>
+     * <p>새로운 파트너를 생성합니다.</p>
+     */
     post: operations["createPlatformPartner"];
   };
   "/platform/partner-dashboard": {
   };
   "/platform/partners/{id}": {
-    /** @description <p>파트너 객체를 조회합니다.</p> */
+    /**
+     * <p>파트너 조회</p>
+     *
+     * @description <p>파트너 조회</p>
+     * <p>파트너 객체를 조회합니다.</p>
+     */
     get: operations["getPlatformPartner"];
-    /** @description <p>주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.</p> */
+    /**
+     * <p>파트너 수정</p>
+     *
+     * @description <p>파트너 수정</p>
+     * <p>주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.</p>
+     */
     patch: operations["updatePlatformPartner"];
   };
   "/platform/partners/batch": {
-    /** @description <p>새로운 파트너를 다건 생성합니다.</p> */
+    /**
+     * <p>파트너 다건 생성</p>
+     *
+     * @description <p>파트너 다건 생성</p>
+     * <p>새로운 파트너를 다건 생성합니다.</p>
+     */
     post: operations["createPlatformPartners"];
   };
   "/platform/partners/{id}/approve": {
@@ -134,18 +227,53 @@ export interface paths {
     post: operations["schedulePlatformPartners"];
   };
   "/platform/partners/{id}/archive": {
+    /**
+     * <p>파트너 복원</p>
+     *
+     * @description <p>파트너 복원</p>
+     * <p>주어진 아이디에 대응되는 파트너를 보관합니다.</p>
+     */
+    post: operations["archivePlatformPartner"];
   };
   "/platform/partners/{id}/recover": {
+    /**
+     * <p>파트너 복원</p>
+     *
+     * @description <p>파트너 복원</p>
+     * <p>주어진 아이디에 대응되는 파트너를 복원합니다.</p>
+     */
+    post: operations["recoverPlatformPartner"];
   };
   "/platform/contracts": {
-    /** @description <p>여러 계약을 조회합니다.</p> */
+    /**
+     * <p>계약 다건 조회</p>
+     *
+     * @description <p>계약 다건 조회</p>
+     * <p>여러 계약을 조회합니다.</p>
+     */
     get: operations["getPlatformContracts"];
-    /** @description <p>새로운 계약을 생성합니다.</p> */
+    /**
+     * <p>계약 생성</p>
+     *
+     * @description <p>계약 생성</p>
+     * <p>새로운 계약을 생성합니다.</p>
+     */
     post: operations["createPlatformContract"];
   };
   "/platform/contracts/{id}": {
+    /**
+     * <p>계약 조회</p>
+     *
+     * @description <p>계약 조회</p>
+     * <p>주어진 아이디에 대응되는 계약을 조회합니다.</p>
+     */
     get: operations["getPlatformContract"];
-    /** @description <p>주어진 아이디에 대응되는 계약을 업데이트합니다.</p> */
+    /**
+     * <p>계약 수정</p>
+     *
+     * @description <p>계약 수정</p>
+     * <p>주어진 아이디에 대응되는 계약을 업데이트합니다.</p>
+     */
     patch: operations["updatePlatformContract"];
   };
   "/platform/contracts/{id}/schedule": {
@@ -159,47 +287,109 @@ export interface paths {
     delete: operations["cancelPlatformContractSchedule"];
   };
   "/platform/contracts/{id}/archive": {
+    /**
+     * <p>계약 보관</p>
+     *
+     * @description <p>계약 보관</p>
+     * <p>주어진 아이디에 대응되는 계약을 보관합니다.</p>
+     */
+    post: operations["archivePlatformContract"];
   };
   "/platform/contracts/{id}/recover": {
+    /**
+     * <p>계약 복원</p>
+     *
+     * @description <p>계약 복원</p>
+     * <p>주어진 아이디에 대응되는 계약을 복원합니다.</p>
+     */
+    post: operations["recoverPlatformContract"];
   };
   "/platform/transfers/{id}": {
+    /**
+     * <p>정산건 조회</p>
+     *
+     * @description <p>정산건 조회</p>
+     * <p>정산건을 조회합니다.</p>
+     */
     get: operations["getPlatformTransfer"];
+    /**
+     * <p>정산건 삭제</p>
+     *
+     * @description <p>정산건 삭제</p>
+     * <p>scheduled, in_process 상태의 정산건만 삭제가능합니다.</p>
+     */
     delete: operations["deletePlatformTransfer"];
   };
   "/platform/transfer-summaries": {
+    /**
+     * <p>정산건 다건 조회</p>
+     *
+     * @description <p>정산건 다건 조회</p>
+     * <p>성공 응답으로 조회된 정산건 요약 리스트와 페이지 정보가 반환됩니다.</p>
+     */
+    get: operations["getPlatformTransferSummaries"];
   };
   "/platform/transfers/order": {
+    /**
+     * <p>주문 정산건 생성</p>
+     *
+     * @description <p>주문 정산건 생성</p>
+     * <p>성공 응답으로 생성된 주문 정산건 객체가 반환됩니다.</p>
+     */
     post: operations["createPlatformOrderTransfer"];
   };
   "/platform/transfers/order-cancel": {
+    /**
+     * <p>주문 취소 정산건 생성</p>
+     *
+     * @description <p>주문 취소 정산건 생성</p>
+     * <p>성공 응답으로 생성된 주문 취소 정산건 객체가 반환됩니다.</p>
+     */
     post: operations["createPlatformOrderCancelTransfer"];
   };
   "/platform/transfers/manual": {
+    /**
+     * <p>수기 정산건 생성</p>
+     *
+     * @description <p>수기 정산건 생성</p>
+     * <p>성공 응답으로 생성된 수기 정산건 객체가 반환됩니다.</p>
+     */
     post: operations["createPlatformManualTransfer"];
   };
   "/platform/transfer-dashboard": {
   };
   "/platform/transfer-filter-options": {
   };
+  "/platform/transfer-summaries/sheet-file": {
+    /**
+     * <p>정산 상세 내역 다운로드</p>
+     *
+     * @description <p>정산 상세 내역 다운로드</p>
+     * <p>정산 상세 내역을 csv 파일로 다운로드 합니다.</p>
+     */
+    get: operations["downloadPlatformTransferSheet"];
+  };
   "/platform/payable-settlement-dates": {
   };
   "/platform/partner-settlements": {
   };
-  "/platform/partner-settlement-filter-options": {
+  "/platform/partner-settlements/settlement-dates": {
+  };
+  "/platform/partner-settlements/currencies": {
+  };
+  "/platform/partner-settlements/dashboard": {
+  };
+  "/platform/partner-settlements/sheet-file": {
   };
   "/platform/payouts/{id}": {
   };
   "/platform/payouts": {
   };
-  "/platform/payouts/{id}/complete": {
+  "/platform/bulk-payouts/{id}": {
   };
-  "/platform/payouts/{payoutId}/partner-settlements": {
+  "/platform/bulk-payouts": {
   };
-  "/platform/payout-partner-settlements/{id}": {
-  };
-  "/platform/payouts/{id}/sheets": {
-  };
-  "/platform/payouts/{id}/sheet-file": {
+  "/platform/bulk-payouts/{bulkPayoutId}/partner-settlements": {
   };
   "/platform/bank-accounts/{bank}/{accountNumber}/holder": {
     /**
@@ -209,6 +399,8 @@ export interface paths {
      * <p>계좌의 예금주를 조회합니다.</p>
      */
     get: operations["getPlatformAccountHolder"];
+  };
+  "/platform/holidays/{year}": {
   };
   "/identity-verifications/{identityVerificationId}": {
     /**
@@ -271,6 +463,22 @@ export interface paths {
      */
     delete: operations["deleteBillingKey"];
   };
+  "/billing-keys": {
+    /**
+     * <p>빌링키 다건 조회</p>
+     *
+     * @description <p>빌링키 다건 조회</p>
+     * <p>주어진 조건에 맞는 빌링키들을 페이지 기반으로 조회합니다.</p>
+     */
+    get: operations["getBillingKeyInfos"];
+    /**
+     * <p>빌링키 발급</p>
+     *
+     * @description <p>빌링키 발급</p>
+     * <p>빌링키 발급을 요청합니다.</p>
+     */
+    post: operations["issueBillingKey"];
+  };
   "/payments/{paymentId}/cash-receipt": {
     /**
      * <p>현금 영수증 단건 조회</p>
@@ -321,7 +529,8 @@ export interface paths {
      * <p>결제 예약 다건 조회</p>
      *
      * @description <p>결제 예약 다건 조회</p>
-     * <p>주어진 조건에 맞는 결제 예약 건들을 조회합니다.</p>
+     * <p>주어진 조건에 맞는 결제 예약 건들을 조회합니다.
+     * <code>filter.from</code>, <code>filter.until</code> 파라미터의 기본값이 결제 시점 기준 지난 90일에 속하는 건을 조회하도록 되어 있으니, 미래 예약 상태의 건을 조회하기 위해서는 해당 파라미터를 직접 설정해 주셔야 합니다.</p>
      */
     get: operations["getPaymentSchedules"];
     /**
@@ -367,15 +576,6 @@ export interface paths {
      * <p>수기 결제를 진행합니다.</p>
      */
     post: operations["PayInstantly"];
-  };
-  "/billing-keys": {
-    /**
-     * <p>빌링키 발급</p>
-     *
-     * @description <p>빌링키 발급</p>
-     * <p>빌링키 발급을 요청합니다.</p>
-     */
-    post: operations["issueBillingKey"];
   };
   "/cash-receipts": {
     /**
@@ -441,71 +641,71 @@ export interface paths {
   "/channels": {
   };
   "/analytics/charts/payment": {
-    /** @description <p>가맹점의 결제 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 결제 현황을 조회합니다.</p> */
     get: operations["getAnalyticsPaymentChart"];
   };
   "/analytics/charts/payment-insight": {
-    /** @description <p>가맹점의 결제 현황 인사이트를 조회합니다.</p> */
+    /** @description <p>고객사의 결제 현황 인사이트를 조회합니다.</p> */
     get: operations["getAnalyticsPaymentChartInsight"];
   };
   "/analytics/charts/average-amount": {
-    /** @description <p>가맹점의 평균 거래액 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 평균 거래액 현황을 조회합니다.</p> */
     get: operations["getAverageAmountChart"];
   };
   "/analytics/charts/payment-method": {
-    /** @description <p>가맹점의 결제수단 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 결제수단 현황을 조회합니다.</p> */
     get: operations["getPaymentMethodChart"];
   };
   "/analytics/charts/payment-method-trend": {
-    /** @description <p>가맹점의 결제수단 트렌드를 조회합니다.</p> */
+    /** @description <p>고객사의 결제수단 트렌드를 조회합니다.</p> */
     get: operations["getPaymentMethodTrendChart"];
   };
   "/analytics/charts/card": {
-    /** @description <p>가맹점의 카드결제 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 카드결제 현황을 조회합니다.</p> */
     get: operations["getAnalyticsCardChart"];
   };
   "/analytics/charts/card-company": {
-    /** @description <p>가맹점의 카드사별 결제 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 카드사별 결제 현황을 조회합니다.</p> */
     get: operations["getAnalyticsCardCompanyChart"];
   };
   "/analytics/charts/easy-pay": {
-    /** @description <p>가맹점의 간편결제 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 간편결제 현황을 조회합니다.</p> */
     get: operations["getAnalyticsEasyPayChart"];
   };
   "/analytics/charts/easy-pay-provider": {
-    /** @description <p>가맹점의 간편결제사별 결제 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 간편결제사별 결제 현황을 조회합니다.</p> */
     get: operations["getAnalyticsEasyPayProviderChart"];
   };
   "/analytics/charts/pg-company": {
-    /** @description <p>가맹점의 결제대행사 현황을 조회합니다.</p> */
+    /** @description <p>고객사의 결제대행사 현황을 조회합니다.</p> */
     get: operations["getPgCompanyChart"];
   };
   "/analytics/charts/pg-company-trend": {
-    /** @description <p>가맹점의 결제대행사별 거래 추이를 조회합니다.</p> */
+    /** @description <p>고객사의 결제대행사별 거래 추이를 조회합니다.</p> */
     get: operations["getPgCompanyTrendChart"];
   };
   "/analytics/overseas-payment-usage": {
-    /** @description <p>가맹점의 해외 결제 사용 여부를 조회합니다.</p> */
+    /** @description <p>고객사의 해외 결제 사용 여부를 조회합니다.</p> */
     get: operations["getAnalyticsOverseasPaymentUsage"];
   };
   "/analytics/cancellation-rate": {
-    /** @description <p>가맹점의 환불율을 조회합니다.</p> */
+    /** @description <p>고객사의 환불율을 조회합니다.</p> */
     get: operations["getAnalyticsCancellationRate"];
   };
   "/analytics/charts/payment-status": {
-    /** @description <p>가맹점의 결제상태 이력 집계를 조회합니다.</p> */
+    /** @description <p>고객사의 결제상태 이력 집계를 조회합니다.</p> */
     get: operations["getPaymentStatusChart"];
   };
   "/analytics/charts/payment-status/by-method": {
-    /** @description <p>가맹점의 결제수단별 결제전환율을 조회합니다.</p> */
+    /** @description <p>고객사의 결제수단별 결제전환율을 조회합니다.</p> */
     get: operations["getPaymentStatusByPaymentMethodChart"];
   };
   "/analytics/charts/payment-status/by-pg-company": {
-    /** @description <p>가맹점의 PG사별 결제전환율을 조회합니다.</p> */
+    /** @description <p>고객사의 PG사별 결제전환율을 조회합니다.</p> */
     get: operations["getPaymentStatusByPgCompanyChart"];
   };
   "/analytics/charts/payment-status/by-payment-client": {
-    /** @description <p>가맹점의 결제환경별 결제전환율을 조회합니다.</p> */
+    /** @description <p>고객사의 결제환경별 결제전환율을 조회합니다.</p> */
     get: operations["getPaymentStatusByPaymentClientChart"];
   };
   "/b2b-preview/member-companies/{brn}": {
@@ -765,6 +965,37 @@ export interface paths {
      * KG이니시스(이용 전 콘솔 -&gt; 결제연동 탭에서 INIApi Key 등록 필요)</p>
      */
     post: operations["registerStoreReceipt"];
+  };
+  "/platform/payouts-sheet": {
+  };
+  "/platform/bulk-payouts-sheet": {
+  };
+  "/payment-reconciliations": {
+  };
+  "/payment-reconciliations/settlements/summaries/excel-file": {
+  };
+  "/payment-reconciliations/settlements/summaries": {
+  };
+  "/payment-reconciliations/settlements/vat-excel-file": {
+  };
+  "/payment-reconciliations/excel-file": {
+  };
+  "/payment-reconciliations/transactions/summaries/excel-file": {
+  };
+  "/payment-reconciliations/transactions/summaries": {
+  };
+  "/promotions/{promotionId}": {
+    /**
+     * <p>프로모션 단건 조회</p>
+     *
+     * @description <p>프로모션 단건 조회</p>
+     * <p>주어진 아이디에 대응되는 프로모션을 조회합니다.</p>
+     */
+    get: operations["getPromotion"];
+  };
+  "/excel/payments": {
+  };
+  "/excel/promotions": {
   };
 }
 
@@ -1242,8 +1473,8 @@ export interface components {
       thirdQuantile: number;
     };
     /**
-     * 가맹점의 결제대행사 현황 차트 정보
-     * @description <p>가맹점의 결제대행사 현황 차트 정보</p>
+     * 고객사의 결제대행사 현황 차트 정보
+     * @description <p>고객사의 결제대행사 현황 차트 정보</p>
      */
     AnalyticsPgCompanyChart: {
       stats: components["schemas"]["AnalyticsPgCompanyChartStat"][];
@@ -1264,8 +1495,8 @@ export interface components {
       count: number;
     };
     /**
-     * 가맹점의 결제대행사별 거래 추이 차트 정보
-     * @description <p>가맹점의 결제대행사별 거래 추이 차트 정보</p>
+     * 고객사의 결제대행사별 거래 추이 차트 정보
+     * @description <p>고객사의 결제대행사별 거래 추이 차트 정보</p>
      */
     AnalyticsPgCompanyTrendChart: {
       stats: components["schemas"]["AnalyticsPgCompanyTrendChartStat"][];
@@ -1363,7 +1594,7 @@ export interface components {
       /** 파트너 메모. 값이 명시되지 않은 경우 업데이트하지 않습니다. */
       memo?: string;
     };
-    ApprovePlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    ApprovePlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 승인 성공 응답
      * @description <p>파트너 승인 성공 응답</p>
@@ -1372,7 +1603,7 @@ export interface components {
       /** 승인된 파트너 */
       partner: components["schemas"]["PlatformPartner"];
     };
-    ArchivePlatformAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformCannotArchiveScheduledAdditionalFeePolicyError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    ArchivePlatformAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformCannotArchiveScheduledAdditionalFeePolicyError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 보관 성공 응답
      * @description <p>추가 수수료 정책 보관 성공 응답</p>
@@ -1381,7 +1612,7 @@ export interface components {
       /** 보관된 추가 수수료 정책 */
       additionalFeePolicy: components["schemas"]["PlatformAdditionalFeePolicy"];
     };
-    ArchivePlatformContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCannotArchiveScheduledContractError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    ArchivePlatformContractError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCannotArchiveScheduledContractError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 보관 성공 응답
      * @description <p>계약 보관 성공 응답</p>
@@ -1390,7 +1621,7 @@ export interface components {
       /** 보관된 계약 */
       contract: components["schemas"]["PlatformContract"];
     };
-    ArchivePlatformDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCannotArchiveScheduledDiscountSharePolicyError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    ArchivePlatformDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCannotArchiveScheduledDiscountSharePolicyError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 할인 분담 보관 성공 응답
      * @description <p>할인 분담 보관 성공 응답</p>
@@ -1399,7 +1630,7 @@ export interface components {
       /** 보관된 할인 분담 */
       discountSharePolicy: components["schemas"]["PlatformDiscountSharePolicy"];
     };
-    ArchivePlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCannotArchiveScheduledPartnerError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    ArchivePlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCannotArchiveScheduledPartnerError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 보관 성공 응답
      * @description <p>파트너 보관 성공 응답</p>
@@ -3292,7 +3523,7 @@ export interface components {
      *
      * @enum {string}
      */
-    Bank: "BANK_OF_AMERICA" | "BANK_OF_CHINA" | "BANK_OF_KOREA" | "BNP_PARIBAS" | "BOCOM" | "BOOKOOK_SECURITIES" | "BUSAN" | "CAPE_SECURITIES" | "CCB" | "CITI" | "DAEGU" | "DAISHIN_SECURITIES" | "DAOL_SECURITIES" | "DB_SECURITIES" | "DEUTSCHE" | "EBEST_SECURITIES" | "EUGENE_SECURITIES" | "HANA" | "HANA_SECURITIES" | "HANHWA_SECURITIES" | "HI_SECURITIES" | "HSBC" | "HYUNDAI_MOTOR_SECURITIES" | "IBK" | "ICBC" | "JEJU" | "JEONBUK" | "JPMC" | "KAKAO" | "KAKAO_PAY_SECURITIES" | "KB_SECURITIES" | "KCIS" | "KDB" | "KEXIM" | "KFCC" | "KIBO" | "KIWOOM_SECURITIES" | "KODIT" | "KOOKMIN" | "KOREA_FOSS_SECURITIES" | "KOREA_SECURITIES" | "KWANGJU" | "KYOBO_SECURITIES" | "KYONGNAM" | "K_BANK" | "LOCAL_NONGHYUP" | "MERITZ_SECURITIES" | "MIRAE_ASSET_SECURITIES" | "MISC_FOREIGN" | "MIZUHO" | "MORGAN_STANLEY" | "MUFG" | "NFCF" | "NH_SECURITIES" | "NONGHYUP" | "POST" | "SAMSUNG_SECURITIES" | "SAVINGS_BANK" | "SGI" | "SHINHAN" | "SHINHAN_SECURITIES" | "SHINHYUP" | "SHINYOUNG_SECURITIES" | "SK_SECURITIES" | "STANDARD_CHARTERED" | "SUHYUP" | "TOSS" | "TOSS_SECURITIES" | "UOB" | "WOORI" | "YUANTA_SECURITIES";
+    Bank: "BANK_OF_AMERICA" | "BANK_OF_CHINA" | "BANK_OF_KOREA" | "BNK_SECURITIES" | "BNP_PARIBAS" | "BOCOM" | "BOOKOOK_SECURITIES" | "BUSAN" | "CAPE_SECURITIES" | "CCB" | "CITI" | "DAEGU" | "DAISHIN_SECURITIES" | "DAOL_SECURITIES" | "DB_SECURITIES" | "DEUTSCHE" | "EBEST_SECURITIES" | "EUGENE_SECURITIES" | "HANA" | "HANA_SECURITIES" | "HANHWA_SECURITIES" | "HANYANG_SECURITIES" | "HI_SECURITIES" | "HSBC" | "HYUNDAI_MOTOR_SECURITIES" | "IBK" | "IBK_SECURITIES" | "ICBC" | "JEJU" | "JEONBUK" | "JPMC" | "KAKAO" | "KAKAO_PAY_SECURITIES" | "KB_SECURITIES" | "KCIS" | "KDB" | "KEXIM" | "KFCC" | "KIBO" | "KIWOOM_SECURITIES" | "KODIT" | "KOOKMIN" | "KOREA_FOSS_SECURITIES" | "KOREA_SECURITIES" | "KOREA_SECURITIES_FINANCE" | "KWANGJU" | "KYOBO_SECURITIES" | "KYONGNAM" | "K_BANK" | "LEADING_SECURITIES" | "LOCAL_NONGHYUP" | "MERITZ_SECURITIES" | "MIRAE_ASSET_SECURITIES" | "MISC_FOREIGN" | "MIZUHO" | "MORGAN_STANLEY" | "MUFG" | "NFCF" | "NH_SECURITIES" | "NONGHYUP" | "POST" | "SAMSUNG_SECURITIES" | "SANGSANGIN_SECURITIES" | "SAVINGS_BANK" | "SGI" | "SHINHAN" | "SHINHAN_SECURITIES" | "SHINHYUP" | "SHINYOUNG_SECURITIES" | "SK_SECURITIES" | "STANDARD_CHARTERED" | "SUHYUP" | "TOSS" | "TOSS_SECURITIES" | "UOB" | "WOORI" | "WOORI_INVESTMENT_BANK" | "YUANTA_SECURITIES";
     /**
      * 배송 정보 등록 전
      * @description <p>배송 정보 등록 전</p>
@@ -3310,43 +3541,90 @@ export interface components {
       message?: string;
     };
     /**
+     * 발급 실패 상세 정보
+     * @description <p>발급 실패 상세 정보</p>
+     */
+    BillingKeyFailure: {
+      /** 실패 사유 */
+      message?: string;
+      /** PG사 실패 코드 */
+      pgCode?: string;
+      /** PG사 실패 사유 */
+      pgMessage?: string;
+      /**
+       * 실패 시점
+       * Format: date-time
+       */
+      failedAt: string;
+    };
+    /**
+     * 빌링키 다건 조회를 위한 입력 정보
+     * @description <p>빌링키 다건 조회를 위한 입력 정보</p>
+     */
+    BillingKeyFilterInput: {
+      /**
+       * 상점 아이디
+       * @description <p>Merchant 사용자만 사용가능하며, 지정되지 않은 경우 고객사 전체 빌링키를 조회합니다.</p>
+       */
+      storeId?: string;
+      /** 조회 기준 시점 유형 */
+      timeRangeField?: components["schemas"]["BillingKeyTimeRangeField"];
+      /**
+       * 조회 기준 시점 범위의 시작
+       * Format: date-time
+       * @description <p>값을 입력하지 않으면 end의 90일 전으로 설정됩니다.</p>
+       */
+      from?: string;
+      /**
+       * 조회 기준 시점 범위의 끝
+       * Format: date-time
+       * @description <p>값을 입력하지 않으면 현재 시점으로 설정됩니다.</p>
+       */
+      until?: string;
+      /**
+       * 빌링키 상태 리스트
+       * @description <p>값을 입력하지 않으면 빌링키 상태 필터링이 적용되지 않습니다.</p>
+       */
+      status?: components["schemas"]["BillingKeyStatus"][];
+      /**
+       * 채널 그룹 아이디 리스트
+       * @description <p>값을 입력하지 않으면 스마트 라우팅 그룹 아이디 필터링이 적용되지 않습니다.</p>
+       */
+      channelGroupIds?: string[];
+      /** 고객 ID */
+      customerId?: string;
+      /** 플랫폼 유형 */
+      platformType?: components["schemas"]["PaymentClientType"];
+      /** 통합 검색 필터 */
+      textSearch?: components["schemas"]["BillingKeyTextSearch"];
+      /**
+       * PG사 결제 모듈 리스트
+       * @description <p>값을 입력하지 않으면 PG사 결제 모듈 필터링이 적용되지 않습니다.</p>
+       */
+      pgProviders?: components["schemas"]["PgProvider"][];
+      /**
+       * PG사 리스트
+       * @description <p>값을 입력하지 않으면 PG사 필터링이 적용되지 않습니다.</p>
+       */
+      pgCompanies?: components["schemas"]["PgCompany"][];
+      /**
+       * 결제수단 리스트
+       * @description <p>값을 입력하지 않으면 결제수단 필터링이 적용되지 않습니다.</p>
+       */
+      methods?: components["schemas"]["BillingKeyPaymentMethodType"][];
+      /** 포트원 버전 */
+      version?: components["schemas"]["PortOneVersion"];
+    };
+    /**
      * 빌링키 정보
      * @description <p>빌링키 정보</p>
      */
-    BillingKeyInfo: {
-      /** 빌링키 */
-      billingKey: string;
-      /** 가맹점 아이디 */
-      merchantId: string;
-      /** 상점 아이디 */
-      storeId: string;
-      /**
-       * 빌링키 결제수단 상세 정보
-       * @description <p>추후 슈퍼빌링키 기능 제공 시 여러 결제수단 정보가 담길 수 있습니다.</p>
-       */
-      methods?: components["schemas"]["BillingKeyPaymentMethod"][];
-      /**
-       * 빌링키 발급 시 사용된 채널
-       * @description <p>추후 슈퍼빌링키 기능 제공 시 여러 채널 정보가 담길 수 있습니다.</p>
-       */
-      channels: components["schemas"]["SelectedChannel"][];
-      /** 고객 정보 */
-      customer: components["schemas"]["Customer"];
-      /** 사용자 지정 데이터 */
-      customData?: string;
-      /** 가맹점이 채번하는 빌링키 발급 건 고유 아이디 */
-      issueId?: string;
-      /** 빌링키 발급 건 이름 */
-      issueName?: string;
-      /**
-       * 발급 시점
-       * Format: date-time
-       */
-      issuedAt: string;
-    };
+    BillingKeyInfo: components["schemas"]["DeletedBillingKeyInfo"] | components["schemas"]["IssuedBillingKeyInfo"];
     BillingKeyInfoSummary: {
       /** 발급된 빌링키 */
       billingKey: string;
+      /** 발급된 채널 */
+      channels?: components["schemas"]["SelectedChannel"][];
       /**
        * 빌링크 발급 완료 시점
        * Format: date-time
@@ -3377,6 +3655,11 @@ export interface components {
       storeId?: string;
       /** 빌링키 결제에 사용할 빌링키 */
       billingKey: string;
+      /**
+       * 채널 키
+       * @description <p>다수 채널에 대해 발급된 빌링키에 대해, 결제 채널을 특정하고 싶을 때 명시</p>
+       */
+      channelKey?: string;
       /** 주문명 */
       orderName: string;
       /** 고객 정보 */
@@ -3392,7 +3675,7 @@ export interface components {
        * Format: int32
        */
       installmentMonth?: number;
-      /** 무이자 할부 이자를 가맹점이 부담할지 여부 */
+      /** 무이자 할부 이자를 고객사가 부담할지 여부 */
       useFreeInterestFromMerchant?: boolean;
       /** 카드 포인트 사용 여부 */
       useCardPoint?: boolean;
@@ -3421,6 +3704,8 @@ export interface components {
       productType?: components["schemas"]["PaymentProductType"];
       /** 배송지 주소 */
       shippingAddress?: components["schemas"]["SeparatedAddressInput"];
+      /** 해당 결제에 적용할 프로모션 아이디 */
+      promotionId?: string;
       /** PG사별 추가 파라미터 ("PG사별 연동 가이드" 참고) */
       bypass?: Record<string, never>;
     };
@@ -3484,10 +3769,17 @@ export interface components {
     BillingKeyPaymentMethodTransfer: {
       type: string;
       /** 표준 은행 코드 */
-      bank?: string;
+      bank?: components["schemas"]["Bank"];
       /** 계좌번호 */
       accountNumber?: string;
     };
+    /**
+     * 빌링키 결제 수단
+     * @description <p>빌링키 결제 수단</p>
+     *
+     * @enum {string}
+     */
+    BillingKeyPaymentMethodType: "CARD" | "EASY_PAY" | "MOBILE" | "TRANSFER";
     /**
      * 빌링키 결제 완료된 결제 건 요약 정보
      * @description <p>빌링키 결제 완료된 결제 건 요약 정보</p>
@@ -3501,6 +3793,58 @@ export interface components {
        */
       paidAt: string;
     };
+    /**
+     * 빌링키 정렬 기준
+     * @description <p>빌링키 정렬 기준</p>
+     *
+     * @enum {string}
+     */
+    BillingKeySortBy: "DELETED_AT" | "ISSUED_AT" | "REQUESTED_AT" | "STATUS_TIMESTAMP";
+    /**
+     * 빌링키 다건 조회 시 정렬 조건
+     * @description <p>빌링키 다건 조회 시 정렬 조건</p>
+     */
+    BillingKeySortInput: {
+      /**
+       * 정렬 기준 필드
+       * @description <p>어떤 필드를 기준으로 정렬할 지 결정합니다. 비워서 보낼 경우, REQUESTED_AT이 기본값으로 설정됩니다.</p>
+       */
+      by?: components["schemas"]["BillingKeySortBy"];
+      /**
+       * 정렬 순서
+       * @description <p>어떤 순서로 정렬할 지 결정합니다. 비워서 보낼 경우, DESC(내림차순)가 기본값으로 설정됩니다.</p>
+       */
+      order?: components["schemas"]["SortOrder"];
+    };
+    /**
+     * 빌링키 상태
+     * @description <p>빌링키 상태</p>
+     *
+     * @enum {string}
+     */
+    BillingKeyStatus: "DELETED" | "ISSUED";
+    /**
+     * 통합검색 입력 정보
+     * @description <p>통합검색 입력 정보</p>
+     */
+    BillingKeyTextSearch: {
+      field: components["schemas"]["BillingKeyTextSearchField"];
+      value: string;
+    };
+    /**
+     * 통합검색 항목
+     * @description <p>통합검색 항목</p>
+     *
+     * @enum {string}
+     */
+    BillingKeyTextSearchField: "BILLING_KEY" | "CARD_BIN" | "CARD_NUMBER" | "CHANNEL_GROUP_NAME" | "CUSTOMER_ADDRESS" | "CUSTOMER_EMAIL" | "CUSTOMER_NAME" | "CUSTOMER_PHONE_NUMBER" | "CUSTOMER_ZIPCODE" | "PG_MERCHANT_ID" | "USER_AGENT";
+    /**
+     * 빌링키 다건 조회 시, 시각 범위를 적용할 필드
+     * @description <p>빌링키 다건 조회 시, 시각 범위를 적용할 필드</p>
+     *
+     * @enum {string}
+     */
+    BillingKeyTimeRangeField: "DELETED_AT" | "ISSUED_AT" | "REQUESTED_AT" | "STATUS_TIMESTAMP";
     /**
      * 결제 취소 금액이 취소 가능 금액을 초과한 경우
      * @description <p>결제 취소 금액이 취소 가능 금액을 초과한 경우</p>
@@ -3623,7 +3967,7 @@ export interface components {
       /** 예금주 연락처 - 스마트로 가상계좌 결제인 경우에 필요합니다. */
       holderPhoneNumber?: string;
     };
-    CancelPaymentError: components["schemas"]["CancelAmountExceedsCancellableAmountError"] | components["schemas"]["CancelTaxAmountExceedsCancellableTaxAmountError"] | components["schemas"]["CancelTaxFreeAmountExceedsCancellableTaxFreeAmountError"] | components["schemas"]["CancellableAmountConsistencyBrokenError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentAlreadyCancelledError"] | components["schemas"]["PaymentNotFoundError"] | components["schemas"]["PaymentNotPaidError"] | components["schemas"]["PgProviderError"] | components["schemas"]["SumOfPartsExceedsCancelAmountError"] | components["schemas"]["UnauthorizedError"];
+    CancelPaymentError: components["schemas"]["CancelAmountExceedsCancellableAmountError"] | components["schemas"]["CancelTaxAmountExceedsCancellableTaxAmountError"] | components["schemas"]["CancelTaxFreeAmountExceedsCancellableTaxFreeAmountError"] | components["schemas"]["CancellableAmountConsistencyBrokenError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentAlreadyCancelledError"] | components["schemas"]["PaymentNotFoundError"] | components["schemas"]["PaymentNotPaidError"] | components["schemas"]["PgProviderError"] | components["schemas"]["RemainedAmountLessThanPromotionMinPaymentAmountError"] | components["schemas"]["SumOfPartsExceedsCancelAmountError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 결제 취소 성공 응답
      * @description <p>결제 취소 성공 응답</p>
@@ -3632,32 +3976,32 @@ export interface components {
       /** 결체 취소 내역 */
       cancellation: components["schemas"]["PaymentCancellation"];
     };
-    CancelPlatformAdditionalFeePolicyScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    CancelPlatformAdditionalFeePolicyScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 예약 업데이트 취소 성공 응답
      * @description <p>추가 수수료 정책 예약 업데이트 취소 성공 응답</p>
      */
     CancelPlatformAdditionalFeePolicyScheduleResponse: Record<string, never>;
-    CancelPlatformContractScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    CancelPlatformContractScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 예약 업데이트 취소 성공 응답
      * @description <p>계약 예약 업데이트 취소 성공 응답</p>
      */
     CancelPlatformContractScheduleResponse: Record<string, never>;
-    CancelPlatformDiscountSharePolicyScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    CancelPlatformDiscountSharePolicyScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 할인 분담 정책 예약 업데이트 취소 성공 응답
      * @description <p>할인 분담 정책 예약 업데이트 취소 성공 응답</p>
      */
     CancelPlatformDiscountSharePolicyScheduleResponse: Record<string, never>;
-    CancelPlatformPartnerScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    CancelPlatformPartnerScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 예약 업데이트 취소 성공 응답
      * @description <p>파트너 예약 업데이트 취소 성공 응답</p>
      */
     CancelPlatformPartnerScheduleResponse: Record<string, never>;
     /** @enum {string} */
-    CancelRequester: "Admin" | "Customer";
+    CancelRequester: "ADMIN" | "CUSTOMER";
     /**
      * 취소 과세 금액이 취소 가능한 과세 금액을 초과한 경우
      * @description <p>취소 과세 금액이 취소 가능한 과세 금액을 초과한 경우</p>
@@ -3689,7 +4033,7 @@ export interface components {
     CancelledCashReceipt: {
       /** 현금영수증 상태 */
       status: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -3751,7 +4095,7 @@ export interface components {
        * @description <p>V1 결제 건의 경우 imp_uid에 해당합니다.</p>
        */
       transactionId: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -3759,6 +4103,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -3930,7 +4276,7 @@ export interface components {
      *
      * @enum {string}
      */
-    CardCompany: "BC_CARD" | "CITI_CARD" | "EPOST" | "GWANGJU_CARD" | "HANA_CARD" | "HYUNDAI_CARD" | "JEJU_CARD" | "JEONBUK_CARD" | "KAKAO_BANK" | "KFCC" | "KOOKMIN_CARD" | "KOREA_DEVELOPMENT_BANK" | "K_BANK" | "LOTTE_CARD" | "NH_CARD" | "SAMSUNG_CARD" | "SAVINGS_BANK_KOREA" | "SHINHAN_CARD" | "SHINHYUP" | "SUHYUP_CARD" | "TOSS_BANK" | "UNIDENTIFIED_GLOBAL_CARD" | "WOORI_CARD";
+    CardCompany: "AMEX_CARD" | "BC_CARD" | "BIZPLAY" | "BUSAN_CARD" | "CHAI" | "CHAI_CARD" | "CHINA_BANK" | "CITI_CARD" | "DAEGU_CARD" | "DANAL" | "DB_SECURITIES" | "DINERS_CARD" | "DISCOVER_CARD" | "EGG_MONEY" | "EPOST" | "EUGENE_SECURITIES" | "FINSHOT" | "FINT" | "FIRFIN" | "GALAXIA_MONEY_TREE" | "GME" | "GMONEY_TRANS" | "GWANGJU_CARD" | "HANA_CARD" | "HANHWA_SECURITIES" | "HANPASS" | "HYUNDAI_CARD" | "IBK" | "JCB_CARD" | "JEJU_CARD" | "JEONBUK_CARD" | "KAKAOPAY" | "KAKAO_BANK" | "KB_SECURITIES" | "KDBC" | "KFCC" | "KG_MOBILIANS" | "KONA_I" | "KOOKMIN_CARD" | "KOREA_DEVELOPMENT_BANK" | "KOREA_SECURITIES" | "KYOBO_SECURITIES" | "KYONGNAM_CARD" | "K_BANK" | "LORD_SYSTEM" | "LOTTE_CARD" | "MASTER_CARD" | "MIRAE_ASSET_SECURITIES" | "MIR_CARD" | "NAVERPAY" | "NFCF" | "NH_BANK" | "NH_CARD" | "NH_SECURITIES" | "NICE" | "ON_CASH" | "PAYCO" | "SAMSUNG_CARD" | "SAVINGS_BANK_KOREA" | "SC_BANK" | "SECTA" | "SHINHAN_CARD" | "SHINHYUP" | "SK_SECURITIES" | "SSG" | "SUHYUP_CARD" | "TEEN_CASH" | "TOSS_BANK" | "TOSS_CARD" | "UNIDENTIFIED_GLOBAL_CARD" | "UNION_CARD" | "VISA_CARD" | "WOORI_BANK" | "WOORI_CARD" | "YUANTA_SECURITIES";
     /**
      * 카드 인증 관련 정보
      * @description <p>카드 인증 관련 정보</p>
@@ -3955,12 +4301,81 @@ export interface components {
      */
     CardOwnerType: "CORPORATE" | "PERSONAL";
     /**
+     * 카드 프로모션
+     * @description <p>카드 프로모션</p>
+     */
+    CardPromotion: {
+      /** 프로모션 유형 */
+      type: string;
+      /** 프로모션 아이디 */
+      id: string;
+      /** 상점 아이디 */
+      storeId: string;
+      /** 프로모션 이름 */
+      name: string;
+      /** 할인 유형 */
+      discountType: components["schemas"]["PromotionDiscount"];
+      /**
+       * 총 예산
+       * Format: int64
+       */
+      totalBudget: number;
+      /**
+       * 최소 결제 금액
+       * Format: int64
+       */
+      minPaymentAmount?: number;
+      /**
+       * 최대 할인 금액
+       * Format: int64
+       */
+      maxDiscountAmount?: number;
+      /**
+       * 소진 금액
+       * Format: int64
+       */
+      spentAmount: number;
+      /** 금액 화폐 */
+      currency: components["schemas"]["Currency"];
+      /**
+       * 프로모션 시작 시각
+       * Format: date-time
+       */
+      startAt: string;
+      /**
+       * 프로모션 종료 시각
+       * Format: date-time
+       */
+      endAt: string;
+      /**
+       * 프로모션 중단 시각
+       * Format: date-time
+       */
+      terminatedAt?: string;
+      /** 프로모션 카드사 */
+      cardCompany: components["schemas"]["PromotionCardCompany"];
+      /** 프로모션 상태 */
+      status: components["schemas"]["PromotionStatus"];
+      /**
+       * 프로모션 생성 시각
+       * Format: date-time
+       */
+      createdAt: string;
+    };
+    /**
      * 카드 유형
      * @description <p>카드 유형</p>
      *
      * @enum {string}
      */
     CardType: "CREDIT" | "DEBIT" | "GIFT";
+    /**
+     * 통신사
+     * @description <p>통신사</p>
+     *
+     * @enum {string}
+     */
+    Carrier: "KT" | "KT_MVNO" | "LGU" | "LGU_MVNO" | "SKT" | "SKT_MVNO";
     /**
      * 현금영수증 내역
      * @description <p>현금영수증 내역</p>
@@ -4050,8 +4465,20 @@ export interface components {
       isForPayment: boolean;
       /** 본인인증용 채널 여부 */
       isForIdentityVerification: boolean;
-      /** 채널키 */
+      /** 채널 키 */
       key: string;
+    };
+    /**
+     * 채널 그룹 정보
+     * @description <p>채널 그룹 정보</p>
+     */
+    ChannelGroupSummary: {
+      /** 채널 그룹 아이디 */
+      id: string;
+      /** 채널 그룹 이름 */
+      name: string;
+      /** 테스트 채널 그룹 여부 */
+      isForTest: boolean;
     };
     /**
      * 요청된 채널이 존재하지 않는 경우
@@ -4060,6 +4487,39 @@ export interface components {
     ChannelNotFoundError: {
       type: string;
       message?: string;
+    };
+    /**
+     * 여러 채널을 지정한 요청에서, 채널 각각에서 오류가 발생한 경우
+     * @description <p>여러 채널을 지정한 요청에서, 채널 각각에서 오류가 발생한 경우</p>
+     */
+    ChannelSpecificError: {
+      type: string;
+      message?: string;
+      failures: components["schemas"]["ChannelSpecificFailure"][];
+      /** (결제, 본인인증 등에) 선택된 채널 정보 */
+      succeededChannels: components["schemas"]["SelectedChannel"][];
+    };
+    ChannelSpecificFailure: components["schemas"]["ChannelSpecificFailureInvalidRequest"] | components["schemas"]["ChannelSpecificFailurePgProvider"];
+    /**
+     * 요청된 입력 정보가 유효하지 않은 경우
+     * @description <p>요청된 입력 정보가 유효하지 않은 경우</p>
+     * <p>허가되지 않은 값, 올바르지 않은 형식의 요청 등이 모두 해당됩니다.</p>
+     */
+    ChannelSpecificFailureInvalidRequest: {
+      type: string;
+      channel: components["schemas"]["SelectedChannel"];
+      message?: string;
+    };
+    /**
+     * PG사에서 오류를 전달한 경우
+     * @description <p>PG사에서 오류를 전달한 경우</p>
+     */
+    ChannelSpecificFailurePgProvider: {
+      type: string;
+      channel: components["schemas"]["SelectedChannel"];
+      message?: string;
+      pgCode: string;
+      pgMessage: string;
     };
     /**
      * 채널 유형
@@ -4080,10 +4540,6 @@ export interface components {
        */
       closedAt: string;
     };
-    CompletePlatformPayoutError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutAlreadyCompletedError"] | components["schemas"]["PlatformPayoutCreatorMismatchedError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    CompletePlatformPayoutResponse: {
-      payout: components["schemas"]["PlatformPayout"];
-    };
     /**
      * 에스크로 구매 확정 입력 정보
      * @description <p>에스크로 구매 확정 입력 정보</p>
@@ -4096,8 +4552,8 @@ export interface components {
       storeId?: string;
       /**
        * 확인 주체가 상점인지 여부
-       * @description <p>구매확정요청 주체가 가맹점 관리자인지 구매자인지 구분하기 위한 필드입니다.
-       * 네이버페이 전용 파라미터이며, 구분이 모호한 경우 가맹점 관리자(true)로 입력합니다.</p>
+       * @description <p>구매확정요청 주체가 고객사 관리자인지 구매자인지 구분하기 위한 필드입니다.
+       * 네이버페이 전용 파라미터이며, 구분이 모호한 경우 고객사 관리자(true)로 입력합니다.</p>
        */
       fromStore?: boolean;
     };
@@ -4238,7 +4694,7 @@ export interface components {
       /** 부가세 부담 주체 */
       vatPayer: components["schemas"]["PlatformPayer"];
     };
-    CreatePlatformAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 플랫폼 생성 성공 응답 정보
      * @description <p>플랫폼 생성 성공 응답 정보</p>
@@ -4270,7 +4726,7 @@ export interface components {
       /** 정산 시 결제금액 부가세 감액 여부 */
       subtractPaymentVatAmount: boolean;
     };
-    CreatePlatformContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformContractError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 객체 생성 성공 응답
      * @description <p>계약 객체 생성 성공 응답</p>
@@ -4299,7 +4755,7 @@ export interface components {
       /** 해당 할인 분담에 대한 메모 ex) 파트너 브랜드 쿠폰 */
       memo?: string;
     };
-    CreatePlatformDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 할인 분담 정책 생성 성공 응답
      * @description <p>할인 분담 정책 생성 성공 응답</p>
@@ -4308,107 +4764,281 @@ export interface components {
       /** 생성된 할인 분담 정책 */
       discountSharePolicy: components["schemas"]["PlatformDiscountSharePolicy"];
     };
-    CreatePlatformManualTransferBody: {
-      partnerId: string;
-      memo?: string;
-      /** Format: int64 */
-      settlementAmount: number;
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
-      settlementDate: string;
-      isForTest?: boolean;
-    };
-    CreatePlatformManualTransferError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformUnavailableSettlementDateError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 취소 정산 등록을 위한 입력 정보
-     * @description <p>취소 정산 등록을 위한 입력 정보</p>
+     * 수기 정산건 생성을 위한 입력 정보
+     * @description <p>수기 정산건 생성을 위한 입력 정보</p>
+     */
+    CreatePlatformManualTransferBody: {
+      /** 파트너 아이디 */
+      partnerId: string;
+      /** 메모 */
+      memo?: string;
+      /**
+       * 정산 금액
+       * Format: int64
+       */
+      settlementAmount: number;
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      settlementDate: string;
+      /**
+       * 테스트 모드 여부
+       * @description <p>기본값은 false 입니다.</p>
+       */
+      isForTest?: boolean;
+      /** 사용자 정의 속성 */
+      userDefinedProperties?: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+    };
+    CreatePlatformManualTransferError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformUnavailableSettlementDateError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 주문 취소 정산 등록을 위한 입력 정보
+     * @description <p>주문 취소 정산 등록을 위한 입력 정보</p>
      * <p>하나의 payment에 하나의 정산 건만 존재하는 경우에는 (partnerId, paymentId)로 취소 정산을 등록하실 수 있습니다.
      * 하나의 payment에 여러 개의 정산 건이 존재하는 경우에는 transferId를 필수로 입력해야 합니다.
      * transferId를 입력한 경우 (partnerId, paymentId)는 생략 가능합니다.</p>
      */
     CreatePlatformOrderCancelTransferBody: {
+      /** 파트너 아이디 */
       partnerId?: string;
+      /** 결제 아이디 */
       paymentId?: string;
+      /** 정산건 아이디 */
       transferId?: string;
+      /** 취소 내역 아이디 */
       cancellationId: string;
+      /** 메모 */
       memo?: string;
+      /** 주문 취소 정보 */
       orderDetail?: components["schemas"]["CreatePlatformOrderCancelTransferBodyOrderDetail"];
+      /**
+       * 주문 취소 면세 금액
+       * Format: int64
+       * @description <p>주문 취소 항목과 취소 면세 금액을 같이 전달하시면 최종 취소 면세 금액은 주문 취소 항목의 면세 금액이 아닌 전달해주신 취소 면세 금액으로 적용됩니다.</p>
+       */
+      taxFreeAmount?: number;
+      /** 할인 정보 */
       discounts: components["schemas"]["CreatePlatformOrderCancelTransferBodyDiscount"][];
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 정산 시작일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementStartDate?: string;
+      /**
+       * 외부 결제 상세 정보
+       * @description <p>해당 정보가 존재하는 경우 외부 결제 취소 정산건으로 등록되고, 존재하지않은 경우 포트원 결제 취소 정산건으로 등록됩니다.</p>
+       */
       externalCancellationDetail?: components["schemas"]["CreatePlatformOrderCancelTransferBodyExternalCancellationDetail"];
+      /**
+       * 테스트 모드 여부
+       * @description <p>기본값은 false 입니다.</p>
+       */
       isForTest?: boolean;
+      /** 사용자 정의 속성 */
+      userDefinedProperties?: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
     };
+    /**
+     * 할인 정보
+     * @description <p>할인 정보</p>
+     */
     CreatePlatformOrderCancelTransferBodyDiscount: {
+      /** 할인 분담 정책 아이디 */
       sharePolicyId: string;
-      /** Format: int64 */
+      /**
+       * 할인 금액
+       * Format: int64
+       */
       amount: number;
     };
+    /**
+     * 외부 결제 상세 정보
+     * @description <p>외부 결제 상세 정보</p>
+     */
     CreatePlatformOrderCancelTransferBodyExternalCancellationDetail: {
-      /** Format: date-time */
+      /**
+       * 취소 일시
+       * Format: date-time
+       */
       cancelledAt?: string;
     };
+    /**
+     * 주문 취소 정보
+     * @description <p>주문 취소 정보</p>
+     * <p>orderAmount, orderLines, all 중에서 하나만 입력하여야 합니다.</p>
+     */
     CreatePlatformOrderCancelTransferBodyOrderDetail: {
-      /** Format: int64 */
+      /**
+       * 주문 취소 금액
+       * Format: int64
+       */
       orderAmount?: number;
+      /** 주문 취소 항목 리스트 */
       orderLines?: components["schemas"]["CreatePlatformOrderCancelTransferBodyOrderLine"][];
+      /** 전체 금액 취소 */
       all?: components["schemas"]["CreatePlatformOrderCancelTransferBodyOrderDetailAll"];
     };
+    /**
+     * 전체 금액 취소
+     * @description <p>전체 금액 취소</p>
+     */
     CreatePlatformOrderCancelTransferBodyOrderDetailAll: Record<string, never>;
+    /**
+     * 주문 취소 항목 리스트
+     * @description <p>주문 취소 항목 리스트</p>
+     */
     CreatePlatformOrderCancelTransferBodyOrderLine: {
+      /** 상품 아이디 */
       productId: string;
-      /** Format: int32 */
+      /**
+       * 상품 수량
+       * Format: int32
+       */
       quantity: number;
+      /** 상품 할인 정보 */
       discounts: components["schemas"]["CreatePlatformOrderCancelTransferBodyDiscount"][];
     };
-    CreatePlatformOrderCancelTransferError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCancellableAmountExceededError"] | components["schemas"]["PlatformCancellableDiscountAmountExceededError"] | components["schemas"]["PlatformCancellableProductQuantityExceededError"] | components["schemas"]["PlatformCancellationAndPaymentTypeMismatchedError"] | components["schemas"]["PlatformCancellationNotFoundError"] | components["schemas"]["PlatformDiscountCancelExceededOrderCancelAmountError"] | components["schemas"]["PlatformDiscountSharePolicyIdDuplicatedError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformOrderDetailMismatchedError"] | components["schemas"]["PlatformOrderTransferAlreadyCancelledError"] | components["schemas"]["PlatformPaymentNotFoundError"] | components["schemas"]["PlatformProductIdDuplicatedError"] | components["schemas"]["PlatformProductIdNotFoundError"] | components["schemas"]["PlatformSettlementCancelAmountExceededPortOneCancelError"] | components["schemas"]["PlatformTransferAlreadyExistsError"] | components["schemas"]["PlatformTransferDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformTransferNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformOrderCancelTransferError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCancellableAmountExceededError"] | components["schemas"]["PlatformCancellableDiscountAmountExceededError"] | components["schemas"]["PlatformCancellableProductQuantityExceededError"] | components["schemas"]["PlatformCancellationAndPaymentTypeMismatchedError"] | components["schemas"]["PlatformCancellationNotFoundError"] | components["schemas"]["PlatformCannotSpecifyTransferError"] | components["schemas"]["PlatformDiscountCancelExceededOrderCancelAmountError"] | components["schemas"]["PlatformDiscountSharePolicyIdDuplicatedError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformOrderDetailMismatchedError"] | components["schemas"]["PlatformOrderTransferAlreadyCancelledError"] | components["schemas"]["PlatformPaymentNotFoundError"] | components["schemas"]["PlatformProductIdDuplicatedError"] | components["schemas"]["PlatformProductIdNotFoundError"] | components["schemas"]["PlatformSettlementCancelAmountExceededPortOneCancelError"] | components["schemas"]["PlatformTaxFreeAmountOverFlowError"] | components["schemas"]["PlatformTransferAlreadyExistsError"] | components["schemas"]["PlatformTransferDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformTransferNotFoundError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 주문 정산건 생성을 위한 입력 정보
+     * @description <p>주문 정산건 생성을 위한 입력 정보</p>
+     */
     CreatePlatformOrderTransferBody: {
+      /** 파트너 아이디 */
       partnerId: string;
+      /**
+       * 계약 아이디
+       * @description <p>기본값은 파트너의 기본 계약 아이디 입니다.</p>
+       */
       contractId?: string;
+      /** 메모 */
       memo?: string;
+      /** 결제 아이디 */
       paymentId: string;
+      /** 주문 정보 */
       orderDetail: components["schemas"]["CreatePlatformOrderTransferBodyOrderDetail"];
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 주문 면세 금액
+       * Format: int64
+       * @description <p>주문 항목과 면세 금액을 같이 전달하시면 최종 면세 금액은 주문 항목의 면세 금액이 아닌 전달해주신 면세 금액으로 적용됩니다.</p>
+       */
+      taxFreeAmount?: number;
+      /**
+       * 정산 시작일
+       * @description <p>기본값은 결제 일시 입니다.</p>
+       */
       settlementStartDate?: string;
+      /** 할인 정보 */
       discounts: components["schemas"]["CreatePlatformOrderTransferBodyDiscount"][];
+      /** 추가 수수료 정보 */
       additionalFees: components["schemas"]["CreatePlatformOrderTransferBodyAdditionalFee"][];
+      /**
+       * 외부 결제 상세 정보
+       * @description <p>해당 정보가 존재하는 경우 외부 결제 정산건 으로 등록되고, 존재하지않은 경우 포트원 결제 정산건으로 등록됩니다.</p>
+       */
       externalPaymentDetail?: components["schemas"]["CreatePlatformOrderTransferBodyExternalPaymentDetail"];
+      /**
+       * 테스트 모드 여부
+       * @description <p>기본값은 false 입니다.</p>
+       */
       isForTest?: boolean;
+      /** 정산 파라미터 (실험기능) */
+      parameters?: components["schemas"]["TransferParameters"];
+      /** 사용자 정의 속성 */
+      userDefinedProperties?: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
     };
+    /**
+     * 추가 수수료 정보
+     * @description <p>추가 수수료 정보</p>
+     */
     CreatePlatformOrderTransferBodyAdditionalFee: {
+      /** 추가 수수료 정책 아이디 */
       policyId: string;
     };
+    /**
+     * 할인 정보
+     * @description <p>할인 정보</p>
+     */
     CreatePlatformOrderTransferBodyDiscount: {
+      /** 할인 분담 정책 아이디 */
       sharePolicyId: string;
-      /** Format: int64 */
+      /**
+       * 할인 금액
+       * Format: int64
+       */
       amount: number;
     };
+    /**
+     * 외부 결제 상세 정보
+     * @description <p>외부 결제 상세 정보</p>
+     */
     CreatePlatformOrderTransferBodyExternalPaymentDetail: {
+      /** 통화 */
       currency: components["schemas"]["Currency"];
+      /** 주문 명 */
       orderName?: string;
-      /** Format: date-time */
+      /**
+       * 결제 일시
+       * Format: date-time
+       */
       paidAt?: string;
+      /** 결제 수단 */
       method?: components["schemas"]["PlatformPaymentMethodInput"];
     };
+    /**
+     * 주문 정보
+     * @description <p>주문 정보</p>
+     * <p>주문 금액 또는 주문 항목 하나만 입력 가능합니다.</p>
+     */
     CreatePlatformOrderTransferBodyOrderDetail: {
-      /** Format: int64 */
+      /**
+       * 주문 금액
+       * Format: int64
+       */
       orderAmount?: number;
+      /** 주문 항목 리스트 */
       orderLines?: components["schemas"]["CreatePlatformOrderTransferBodyOrderLine"][];
     };
+    /**
+     * 주문 항목
+     * @description <p>주문 항목</p>
+     */
     CreatePlatformOrderTransferBodyOrderLine: {
+      /** 상품 */
       product: components["schemas"]["CreatePlatformOrderTransferBodyProduct"];
-      /** Format: int32 */
+      /**
+       * 상품 수량
+       * Format: int32
+       */
       quantity: number;
+      /** 상품 할인 정보 */
       discounts: components["schemas"]["CreatePlatformOrderTransferBodyDiscount"][];
+      /** 상품 추가 수수료 정보 */
       additionalFees: components["schemas"]["CreatePlatformOrderTransferBodyAdditionalFee"][];
     };
+    /**
+     * 상품
+     * @description <p>상품</p>
+     */
     CreatePlatformOrderTransferBodyProduct: {
+      /** 상품 아이디 */
       id: string;
+      /** 상품 이름 */
       name: string;
-      /** Format: int64 */
+      /**
+       * 상품 금액
+       * Format: int64
+       */
       amount: number;
+      /**
+       * 상품 면세 금액
+       * Format: int64
+       */
+      taxFreeAmount?: number;
+      /** 태그 */
       tag?: string;
     };
-    CreatePlatformOrderTransferError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePoliciesNotFoundError"] | components["schemas"]["PlatformAdditionalFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformContractPlatformFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError"] | components["schemas"]["PlatformDiscountExceededOrderAmountError"] | components["schemas"]["PlatformDiscountSharePoliciesNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformPaymentNotFoundError"] | components["schemas"]["PlatformProductIdDuplicatedError"] | components["schemas"]["PlatformSettlementPaymentAmountExceededPortOnePaymentError"] | components["schemas"]["PlatformTransferAlreadyExistsError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformOrderTransferError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePoliciesNotFoundError"] | components["schemas"]["PlatformAdditionalFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformContractPlatformFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError"] | components["schemas"]["PlatformCurrencyNotSupportedError"] | components["schemas"]["PlatformDiscountExceededOrderAmountError"] | components["schemas"]["PlatformDiscountSharePoliciesNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformPaymentNotFoundError"] | components["schemas"]["PlatformProductIdDuplicatedError"] | components["schemas"]["PlatformSettlementPaymentAmountExceededPortOnePaymentError"] | components["schemas"]["PlatformSettlementSupplyWithVatAmountExceededPortOnePaymentError"] | components["schemas"]["PlatformSettlementTaxFreeAmountExceededPortOnePaymentError"] | components["schemas"]["PlatformTaxFreeAmountOverFlowError"] | components["schemas"]["PlatformTransferAlreadyExistsError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 생성을 위한 입력 정보
      * @description <p>파트너 생성을 위한 입력 정보</p>
@@ -4416,7 +5046,7 @@ export interface components {
     CreatePlatformPartnerBody: {
       /**
        * 파트너에 부여할 고유 아이디
-       * @description <p>가맹점 서버에 등록된 파트너 지칭 아이디와 동일하게 설정하는 것을 권장합니다. 명시하지 않는 경우 포트원이 임의의 아이디를 발급해드립니다.</p>
+       * @description <p>고객사 서버에 등록된 파트너 지칭 아이디와 동일하게 설정하는 것을 권장합니다. 명시하지 않는 경우 포트원이 임의의 아이디를 발급해드립니다.</p>
        */
       id?: string;
       /** 파트너 법인명 혹은 이름 */
@@ -4445,9 +5075,11 @@ export interface components {
       tags: string[];
       /**
        * 파트너 유형별 추가 정보
-       * @description <p>사업자/원천징수대상자 중 추가할 파트너의 유형에 따른 정보를 입력해야 합니다.</p>
+       * @description <p>사업자/원천징수 대상자 중 추가할 파트너의 유형에 따른 정보를 입력해야 합니다.</p>
        */
-      type?: components["schemas"]["CreatePlatformPartnerBodyType"];
+      type: components["schemas"]["CreatePlatformPartnerBodyType"];
+      /** 사용자 정의 속성 */
+      userDefinedProperties?: components["schemas"]["PlatformProperties"];
     };
     /**
      * 파트너 계좌 등록을 위한 정보
@@ -4462,6 +5094,8 @@ export interface components {
       number: string;
       /** 예금주명 */
       holder: string;
+      /** 계좌 검증 아이디 */
+      accountVerificationId?: string;
     };
     /**
      * 파트너 담당자 정보
@@ -4471,7 +5105,7 @@ export interface components {
       /** 담당자 이름 */
       name: string;
       /** 담당자 휴대폰 번호 */
-      phoneNumber: string;
+      phoneNumber?: string;
       /** 담당자 이메일 */
       email: string;
     };
@@ -4482,12 +5116,19 @@ export interface components {
     CreatePlatformPartnerBodyType: {
       /** 사업자 추가 정보 */
       business?: components["schemas"]["CreatePlatformPartnerBodyTypeBusiness"];
-      /** 원천징수대상자 추가 정보 */
+      /** 원천징수 대상자 추가 정보 */
       whtPayer?: components["schemas"]["CreatePlatformPartnerBodyTypeWhtPayer"];
+      /** 원천징수 비대상자 추가 정보 */
+      nonWhtPayer?: components["schemas"]["CreatePlatformPartnerBodyTypeNonWhtPayer"];
     };
     CreatePlatformPartnerBodyTypeBusiness: {
       /** 상호명 */
       companyName: string;
+      /**
+       * 사업자 유형
+       * @description <p>값을 입력하지 않으면 일반 과세로 설정됩니다.</p>
+       */
+      taxationType?: components["schemas"]["PlatformPartnerTaxationType"];
       /** 사업자등록번호 */
       businessRegistrationNumber: string;
       /** 대표자 이름 */
@@ -4499,11 +5140,21 @@ export interface components {
       /** 업종 */
       businessClass?: string;
     };
-    CreatePlatformPartnerBodyTypeWhtPayer: {
-      /** 생년월일 */
-      birthdate: string;
+    CreatePlatformPartnerBodyTypeNonWhtPayer: {
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      birthdate?: string;
     };
-    CreatePlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerIdAlreadyExistsError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformPartnerBodyTypeWhtPayer: {
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      birthdate?: string;
+    };
+    CreatePlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAccountVerificationAlreadyUsedError"] | components["schemas"]["PlatformAccountVerificationFailedError"] | components["schemas"]["PlatformAccountVerificationNotFoundError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformCurrencyNotSupportedError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerIdAlreadyExistsError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 생성 성공 응답
      * @description <p>파트너 생성 성공 응답</p>
@@ -4520,7 +5171,7 @@ export interface components {
       /** 생성할 파트너 리스트 정보 */
       partners: components["schemas"]["CreatePlatformPartnerBody"][];
     };
-    CreatePlatformPartnersError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractsNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerIdsAlreadyExistError"] | components["schemas"]["PlatformPartnerIdsDuplicatedError"] | components["schemas"]["UnauthorizedError"];
+    CreatePlatformPartnersError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractsNotFoundError"] | components["schemas"]["PlatformCurrencyNotSupportedError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerIdsAlreadyExistError"] | components["schemas"]["PlatformPartnerIdsDuplicatedError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 다건 생성 성공 응답
      * @description <p>파트너 다건 생성 성공 응답</p>
@@ -4528,13 +5179,6 @@ export interface components {
     CreatePlatformPartnersResponse: {
       /** 생성된 파트너 리스트 */
       partners: components["schemas"]["PlatformPartner"][];
-    };
-    CreatePlatformPayoutBody: {
-      filter: components["schemas"]["PlatformPartnerSettlementFilterInput"];
-    };
-    CreatePlatformPayoutError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNoPayablePartnerSettlementsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformOngoingPayoutExistsError"] | components["schemas"]["UnauthorizedError"];
-    CreatePlatformPayoutResponse: {
-      payout: components["schemas"]["PlatformPayout"];
     };
     /**
      * 통화 단위
@@ -4544,13 +5188,23 @@ export interface components {
      */
     Currency: "AED" | "AFN" | "ALL" | "AMD" | "ANG" | "AOA" | "ARS" | "AUD" | "AWG" | "AZN" | "BAM" | "BBD" | "BDT" | "BGN" | "BHD" | "BIF" | "BMD" | "BND" | "BOB" | "BOV" | "BRL" | "BSD" | "BTN" | "BWP" | "BYN" | "BZD" | "CAD" | "CDF" | "CHE" | "CHF" | "CHW" | "CLF" | "CLP" | "CNY" | "COP" | "COU" | "CRC" | "CUC" | "CUP" | "CVE" | "CZK" | "DJF" | "DKK" | "DOP" | "DZD" | "EGP" | "ERN" | "ETB" | "EUR" | "FJD" | "FKP" | "GBP" | "GEL" | "GHS" | "GIP" | "GMD" | "GNF" | "GTQ" | "GYD" | "HKD" | "HNL" | "HRK" | "HTG" | "HUF" | "IDR" | "ILS" | "INR" | "IQD" | "IRR" | "ISK" | "JMD" | "JOD" | "JPY" | "KES" | "KGS" | "KHR" | "KMF" | "KPW" | "KRW" | "KWD" | "KYD" | "KZT" | "LAK" | "LBP" | "LKR" | "LRD" | "LSL" | "LYD" | "MAD" | "MDL" | "MGA" | "MKD" | "MMK" | "MNT" | "MOP" | "MRU" | "MUR" | "MVR" | "MWK" | "MXN" | "MXV" | "MYR" | "MZN" | "NAD" | "NGN" | "NIO" | "NOK" | "NPR" | "NZD" | "OMR" | "PAB" | "PEN" | "PGK" | "PHP" | "PKR" | "PLN" | "PYG" | "QAR" | "RON" | "RSD" | "RUB" | "RWF" | "SAR" | "SBD" | "SCR" | "SDG" | "SEK" | "SGD" | "SHP" | "SLE" | "SLL" | "SOS" | "SRD" | "SSP" | "STN" | "SVC" | "SYP" | "SZL" | "THB" | "TJS" | "TMT" | "TND" | "TOP" | "TRY" | "TTD" | "TWD" | "TZS" | "UAH" | "UGX" | "USD" | "USN" | "UYI" | "UYU" | "UYW" | "UZS" | "VED" | "VES" | "VND" | "VUV" | "WST" | "XAF" | "XAG" | "XAU" | "XBA" | "XBB" | "XBC" | "XBD" | "XCD" | "XDR" | "XOF" | "XPD" | "XPF" | "XPT" | "XSU" | "XTS" | "XUA" | "XXX" | "YER" | "ZAR" | "ZMW" | "ZWL";
     /**
+     * 커서 기반 페이지 정보
+     * @description <p>커서 기반 페이지 정보</p>
+     */
+    CursorPageInfo: {
+      startCursor: string;
+      endCursor: string;
+      hasPreviousPage: boolean;
+      hasNextPage: boolean;
+    };
+    /**
      * 고객 정보
      * @description <p>고객 정보</p>
      */
     Customer: {
       /**
        * 고객 아이디
-       * @description <p>가맹점이 지정한 고객의 고유 식별자입니다.</p>
+       * @description <p>고객사가 지정한 고객의 고유 식별자입니다.</p>
        */
       id?: string;
       /** 이름 */
@@ -4575,7 +5229,7 @@ export interface components {
     CustomerInput: {
       /**
        * 고객 아이디
-       * @description <p>가맹점이 지정한 고객의 고유 식별자입니다.</p>
+       * @description <p>고객사가 지정한 고객의 고유 식별자입니다.</p>
        */
       id?: string;
       /** 이름 */
@@ -4647,7 +5301,7 @@ export interface components {
     DayOfWeek: "FRI" | "MON" | "SAT" | "SUN" | "THU" | "TUE" | "WED";
     DeleteB2bTaxInvoiceAttachmentError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceAttachmentNotFoundError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["B2bTaxInvoiceNotRegisteredStatusError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     DeleteB2bTaxInvoiceError: components["schemas"]["B2bExternalServiceError"] | components["schemas"]["B2bNotEnabledError"] | components["schemas"]["B2bTaxInvoiceNonDeletableStatusError"] | components["schemas"]["B2bTaxInvoiceNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
-    DeleteBillingKeyError: components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["BillingKeyNotIssuedError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentScheduleAlreadyExistsError"] | components["schemas"]["PgProviderError"] | components["schemas"]["UnauthorizedError"];
+    DeleteBillingKeyError: components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["BillingKeyNotIssuedError"] | components["schemas"]["ChannelSpecificError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentScheduleAlreadyExistsError"] | components["schemas"]["PgProviderError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 빌링키 삭제 성공 응답
      * @description <p>빌링키 삭제 성공 응답</p>
@@ -4659,10 +5313,62 @@ export interface components {
        */
       deletedAt: string;
     };
-    DeletePlatformPayoutError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutAlreadyCompletedError"] | components["schemas"]["PlatformPayoutCreatorMismatchedError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    DeletePlatformPayoutResponse: Record<string, never>;
-    DeletePlatformTransferError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCancelOrderTransfersExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformTransferNonDeletableStatusError"] | components["schemas"]["PlatformTransferNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    DeletePlatformTransferError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformCancelOrderTransfersExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformTransferNonDeletableStatusError"] | components["schemas"]["PlatformTransferNotFoundError"] | components["schemas"]["UnauthorizedError"];
     DeletePlatformTransferResponse: Record<string, never>;
+    /**
+     * 빌링키 삭제 완료 상태 건
+     * @description <p>빌링키 삭제 완료 상태 건</p>
+     */
+    DeletedBillingKeyInfo: {
+      /** 빌링키 상태 */
+      status: string;
+      /** 빌링키 */
+      billingKey: string;
+      /** 고객사 아이디 */
+      merchantId: string;
+      /** 상점 아이디 */
+      storeId: string;
+      /**
+       * 빌링키 결제수단 상세 정보
+       * @description <p>추후 슈퍼빌링키 기능 제공 시 여러 결제수단 정보가 담길 수 있습니다.</p>
+       */
+      methods?: components["schemas"]["BillingKeyPaymentMethod"][];
+      /**
+       * 빌링키 발급 시 사용된 채널
+       * @description <p>추후 슈퍼빌링키 기능 제공 시 여러 채널 정보가 담길 수 있습니다.</p>
+       */
+      channels: components["schemas"]["SelectedChannel"][];
+      /** 고객 정보 */
+      customer: components["schemas"]["Customer"];
+      /** 사용자 지정 데이터 */
+      customData?: string;
+      /** 고객사가 채번하는 빌링키 발급 건 고유 아이디 */
+      issueId?: string;
+      /** 빌링키 발급 건 이름 */
+      issueName?: string;
+      /**
+       * 발급 요청 시점
+       * Format: date-time
+       */
+      requestedAt?: string;
+      /**
+       * 발급 시점
+       * Format: date-time
+       */
+      issuedAt: string;
+      /** 채널 그룹 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
+      /**
+       * 채널 별 빌링키 발급 응답
+       * @description <p>슈퍼빌링키의 경우, 빌링키 발급이 성공하더라도 일부 채널에 대한 발급은 실패할 수 있습니다.</p>
+       */
+      pgBillingKeyIssueResponses?: components["schemas"]["PgBillingKeyIssueResponse"][];
+      /**
+       * 발급 삭제 시점
+       * Format: date-time
+       */
+      deletedAt: string;
+    };
     /**
      * 배송 완료
      * @description <p>배송 완료</p>
@@ -4685,7 +5391,67 @@ export interface components {
        */
       appliedAt?: string;
     };
-    DownloadPlatformPayoutSheetError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["PlatformPayoutSheetNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 결제건 엑셀 다운로드를 위한 입력 정보
+     * @description <p>결제건 엑셀 다운로드를 위한 입력 정보</p>
+     */
+    DownloadPaymentsExcelBody: {
+      /** 조회하여 다운로드할 결제 건의 조건 필터 */
+      filter: components["schemas"]["DownloadPaymentsExcelFilter"];
+    };
+    DownloadPaymentsExcelFilter: {
+      /**
+       * 상점 아이디
+       * @description <p>접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다.</p>
+       */
+      storeId: string;
+      /** 프로모션 아이디 */
+      promotionId: string;
+    };
+    DownloadPlatformBulkPayoutsSheetBody: {
+      filter?: components["schemas"]["PlatformBulkPayoutFilterInput"];
+      /** 다운로드 할 시트 컬럼 */
+      fields?: components["schemas"]["PlatformBulkPayoutsSheetField"][];
+      isForTest?: boolean;
+    };
+    DownloadPlatformBulkPayoutsSheetError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    DownloadPlatformPartnerSettlementSheetBody: {
+      filter?: components["schemas"]["PlatformPartnerSettlementFilterInput"];
+      /** 다운로드 할 시트 컬럼 */
+      fields?: components["schemas"]["PlatformPartnerSettlementSheetField"][];
+      isForTest?: boolean;
+    };
+    DownloadPlatformPartnerSettlementSheetError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    DownloadPlatformPayoutsSheetBody: {
+      filter?: components["schemas"]["PlatformPayoutFilterInput"];
+      /** 다운로드 할 시트 컬럼 */
+      fields?: components["schemas"]["PlatformPayoutsSheetField"][];
+      isForTest?: boolean;
+    };
+    DownloadPlatformPayoutsSheetError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    DownloadPlatformTransferSheetBody: {
+      filter?: components["schemas"]["PlatformTransferFilterInput"];
+      /** 다운로드 할 시트 컬럼 */
+      fields?: components["schemas"]["PlatformTransferSheetField"][];
+      transferUserDefinedPropertyKeys?: string[];
+      partnerUserDefinedPropertyKeys?: string[];
+    };
+    DownloadPlatformTransferSheetError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 프로모션 내역 엑셀 다운로드를 위한 입력 정보
+     * @description <p>프로모션 내역 엑셀 다운로드를 위한 입력 정보</p>
+     */
+    DownloadPromotionsExcelBody: {
+      /**
+       * 상점 아이디
+       * @description <p>접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다.</p>
+       */
+      storeId: string;
+      /** 시각 범위 */
+      datetimeRange?: components["schemas"]["DateTimeRange"];
+      /** 시각 범위를 적용할 필드 */
+      datetimeRangeField?: components["schemas"]["PromotionTimeRangeField"];
+    };
     /**
      * 간편 결제 수단
      * @description <p>간편 결제 수단</p>
@@ -4699,7 +5465,7 @@ export interface components {
      *
      * @enum {string}
      */
-    EasyPayProvider: "ALIPAY" | "APPLEPAY" | "CHAI" | "KAKAOPAY" | "KB_APP" | "KPAY" | "LGPAY" | "LPAY" | "NAVERPAY" | "PAYCO" | "PINPAY" | "SAMSUNGPAY" | "SKPAY" | "SSGPAY" | "TOSSPAY" | "TOSS_BRANDPAY";
+    EasyPayProvider: "ALIPAY" | "APPLEPAY" | "CHAI" | "HYPHEN" | "KAKAOPAY" | "KB_APP" | "KPAY" | "LGPAY" | "LPAY" | "NAVERPAY" | "PAYCO" | "PINPAY" | "SAMSUNGPAY" | "SKPAY" | "SSGPAY" | "TOSSPAY" | "TOSS_BRANDPAY";
     /**
      * 실패한 본인인증 내역
      * @description <p>실패한 본인인증 내역</p>
@@ -4745,7 +5511,7 @@ export interface components {
        * @description <p>V1 결제 건의 경우 imp_uid에 해당합니다.</p>
        */
       transactionId: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -4753,6 +5519,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel?: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -4869,7 +5637,7 @@ export interface components {
       status: string;
       /** 결제 예약 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -4935,6 +5703,20 @@ export interface components {
       completedAt: string;
     };
     /**
+     * 빌링키 발급 실패 채널 응답
+     * @description <p>빌링키 발급 실패 채널 응답</p>
+     */
+    FailedPgBillingKeyIssueResponse: {
+      type: string;
+      /**
+       * 채널
+       * @description <p>빌링키 발급을 시도한 채널입니다.</p>
+       */
+      channel: components["schemas"]["SelectedChannel"];
+      /** 발급 실패 상세 정보 */
+      failure: components["schemas"]["BillingKeyFailure"];
+    };
+    /**
      * 요청이 거절된 경우
      * @description <p>요청이 거절된 경우</p>
      */
@@ -4990,8 +5772,8 @@ export interface components {
     };
     GetAllPaymentsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 평균 거래액 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 평균 거래액 현황 조회를 위한 입력 정보</p>
+     * 고객사의 평균 거래액 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 평균 거래액 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsAverageAmountChartBody: {
       /**
@@ -5021,8 +5803,8 @@ export interface components {
       timeGranularity: components["schemas"]["AnalyticsTimeGranularity"];
     };
     /**
-     * 가맹점의 환불율 조회를 위한 입력 정보
-     * @description <p>가맹점의 환불율 조회를 위한 입력 정보</p>
+     * 고객사의 환불율 조회를 위한 입력 정보
+     * @description <p>고객사의 환불율 조회를 위한 입력 정보</p>
      */
     GetAnalyticsCancellationRateBody: {
       /**
@@ -5043,8 +5825,8 @@ export interface components {
     };
     GetAnalyticsCancellationRateError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 카드결제 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 카드결제 현황 조회를 위한 입력 정보</p>
+     * 고객사의 카드결제 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 카드결제 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsCardChartBody: {
       /**
@@ -5075,8 +5857,8 @@ export interface components {
     };
     GetAnalyticsCardChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 카드사별 결제 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 카드사별 결제 현황 조회를 위한 입력 정보</p>
+     * 고객사의 카드사별 결제 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 카드사별 결제 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsCardCompanyChartBody: {
       /**
@@ -5111,8 +5893,8 @@ export interface components {
     };
     GetAnalyticsCardCompanyChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 간편결제 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 간편결제 현황 조회를 위한 입력 정보</p>
+     * 고객사의 간편결제 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 간편결제 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsEasyPayChartBody: {
       /**
@@ -5143,8 +5925,8 @@ export interface components {
     };
     GetAnalyticsEasyPayChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 간편결제사별 결제 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 간편결제사별 결제 현황 조회를 위한 입력 정보</p>
+     * 고객사의 간편결제사별 결제 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 간편결제사별 결제 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsEasyPayProviderChartBody: {
       /**
@@ -5180,8 +5962,8 @@ export interface components {
     GetAnalyticsEasyPayProviderChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetAnalyticsOverseasPaymentUsageError: components["schemas"]["ForbiddenError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 결제 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제 현황 조회를 위한 입력 정보</p>
+     * 고객사의 결제 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 결제 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentChartBody: {
       /**
@@ -5212,8 +5994,8 @@ export interface components {
     };
     GetAnalyticsPaymentChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 결제 현황 인사이트 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제 현황 인사이트 조회를 위한 입력 정보</p>
+     * 고객사의 결제 현황 인사이트 조회를 위한 입력 정보
+     * @description <p>고객사의 결제 현황 인사이트 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentChartInsightBody: {
       /**
@@ -5245,8 +6027,8 @@ export interface components {
     };
     GetAnalyticsPaymentChartInsightError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
-     * 가맹점의 결제수단 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제수단 현황 조회를 위한 입력 정보</p>
+     * 고객사의 결제수단 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 결제수단 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentMethodChartBody: {
       /**
@@ -5271,8 +6053,8 @@ export interface components {
       excludeCancelled: boolean;
     };
     /**
-     * 가맹점의 결제수단 트렌드 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제수단 트렌드 조회를 위한 입력 정보</p>
+     * 고객사의 결제수단 트렌드 조회를 위한 입력 정보
+     * @description <p>고객사의 결제수단 트렌드 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentMethodTrendChartBody: {
       /**
@@ -5302,8 +6084,8 @@ export interface components {
       timeGranularity: components["schemas"]["AnalyticsTimeGranularity"];
     };
     /**
-     * 가맹점의 결제환경별 결제전환율 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제환경별 결제전환율 조회를 위한 입력 정보</p>
+     * 고객사의 결제환경별 결제전환율 조회를 위한 입력 정보
+     * @description <p>고객사의 결제환경별 결제전환율 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentStatusByPaymentClientChartBody: {
       /**
@@ -5323,8 +6105,8 @@ export interface components {
       currency: components["schemas"]["Currency"];
     };
     /**
-     * 가맹점의 결제수단별 결제전환율 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제수단별 결제전환율 조회를 위한 입력 정보</p>
+     * 고객사의 결제수단별 결제전환율 조회를 위한 입력 정보
+     * @description <p>고객사의 결제수단별 결제전환율 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentStatusByPaymentMethodChartBody: {
       /**
@@ -5344,8 +6126,8 @@ export interface components {
       currency: components["schemas"]["Currency"];
     };
     /**
-     * 가맹점의 PG사별 결제전환율 조회를 위한 입력 정보
-     * @description <p>가맹점의 PG사별 결제전환율 조회를 위한 입력 정보</p>
+     * 고객사의 PG사별 결제전환율 조회를 위한 입력 정보
+     * @description <p>고객사의 PG사별 결제전환율 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentStatusByPgCompanyChartBody: {
       /**
@@ -5365,8 +6147,8 @@ export interface components {
       currency: components["schemas"]["Currency"];
     };
     /**
-     * 가맹점의 결제상태 이력 집계 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제상태 이력 집계 조회를 위한 입력 정보</p>
+     * 고객사의 결제상태 이력 집계 조회를 위한 입력 정보
+     * @description <p>고객사의 결제상태 이력 집계 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPaymentStatusChartBody: {
       /**
@@ -5386,8 +6168,8 @@ export interface components {
       currency: components["schemas"]["Currency"];
     };
     /**
-     * 가맹점의 결제대행사 현황 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제대행사 현황 조회를 위한 입력 정보</p>
+     * 고객사의 결제대행사 현황 조회를 위한 입력 정보
+     * @description <p>고객사의 결제대행사 현황 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPgCompanyChartBody: {
       /**
@@ -5412,8 +6194,8 @@ export interface components {
       excludeCancelled: boolean;
     };
     /**
-     * 가맹점의 결제대행사별 거래 추이 조회를 위한 입력 정보
-     * @description <p>가맹점의 결제대행사별 거래 추이 조회를 위한 입력 정보</p>
+     * 고객사의 결제대행사별 거래 추이 조회를 위한 입력 정보
+     * @description <p>고객사의 결제대행사별 거래 추이 조회를 위한 입력 정보</p>
      */
     GetAnalyticsPgCompanyTrendChartBody: {
       /**
@@ -5524,6 +6306,35 @@ export interface components {
       page: components["schemas"]["PageInfo"];
     };
     GetBillingKeyInfoError: components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /** @description <p>빌링키 다건 조회를 위한 입력 정보</p> */
+    GetBillingKeyInfosBody: {
+      /**
+       * 요청할 페이지 정보
+       * @description <p>미 입력 시 number: 0, size: 10 으로 기본값이 적용됩니다.</p>
+       */
+      page?: components["schemas"]["PageInput"];
+      /**
+       * 정렬 조건
+       * @description <p>미 입력 시 sortBy: TIME_TO_PAY, sortOrder: DESC 으로 기본값이 적용됩니다.</p>
+       */
+      sort?: components["schemas"]["BillingKeySortInput"];
+      /**
+       * 조회할 빌링키 조건 필터
+       * @description <p>V1 빌링키 건의 경우 일부 필드에 대해 필터가 적용되지 않을 수 있습니다.</p>
+       */
+      filter?: components["schemas"]["BillingKeyFilterInput"];
+    };
+    GetBillingKeyInfosError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 빌링키 다건 조회 성공 응답 정보
+     * @description <p>빌링키 다건 조회 성공 응답 정보</p>
+     */
+    GetBillingKeyInfosResponse: {
+      /** 조회된 빌링키 리스트 */
+      items: components["schemas"]["BillingKeyInfo"][];
+      /** 조회된 페이지 정보 */
+      page: components["schemas"]["PageInfo"];
+    };
     GetCashReceiptError: components["schemas"]["CashReceiptNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetIdentityVerificationError: components["schemas"]["ForbiddenError"] | components["schemas"]["IdentityVerificationNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetKakaopayPaymentOrderError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
@@ -5544,6 +6355,84 @@ export interface components {
     GetPaymentError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentNotFoundError"] | components["schemas"]["UnauthorizedError"];
     GetPaymentMethodChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetPaymentMethodTrendChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationSettlementSummariesBody: {
+      /** 정산일 범위 */
+      dateRange: components["schemas"]["DateRange"];
+      /**
+       * 조회할 건 수
+       * Format: int32
+       */
+      size: number;
+      /** 이전 페이지의 마지막 커서 */
+      after?: string;
+    };
+    GetPaymentReconciliationSettlementSummariesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationSettlementSummariesResponse: {
+      items: components["schemas"]["PaymentReconciliationSettlementSummaryWithCursor"][];
+      pageInfo: components["schemas"]["CursorPageInfo"];
+    };
+    GetPaymentReconciliationSettlementSummaryExcelFileBody: {
+      /** 정산일 범위 */
+      dateRange: components["schemas"]["DateRange"];
+      filter?: components["schemas"]["PaymentReconciliationSettlementSummaryExcelFileFilterInput"];
+      /** 액셀파일 요청시 선택 필드 */
+      columns: components["schemas"]["PaymentReconciliationSettlementSummaryColumn"][];
+    };
+    GetPaymentReconciliationSettlementSummaryExcelFileError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationSettlementVatReferenceExcelFileBody: {
+      /** 정산일 범위 */
+      dateRange: components["schemas"]["DateRange"];
+      filter?: components["schemas"]["PaymentReconciliationSettlementSummaryFilterInput"];
+    };
+    GetPaymentReconciliationSettlementVatReferenceExcelFileError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationTransactionSummariesBody: {
+      /** 거래일 범위 */
+      dateRange: components["schemas"]["DateRange"];
+      /**
+       * 조회할 건 수
+       * Format: int32
+       */
+      size: number;
+      /** 이전 페이지의 마지막 커서 */
+      after?: string;
+    };
+    GetPaymentReconciliationTransactionSummariesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationTransactionSummariesResponse: {
+      items: components["schemas"]["PaymentReconciliationTransactionSummaryWithCursor"][];
+      pageInfo: components["schemas"]["CursorPageInfo"];
+    };
+    GetPaymentReconciliationTransactionSummaryExcelFileBody: {
+      /** 거래일 범위 */
+      dateRange: components["schemas"]["DateRange"];
+      filter?: components["schemas"]["PaymentReconciliationTransactionSummaryExcelFilterInput"];
+      /** 액셀파일 요청시 선택 필드 */
+      columns: components["schemas"]["PaymentReconciliationTransactionSummaryColumn"][];
+    };
+    GetPaymentReconciliationTransactionSummaryExcelFileError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationsBody: {
+      dateCondition: components["schemas"]["ReconciliationDateConditionInput"];
+      /**
+       * 조회할 건 수
+       * Format: int32
+       */
+      size: number;
+      /** 이전 페이지의 마지막 커서 */
+      after?: string;
+    };
+    GetPaymentReconciliationsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationsExcelFileBody: {
+      /** 엑셀파일 요청시 선택 필드 */
+      columns: components["schemas"]["PaymentReconciliationColumn"][];
+      dateCondition: components["schemas"]["ReconciliationDateConditionInput"];
+      searchCondition?: components["schemas"]["PaymentReconciliationSearchConditionInput"];
+      filter?: components["schemas"]["PaymentReconciliationExcelFileFilterInput"];
+      order?: components["schemas"]["PaymentReconciliationOrderInput"];
+    };
+    GetPaymentReconciliationsExcelFileError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
+    GetPaymentReconciliationsResponse: {
+      items: components["schemas"]["PaymentReconciliationWithCursor"][];
+      pageInfo: components["schemas"]["CursorPageInfo"];
+    };
     GetPaymentScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PaymentScheduleNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 결제 예약 다건 조회를 위한 입력 정보
@@ -5605,18 +6494,18 @@ export interface components {
     };
     GetPgCompanyChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     GetPgCompanyTrendChartError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformAccountHolderError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformExternalApiFailedError"] | components["schemas"]["PlatformExternalApiTemporarilyFailedError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformAccountHolderError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformExternalApiFailedError"] | components["schemas"]["PlatformExternalApiTemporarilyFailedError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformNotSupportedBankError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 다건 조회를 위한 입력 정보
      * @description <p>추가 수수료 정책 다건 조회를 위한 입력 정보</p>
      */
     GetPlatformAdditionalFeePoliciesBody: {
       /** 요청할 페이지 정보 */
-      page: components["schemas"]["PageInput"];
+      page?: components["schemas"]["PageInput"];
       /** 조회할 추가 수수료 정책 조건 필터 */
       filter?: components["schemas"]["PlatformAdditionalFeePolicyFilterInput"];
     };
-    GetPlatformAdditionalFeePoliciesError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformAdditionalFeePoliciesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 다건 조회 성공 응답 정보
      * @description <p>추가 수수료 정책 다건 조회 성공 응답 정보</p>
@@ -5627,10 +6516,33 @@ export interface components {
       /** 조회된 페이지 정보 */
       page: components["schemas"]["PageInfo"];
     };
-    GetPlatformAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformAdditionalFeePolicyScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformContractScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformAdditionalFeePolicyScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformBulkPayoutError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformBulkPayoutNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformBulkPayoutPartnerSettlementsBody: {
+      filter?: components["schemas"]["PlatformBulkPayoutPartnerSettlementsFilterInput"];
+      page?: components["schemas"]["PageInput"];
+      isForTest?: boolean;
+    };
+    GetPlatformBulkPayoutPartnerSettlementsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformBulkPayoutNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformBulkPayoutPartnerSettlementsResponse: {
+      items: components["schemas"]["PlatformBulkPayoutPartnerSettlement"][];
+      page: components["schemas"]["PageInfo"];
+      counts: components["schemas"]["PlatformPartnerSettlementStatusStats"];
+    };
+    GetPlatformBulkPayoutsBody: {
+      isForTest?: boolean;
+      page?: components["schemas"]["PageInput"];
+      filter?: components["schemas"]["PlatformBulkPayoutFilterInput"];
+    };
+    GetPlatformBulkPayoutsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformBulkPayoutsResponse: {
+      items: components["schemas"]["PlatformBulkPayout"][];
+      page: components["schemas"]["PageInfo"];
+      counts: components["schemas"]["PlatformBulkPayoutStatusStats"];
+    };
+    GetPlatformContractError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformContractScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 다건 조회를 위한 입력 정보
      * @description <p>계약 다건 조회를 위한 입력 정보</p>
@@ -5641,7 +6553,7 @@ export interface components {
       /** 조회할 계약 조건 필터 */
       filter?: components["schemas"]["PlatformContractFilterInput"];
     };
-    GetPlatformContractsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformContractsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 다건 조회 성공 응답
      * @description <p>계약 다건 조회 성공 응답</p>
@@ -5662,7 +6574,7 @@ export interface components {
       /** 조회할 할인 분담 정책 조건 필터 */
       filter?: components["schemas"]["PlatformDiscountSharePolicyFilterInput"];
     };
-    GetPlatformDiscountSharePoliciesError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformDiscountSharePoliciesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 할인 분담 정책 다건 조회 성공 응답 정보
      * @description <p>할인 분담 정책 다건 조회 성공 응답 정보</p>
@@ -5673,10 +6585,19 @@ export interface components {
       /** 조회된 페이지 정보 */
       page: components["schemas"]["PageInfo"];
     };
-    GetPlatformDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformDiscountSharePolicyFilterOptionsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformDiscountSharePolicyScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformDiscountSharePolicyFilterOptionsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformDiscountSharePolicyScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     GetPlatformError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformHolidaysError: components["schemas"]["UnauthorizedError"];
+    /**
+     * 공휴일 조회
+     * @description <p>공휴일 조회</p>
+     */
+    GetPlatformHolidaysResponse: {
+      /** 공휴일 리스트 */
+      holidays: components["schemas"]["PlatformHoliday"][];
+    };
     /**
      * 파트너 현황 조회를 위한 입력 정보
      * @description <p>파트너 현황 조회를 위한 입력 정보</p>
@@ -5684,15 +6605,42 @@ export interface components {
     GetPlatformPartnerDashboardBody: {
       /**
        * 테스트 조회 여부
-       * @description <p>true 이면 isForTest 가 true 인 파트너들을 조회하고, false 이면 isForTest 가 false 인 파트너들을 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+       * @description <p>true 이면 isForTest 가 true 인 파트너들을 조회하고, false 이면 isForTest 가 false 인 파트너들을 조회합니다. 기본값은 false 입니다.</p>
        */
       isForTest?: boolean;
     };
-    GetPlatformPartnerDashboardError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPartnerFilterOptionsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPartnerScheduleError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPartnerSettlementFilterOptionsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerDashboardError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerFilterOptionsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerScheduleError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerSettlementCurrenciesBody: {
+      isForTest: boolean;
+    };
+    GetPlatformPartnerSettlementCurrenciesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 정산내역 통화 조회 결과
+     * @description <p>정산내역 통화 조회 결과</p>
+     */
+    GetPlatformPartnerSettlementCurrenciesResponse: {
+      /** 통화 단위 */
+      settlementCurrencies: components["schemas"]["Currency"][];
+    };
+    GetPlatformPartnerSettlementDashboardBody: {
+      filter: components["schemas"]["PlatformPartnerSettlementFilterInput"];
+      isForTest: boolean;
+    };
+    GetPlatformPartnerSettlementDashboardError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerSettlementDatesBody: {
+      isForTest: boolean;
+    };
+    GetPlatformPartnerSettlementDatesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 정산일 리스트 조회 결과
+     * @description <p>정산일 리스트 조회 결과</p>
+     */
+    GetPlatformPartnerSettlementDatesResponse: {
+      settlementDates: string[];
+    };
     /**
      * 정산내역 다건 조회를 위한 입력 정보
      * @description <p>정산내역 다건 조회를 위한 입력 정보</p>
@@ -5702,8 +6650,9 @@ export interface components {
       page?: components["schemas"]["PageInput"];
       /** 조회할 정산내역 조건 필터 */
       filter: components["schemas"]["PlatformPartnerSettlementFilterInput"];
+      isForTest: boolean;
     };
-    GetPlatformPartnerSettlementsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnerSettlementsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 정산내역 다건 조회 성공 응답 정보
      * @description <p>정산내역 다건 조회 성공 응답 정보</p>
@@ -5713,6 +6662,8 @@ export interface components {
       items: components["schemas"]["PlatformPartnerSettlement"][];
       /** 조회된 페이지 정보 */
       page: components["schemas"]["PageInfo"];
+      /** 정산내역 상태 별 갯수 */
+      counts: components["schemas"]["PlatformPartnerSettlementStatusStats"];
     };
     /**
      * 파트너 다건 조회를 위한 입력 정보
@@ -5724,7 +6675,7 @@ export interface components {
       /** 조회할 파트너 조건 필터 */
       filter?: components["schemas"]["PlatformPartnerFilterInput"];
     };
-    GetPlatformPartnersError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPartnersError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 다건 조회 성공 응답 정보
      * @description <p>파트너 다건 조회 성공 응답 정보</p>
@@ -5735,7 +6686,7 @@ export interface components {
       /** 조회된 페이지 정보 */
       page: components["schemas"]["PageInfo"];
     };
-    GetPlatformPayableSettlementDatesError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPayableSettlementDatesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 지급 가능한 정산일 리스트 조회 성공 응답 정보
      * @description <p>지급 가능한 정산일 리스트 조회 성공 응답 정보</p>
@@ -5744,41 +6695,42 @@ export interface components {
       /** IN_PROCESS, SETTLED 상태의 Transfer가 등록되어 있는 정산일 리스트 */
       settlementDates: string[];
     };
-    GetPlatformPayoutError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPayoutPartnerSettlementsBody: {
-      page?: components["schemas"]["PageInput"];
-    };
-    GetPlatformPayoutPartnerSettlementsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPayoutSheetsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformPayoutSheetsResponse: {
-      items: components["schemas"]["PayoutSheet"][];
-    };
+    GetPlatformPayoutError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
     GetPlatformPayoutsBody: {
+      isForTest?: boolean;
       page?: components["schemas"]["PageInput"];
       filter?: components["schemas"]["PlatformPayoutFilterInput"];
     };
-    GetPlatformPayoutsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformPayoutsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     GetPlatformPayoutsResponse: {
       items: components["schemas"]["PlatformPayout"][];
       page: components["schemas"]["PageInfo"];
+      counts: components["schemas"]["PlatformPayoutStatusStats"];
     };
     GetPlatformTransferDashboardBody: {
       /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
       settlementDate: string;
       isForTest?: boolean;
     };
-    GetPlatformTransferDashboardError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformTransferError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformTransferNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    GetPlatformTransferFilterOptionsError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformTransferDashboardError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformTransferError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformTransferNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformTransferFilterOptionsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 정산건 요약 다건 조회를 위한 입력 정보
+     * @description <p>정산건 요약 다건 조회를 위한 입력 정보</p>
+     */
     GetPlatformTransferSummariesBody: {
+      /** 요청할 페이지 정보 */
       page?: components["schemas"]["PageInput"];
+      /** 조회할 정산건 조건 필터 */
       filter?: components["schemas"]["PlatformTransferFilterInput"];
     };
-    GetPlatformTransferSummariesError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    GetPlatformTransferSummariesError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     GetPlatformTransferSummariesResponse: {
       transferSummaries: components["schemas"]["PlatformTransferSummary"][];
       page: components["schemas"]["PageInfo"];
     };
+    GetPromotionError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PromotionNotFoundError"] | components["schemas"]["UnauthorizedError"];
     GetV2SupportedChannelsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 채널 다건 조회 성공 응답 정보
@@ -5788,6 +6740,13 @@ export interface components {
       /** 조회된 채널 리스트 */
       items: components["schemas"]["Channel"][];
     };
+    /**
+     * 상품권 타입
+     * @description <p>상품권 타입</p>
+     *
+     * @enum {string}
+     */
+    GiftCertificateType: "BOOKNLIFE" | "CULTURELAND" | "CULTURE_GIFT" | "HAPPYMONEY" | "SMART_MUNSANG";
     /**
      * 본인인증 내역
      * @description <p>본인인증 내역</p>
@@ -5908,8 +6867,16 @@ export interface components {
        * @description <p>접근 권한이 있는 상점 아이디만 입력 가능하며, 미입력시 토큰에 담긴 상점 아이디를 사용합니다.</p>
        */
       storeId?: string;
-      /** 채널키 */
-      channelKey: string;
+      /**
+       * 채널 키
+       * @description <p>채널 키 또는 채널 그룹 ID 필수</p>
+       */
+      channelKey?: string;
+      /**
+       * 채널 그룹 ID
+       * @description <p>채널 키 또는 채널 그룹 ID 필수</p>
+       */
+      channelGroupId?: string;
       /** 결제수단 정보 */
       method: components["schemas"]["InstantPaymentMethodInput"];
       /** 주문명 */
@@ -5955,6 +6922,8 @@ export interface components {
       productType?: components["schemas"]["PaymentProductType"];
       /** 배송지 주소 */
       shippingAddress?: components["schemas"]["SeparatedAddressInput"];
+      /** 해당 결제에 적용할 프로모션 아이디 */
+      promotionId?: string;
     };
     /**
      * 수기 결제 수단 입력 정보
@@ -5981,7 +6950,7 @@ export interface components {
       installmentMonth?: number;
       /** 무이자 할부 적용 여부 */
       useFreeInstallmentPlan?: boolean;
-      /** 무이자 할부 이자를 가맹점이 부담할지 여부 */
+      /** 무이자 할부 이자를 고객사가 부담할지 여부 */
       useFreeInterestFromMerchant?: boolean;
       /** 카드 포인트 사용 여부 */
       useCardPoint?: boolean;
@@ -6051,13 +7020,13 @@ export interface components {
     InstantPaymentMethodInputVirtualAccountOptionFixed: {
       /**
        * Account ID 고정식 가상계좌
-       * @description <p>가맹점이 가상계좌번호를 직접 관리하지 않고 PG사가 pgAccountId에 매핑되는 가상계좌번호를 내려주는 방식입니다.
+       * @description <p>고객사가 가상계좌번호를 직접 관리하지 않고 PG사가 pgAccountId에 매핑되는 가상계좌번호를 내려주는 방식입니다.
        * 동일한 pgAccountId로 가상계좌 발급 요청시에는 항상 같은 가상계좌번호가 내려옵니다.</p>
        */
       pgAccountId?: string;
       /**
        * Account Number 고정식 가상계좌
-       * @description <p>PG사가 일정 개수만큼의 가상계좌번호를 발급하여 가맹점에게 미리 전달하고 가맹점이 그 중 하나를 선택하여 사용하는 방식입니다.</p>
+       * @description <p>PG사가 일정 개수만큼의 가상계좌번호를 발급하여 고객사에게 미리 전달하고 고객사가 그 중 하나를 선택하여 사용하는 방식입니다.</p>
        */
       accountNumber?: string;
     };
@@ -6122,8 +7091,16 @@ export interface components {
       storeId?: string;
       /** 빌링키 결제 수단 정보 */
       method: components["schemas"]["InstantBillingKeyPaymentMethodInput"];
-      /** 채널키 */
-      channelKey: string;
+      /**
+       * 채널 키
+       * @description <p>채널 키 또는 채널 그룹 ID 필수</p>
+       */
+      channelKey?: string;
+      /**
+       * 채널 그룹 ID
+       * @description <p>채널 키 또는 채널 그룹 ID 필수</p>
+       */
+      channelGroupId?: string;
       /** 고객 정보 */
       customer?: components["schemas"]["CustomerInput"];
       /** 사용자 지정 데이터 */
@@ -6138,7 +7115,7 @@ export interface components {
        */
       noticeUrls?: string[];
     };
-    IssueBillingKeyError: components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["UnauthorizedError"];
+    IssueBillingKeyError: components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ChannelSpecificError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 빌링키 발급 성공 응답
      * @description <p>빌링키 발급 성공 응답</p>
@@ -6146,6 +7123,8 @@ export interface components {
     IssueBillingKeyResponse: {
       /** 빌링키 정보 */
       billingKeyInfo: components["schemas"]["BillingKeyInfoSummary"];
+      /** 발급에 실패한 채널이 있을시 실패 정보 */
+      channelSpecificFailures?: components["schemas"]["ChannelSpecificFailure"][];
     };
     /**
      * 현금영수증 발급 요청 양식
@@ -6162,7 +7141,7 @@ export interface components {
        * @description <p>외부 결제 건에 대한 수동 발급의 경우, 아이디를 직접 채번하여 입력합니다.</p>
        */
       paymentId: string;
-      /** 채널키 */
+      /** 채널 키 */
       channelKey: string;
       /** 현금 영수증 유형 */
       type: components["schemas"]["CashReceiptType"];
@@ -6176,6 +7155,11 @@ export interface components {
       productType?: components["schemas"]["PaymentProductType"];
       /** 고객 정보 */
       customer: components["schemas"]["IssueCashReceiptCustomerInput"];
+      /**
+       * 결제 일자
+       * Format: date-time
+       */
+      paidAt?: string;
     };
     /**
      * 현금영수증 발급 시 고객 관련 입력 정보
@@ -6206,7 +7190,7 @@ export interface components {
     IssueFailedCashReceipt: {
       /** 현금영수증 상태 */
       status: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -6220,13 +7204,62 @@ export interface components {
       isManual: boolean;
     };
     /**
+     * 빌링키 발급 완료 상태 건
+     * @description <p>빌링키 발급 완료 상태 건</p>
+     */
+    IssuedBillingKeyInfo: {
+      /** 빌링키 상태 */
+      status: string;
+      /** 빌링키 */
+      billingKey: string;
+      /** 고객사 아이디 */
+      merchantId: string;
+      /** 상점 아이디 */
+      storeId: string;
+      /**
+       * 빌링키 결제수단 상세 정보
+       * @description <p>추후 슈퍼빌링키 기능 제공 시 여러 결제수단 정보가 담길 수 있습니다.</p>
+       */
+      methods?: components["schemas"]["BillingKeyPaymentMethod"][];
+      /**
+       * 빌링키 발급 시 사용된 채널
+       * @description <p>추후 슈퍼빌링키 기능 제공 시 여러 채널 정보가 담길 수 있습니다.</p>
+       */
+      channels: components["schemas"]["SelectedChannel"][];
+      /** 고객 정보 */
+      customer: components["schemas"]["Customer"];
+      /** 사용자 지정 데이터 */
+      customData?: string;
+      /** 고객사가 채번하는 빌링키 발급 건 고유 아이디 */
+      issueId?: string;
+      /** 빌링키 발급 건 이름 */
+      issueName?: string;
+      /**
+       * 발급 요청 시점
+       * Format: date-time
+       */
+      requestedAt?: string;
+      /**
+       * 발급 시점
+       * Format: date-time
+       */
+      issuedAt: string;
+      /** 채널 그룹 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
+      /**
+       * 채널 별 빌링키 발급 응답
+       * @description <p>슈퍼빌링키의 경우, 빌링키 발급이 성공하더라도 일부 채널에 대한 빌링키 발급은 실패할 수 있습니다.</p>
+       */
+      pgBillingKeyIssueResponses?: components["schemas"]["PgBillingKeyIssueResponse"][];
+    };
+    /**
      * 발급 완료
      * @description <p>발급 완료</p>
      */
     IssuedCashReceipt: {
       /** 현금영수증 상태 */
       status: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -6303,6 +7336,25 @@ export interface components {
       issuedAt: string;
     };
     /**
+     * 빌링키 발급 성공 채널 응답
+     * @description <p>빌링키 발급 성공 채널 응답</p>
+     */
+    IssuedPgBillingKeyIssueResponse: {
+      type: string;
+      /**
+       * 채널
+       * @description <p>빌링키 발급을 시도한 채널입니다.</p>
+       */
+      channel: components["schemas"]["SelectedChannel"];
+      /** PG사 거래 아이디 */
+      pgTxId?: string;
+      /**
+       * 빌링키 결제수단 상세 정보
+       * @description <p>채널에 대응되는 PG사에서 응답한 빌링키 발급 수단 정보입니다.</p>
+       */
+      method?: components["schemas"]["BillingKeyPaymentMethod"];
+    };
+    /**
      * API key 로그인을 위한 입력 정보
      * @description <p>API key 로그인을 위한 입력 정보</p>
      */
@@ -6353,11 +7405,11 @@ export interface components {
       refreshToken: string;
     };
     /**
-     * 가맹점 정보
-     * @description <p>가맹점 정보</p>
+     * 고객사 정보
+     * @description <p>고객사 정보</p>
      */
     Merchant: {
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       id: string;
       graphqlId: string;
       /** 리포트 정보 */
@@ -6477,7 +7529,7 @@ export interface components {
        * @description <p>V1 결제 건의 경우 imp_uid에 해당합니다.</p>
        */
       transactionId: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -6485,6 +7537,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -6570,7 +7624,7 @@ export interface components {
        * @description <p>V1 결제 건의 경우 imp_uid에 해당합니다.</p>
        */
       transactionId: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -6578,6 +7632,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -6654,7 +7710,7 @@ export interface components {
        */
       cancelledAt: string;
     };
-    PayInstantlyError: components["schemas"]["AlreadyPaidError"] | components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["UnauthorizedError"];
+    PayInstantlyError: components["schemas"]["AlreadyPaidError"] | components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["PromotionPayMethodDoesNotMatchError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["TotalAmountLessThanDiscountAmountError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 수기 결제 성공 응답
      * @description <p>수기 결제 성공 응답</p>
@@ -6672,7 +7728,7 @@ export interface components {
       status: string;
       /** 결제 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -6680,6 +7736,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -6740,7 +7798,7 @@ export interface components {
       /** PG사 거래 아이디 */
       pgTxId?: string;
     };
-    PayWithBillingKeyError: components["schemas"]["AlreadyPaidError"] | components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["UnauthorizedError"];
+    PayWithBillingKeyError: components["schemas"]["AlreadyPaidError"] | components["schemas"]["BillingKeyAlreadyDeletedError"] | components["schemas"]["BillingKeyNotFoundError"] | components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["PromotionPayMethodDoesNotMatchError"] | components["schemas"]["SumOfPartsExceedsTotalAmountError"] | components["schemas"]["TotalAmountLessThanDiscountAmountError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 빌링키 결제 성공 응답
      * @description <p>빌링키 결제 성공 응답</p>
@@ -6790,7 +7848,7 @@ export interface components {
       /**
        * 할인금액
        * Format: int64
-       * @description <p>카드사 프로모션, 아임포트 프로모션, 적립형 포인트 결제, 쿠폰 할인 등을 포함합니다.</p>
+       * @description <p>카드사 프로모션, 포트원 프로모션, 적립형 포인트 결제, 쿠폰 할인 등을 포함합니다.</p>
        */
       discount: number;
       /**
@@ -6827,7 +7885,7 @@ export interface components {
       /**
        * 부가세액
        * Format: int64
-       * @description <p>가맹점에서 직접 계산이 필요한 경우 입력합니다.
+       * @description <p>고객사에서 직접 계산이 필요한 경우 입력합니다.
        * 입력하지 않으면 면세 금액을 제외한 금액의 1/11 로 자동 계산됩니다.</p>
        */
       vat?: number;
@@ -6897,11 +7955,11 @@ export interface components {
      * @description <p>결제 건 다건 조회를 위한 입력 정보</p>
      */
     PaymentFilterInput: {
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId?: string;
       /**
        * 상점 아이디
-       * @description <p>Merchant 사용자만 사용가능하며, 지정되지 않은 경우 가맹점 전체 결제 건을 조회합니다.</p>
+       * @description <p>Merchant 사용자만 사용가능하며, 지정되지 않은 경우 고객사 전체 결제 건을 조회합니다.</p>
        */
       storeId?: string;
       /** 조회 기준 시점 유형 */
@@ -7064,7 +8122,7 @@ export interface components {
     PaymentMethodEasyPayMethodCharge: {
       type: string;
       /** 표준 은행 코드 */
-      bank?: string;
+      bank?: components["schemas"]["Bank"];
     };
     /**
      * 상품권 상세 정보
@@ -7100,7 +8158,7 @@ export interface components {
     PaymentMethodTransfer: {
       type: string;
       /** 표준 은행 코드 */
-      bank?: string;
+      bank?: components["schemas"]["Bank"];
     };
     /** @enum {string} */
     PaymentMethodType: "CARD" | "EASY_PAY" | "GIFT_CERTIFICATE" | "MOBILE" | "TRANSFER" | "VIRTUAL_ACCOUNT";
@@ -7111,7 +8169,7 @@ export interface components {
     PaymentMethodVirtualAccount: {
       type: string;
       /** 표준 은행 코드 */
-      bank?: string;
+      bank?: components["schemas"]["Bank"];
       /** 계좌번호 */
       accountNumber: string;
       /** 계좌 유형 */
@@ -7178,7 +8236,7 @@ export interface components {
     PaymentProduct: {
       /**
        * 상품 고유 식별자
-       * @description <p>가맹점이 직접 부여한 식별자입니다.</p>
+       * @description <p>고객사가 직접 부여한 식별자입니다.</p>
        */
       id: string;
       /** 상품명 */
@@ -7208,6 +8266,594 @@ export interface components {
      * @enum {string}
      */
     PaymentProductType: "DIGITAL" | "PHYSICAL";
+    PaymentReconciliation: components["schemas"]["PaymentReconciliationIncomparable"] | components["schemas"]["PaymentReconciliationMatched"] | components["schemas"]["PaymentReconciliationNotCollected"] | components["schemas"]["PaymentReconciliationNotMatched"];
+    /**
+     * 거래상태
+     * @description <p>거래상태</p>
+     *
+     * @enum {string}
+     */
+    PaymentReconciliationActionType: "APPROVAL" | "FULL_CANCEL" | "PARTIAL_CANCEL" | "UNCLASSIFIED_CANCEL";
+    /**
+     * 거래대사 엑셀파일 필드
+     * @description <p>거래대사 엑셀파일 필드</p>
+     * <p>중복으로 필드를 선택 가능합니다</p>
+     *
+     * @enum {string}
+     */
+    PaymentReconciliationColumn: "ACTION_TYPE" | "ANOMALY_AMOUNT" | "INSTALLMENT_MONTH" | "IS_ESCROW" | "NOT_MATCHED_REASONS" | "ORDER_NAME" | "PAYMENT_AMOUNT" | "PAYMENT_CURRENCY" | "PAYMENT_DATETIME" | "PAYMENT_ID" | "PAYMENT_METHOD_CARD_ACQUIRER" | "PAYMENT_METHOD_CARD_APPROVAL_NUMBER" | "PAYMENT_METHOD_CARD_ISSUER" | "PAYMENT_METHOD_EASY_PAY_METHOD" | "PAYMENT_METHOD_ETC_NAME" | "PAYMENT_METHOD_GIFT_CERTIFICATE_APPROVAL_NUMBER" | "PAYMENT_METHOD_GIFT_CERTIFICATE_TYPE" | "PAYMENT_METHOD_MOBILE_CARRIER" | "PAYMENT_METHOD_TRANSFER_APPROVAL_NUMBER" | "PAYMENT_METHOD_TRANSFER_BANK" | "PAYMENT_METHOD_TYPE" | "PAYMENT_METHOD_VIRTUAL_ACCOUNT_APPROVAL_NUMBER" | "PAYMENT_METHOD_VIRTUAL_ACCOUNT_BANK" | "PG_TX_ID" | "RECONCILIATION_PG_SPECIFIER" | "RECONCILIATION_STATUS" | "SETTLEMENT_AMOUNT" | "SETTLEMENT_CURRENCY" | "SETTLEMENT_DATE" | "SETTLEMENT_FEE" | "SETTLEMENT_FEE_VAT" | "STORE_ID" | "SUPPLY_AMOUNT" | "TAX_FREE_AMOUNT" | "TRANSACTION_ID" | "VAT_AMOUNT";
+    /**
+     * 거래대사 엑셀 파일 다운로드 필터 목록
+     * @description <p>거래대사 엑셀 파일 다운로드 필터 목록</p>
+     * <p>필드 중복으로 적용됩니다.</p>
+     */
+    PaymentReconciliationExcelFileFilterInput: {
+      /**
+       * 거래대사 하위 가맹점 아이디 필터
+       * @description <p>storeId가 존재하지 않는 건을 검색하고 싶은 경우 빈 문자열을 포함시켜주세요.</p>
+       */
+      storeIds?: string[];
+      /** 거래대사 결제사(PG) 식별자 필터 */
+      pgSpecifiers?: components["schemas"]["ReconciliationPgSpecifier"][];
+      /** 거래대사 결제 수단 필터 */
+      paymentMethodTypes?: components["schemas"]["ReconciliationPaymentMethodType"][];
+      /** 거래대사 대사 상태 필터 */
+      paymentReconciliationStatuses?: components["schemas"]["PaymentReconciliationStatus"][];
+      /** 거래대사 결제 상태 필터 */
+      actionTypes?: components["schemas"]["PaymentReconciliationActionType"][];
+      /** 거래대사 결제 통화 필터 */
+      transactionCurrencies?: components["schemas"]["Currency"][];
+      /** 거래대사 정산 통화 필터 */
+      settlementCurrencies?: components["schemas"]["Currency"][];
+    };
+    PaymentReconciliationIncomparable: {
+      status: string;
+      /** 거래대사 아이디 */
+      id: string;
+      graphqlId: string;
+      actionType: components["schemas"]["PaymentReconciliationActionType"];
+      /** 대사용 PG사 가맹점 식별자 */
+      pgSpecifier: components["schemas"]["ReconciliationPgSpecifier"];
+      /** 고객사 아이디 */
+      merchantId: string;
+      merchantGraphqlId: string;
+      /**
+       * 결제 금액
+       * Format: int64
+       */
+      paymentAmount: number;
+      /**
+       * 면세가액
+       * Format: int64
+       */
+      taxFreeAmount: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount: number;
+      /**
+       * 공급가액
+       * Format: int64
+       */
+      supplyAmount: number;
+      /**
+       * 거래이상 금액
+       * Format: int64
+       */
+      anomalyAmount: number;
+      /**
+       * 결제일
+       * Format: date-time
+       */
+      paidAt: string;
+      /** 에스크로 여부 */
+      isEscrow?: boolean;
+      /** 결제 통화 */
+      paymentCurrency: components["schemas"]["Currency"];
+      /** 결제수단 상세 정보 */
+      paymentMethod: components["schemas"]["ReconciliationPaymentMethod"];
+      /** PG사 거래 아이디 */
+      pgTxId: string;
+      /** 거래건의 정산 정보 */
+      settlement?: components["schemas"]["Settlement"];
+    };
+    PaymentReconciliationMatched: {
+      status: string;
+      /** 거래대사 아이디 */
+      id: string;
+      graphqlId: string;
+      actionType: components["schemas"]["PaymentReconciliationActionType"];
+      /** 대사용 PG사 가맹점 식별자 */
+      pgSpecifier: components["schemas"]["ReconciliationPgSpecifier"];
+      /** 고객사 아이디 */
+      merchantId: string;
+      merchantGraphqlId: string;
+      /**
+       * 결제 금액
+       * Format: int64
+       */
+      paymentAmount: number;
+      /**
+       * 면세가액
+       * Format: int64
+       */
+      taxFreeAmount: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount: number;
+      /**
+       * 공급가액
+       * Format: int64
+       */
+      supplyAmount: number;
+      /**
+       * 결제일
+       * Format: date-time
+       */
+      paidAt: string;
+      /** 에스크로 여부 */
+      isEscrow?: boolean;
+      /** 결제 통화 */
+      paymentCurrency: components["schemas"]["Currency"];
+      /** 결제수단 상세 정보 */
+      paymentMethod: components["schemas"]["ReconciliationPaymentMethod"];
+      /** PG사 거래 아이디 */
+      pgTxId: string;
+      /** 거래건의 정산 정보 */
+      settlement?: components["schemas"]["Settlement"];
+      /** 포트원 결제 아이디 */
+      transactionId: string;
+      /** 고객사 결제 아이디 */
+      paymentId: string;
+      /** 주문명 */
+      orderName: string;
+      /** 하위 가맹점 아이디 */
+      storeId: string;
+      storeGraphqlId: string;
+    };
+    PaymentReconciliationNotCollected: {
+      status: string;
+      /** 거래대사 아이디 */
+      id: string;
+      graphqlId: string;
+      actionType: components["schemas"]["PaymentReconciliationActionType"];
+      /** 대사용 PG사 가맹점 식별자 */
+      pgSpecifier: components["schemas"]["ReconciliationPgSpecifier"];
+      /** 고객사 아이디 */
+      merchantId: string;
+      merchantGraphqlId: string;
+      /**
+       * 결제 금액
+       * Format: int64
+       */
+      paymentAmount: number;
+      /**
+       * 면세가액
+       * Format: int64
+       */
+      taxFreeAmount: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount: number;
+      /**
+       * 공급가액
+       * Format: int64
+       */
+      supplyAmount: number;
+      /**
+       * 거래이상 금액
+       * Format: int64
+       */
+      anomalyAmount: number;
+      /**
+       * 결제일
+       * Format: date-time
+       */
+      paidAt: string;
+      /** 에스크로 여부 */
+      isEscrow?: boolean;
+      /** 결제 통화 */
+      paymentCurrency: components["schemas"]["Currency"];
+      /** 결제수단 상세 정보 */
+      paymentMethod: components["schemas"]["ReconciliationPaymentMethod"];
+      /** PG사 거래 아이디 */
+      pgTxId?: string;
+      /** 거래건의 정산 정보 */
+      settlement?: components["schemas"]["Settlement"];
+      /** 포트원 결제 아이디 */
+      transactionId?: string;
+      /** 고객사 결제 아이디 */
+      paymentId?: string;
+      /** 주문명 */
+      orderName?: string;
+      /** 하위 가맹점 아이디 */
+      storeId?: string;
+      storeGraphqlId?: string;
+    };
+    PaymentReconciliationNotMatched: {
+      status: string;
+      /** 거래대사 아이디 */
+      id: string;
+      graphqlId: string;
+      actionType: components["schemas"]["PaymentReconciliationActionType"];
+      /** 대사용 PG사 가맹점 식별자 */
+      pgSpecifier: components["schemas"]["ReconciliationPgSpecifier"];
+      /** 고객사 아이디 */
+      merchantId: string;
+      merchantGraphqlId: string;
+      /**
+       * 결제 금액
+       * Format: int64
+       */
+      paymentAmount: number;
+      /**
+       * 면세가액
+       * Format: int64
+       */
+      taxFreeAmount: number;
+      /**
+       * 부가세
+       * Format: int64
+       */
+      vatAmount: number;
+      /**
+       * 공급가액
+       * Format: int64
+       */
+      supplyAmount: number;
+      /**
+       * 거래이상 금액
+       * Format: int64
+       */
+      anomalyAmount: number;
+      /**
+       * 결제일
+       * Format: date-time
+       */
+      paidAt: string;
+      /** 에스크로 여부 */
+      isEscrow?: boolean;
+      /** 결제 통화 */
+      paymentCurrency: components["schemas"]["Currency"];
+      /** 결제수단 상세 정보 */
+      paymentMethod: components["schemas"]["ReconciliationPaymentMethod"];
+      /** 포트원 결제 아이디 */
+      transactionId: string;
+      /** 고객사 결제 아이디 */
+      paymentId: string;
+      /** PG사 거래 아이디 */
+      pgTxId: string;
+      /** 거래건의 정산 정보 */
+      settlement?: components["schemas"]["Settlement"];
+      /** 거래대사 불일치 사유 */
+      notMatchedReasons: components["schemas"]["PaymentReconciliationNotMatchedReason"][];
+      /** 주문명 */
+      orderName: string;
+      /** 하위 가맹점 아이디 */
+      storeId: string;
+      storeGraphqlId: string;
+    };
+    /**
+     * 거래대사 매치 실패 사유
+     * @description <p>거래대사 매치 실패 사유</p>
+     *
+     * @enum {string}
+     */
+    PaymentReconciliationNotMatchedReason: "ESCROW_NOT_MATCHED" | "INSTALLMENT_MONTH_NOT_MATCHED" | "PAYMENT_AMOUNT_NOT_MATCHED" | "PAYMENT_DATE_NOT_MATCHED" | "TAX_FREE_AMOUNT_NOT_MATCHED" | "VAT_AMOUNT_NOT_MATCHED";
+    /**
+     * 거래대사 거래 건 별 조회 정렬 조건
+     * @description <p>거래대사 거래 건 별 조회 정렬 조건</p>
+     * <p>필드중 하나만 명시하여야 합니다</p>
+     */
+    PaymentReconciliationOrderInput: {
+      /** 정산일 기준 정렬 */
+      settlementDate?: components["schemas"]["SortOrder"];
+      /** 결제일 기준 정렬 */
+      transactionDate?: components["schemas"]["SortOrder"];
+      /** 결제 금액 기준 정렬 */
+      transactionAmount?: components["schemas"]["SortOrder"];
+      /** 거래이상 금액 기준 정렬 */
+      anomalyAmount?: components["schemas"]["SortOrder"];
+      /** 정산 금액 기준 정렬 */
+      settlementAmount?: components["schemas"]["SortOrder"];
+    };
+    /**
+     * 거래대사 거래내역 검색용 필드
+     * @description <p>거래대사 거래내역 검색용 필드</p>
+     * <p>각 필드 중 하나만 적용 됩니다.</p>
+     */
+    PaymentReconciliationSearchConditionInput: {
+      /** 고객사 거래 아이디 필드 */
+      paymentId?: string;
+      /** 포트원 결제 아이디 필드 */
+      transactionId?: string;
+      /** PG사 거래 아이디 필드 */
+      pgTxId?: string;
+      /** 주문명 필드 */
+      orderName?: string;
+    };
+    /**
+     * 거래대사 정산내역 일별 요약
+     * @description <p>거래대사 정산내역 일별 요약</p>
+     */
+    PaymentReconciliationSettlementSummary: {
+      /**
+       * 정산일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      date: string;
+      /** 정산 통화 */
+      settlementCurrency: components["schemas"]["Currency"];
+      /** 결제 통화 */
+      transactionCurrency: components["schemas"]["Currency"];
+      /** 정산내역 합산 데이터 */
+      aggregate: components["schemas"]["PaymentReconciliationSettlementSummaryAggregate"];
+      /** 정산내역 일별 상세 데이터 목록 */
+      details: components["schemas"]["PaymentReconciliationSettlementSummaryDetail"][];
+    };
+    PaymentReconciliationSettlementSummaryAggregate: {
+      /**
+       * 정산 금액
+       * Format: int64
+       */
+      settlementAmount: number;
+      /**
+       * 정산 건 수
+       * Format: int64
+       */
+      settlementCount: number;
+      /**
+       * PG 수수료
+       * Format: int64
+       */
+      feeAmount: number;
+      /**
+       * PG 수수료 부가세
+       * Format: int64
+       */
+      feeVatAmount: number;
+      /**
+       * 취소 금액
+       * Format: int64
+       */
+      cancelAmount: number;
+      /**
+       * 취소 건 수
+       * Format: int64
+       */
+      cancelCount: number;
+      /**
+       * 거래 합계 금액
+       * Format: int64
+       */
+      transactionAmount: number;
+    };
+    /**
+     * 거래대사 정산 요약 내역 엑셀파일 필드
+     * @description <p>거래대사 정산 요약 내역 엑셀파일 필드</p>
+     *
+     * @enum {string}
+     */
+    PaymentReconciliationSettlementSummaryColumn: "CANCEL_AMOUNT" | "CANCEL_COUNT" | "RECONCILIATION_PG_SPECIFIER" | "SETTLEMENT_AMOUNT" | "SETTLEMENT_COUNT" | "SETTLEMENT_DATE" | "SETTLEMENT_FEE" | "SETTLEMENT_FEE_VAT" | "STORE_ID" | "TRANSACTION_AMOUNT";
+    PaymentReconciliationSettlementSummaryDetail: {
+      /** 상점 ID */
+      storeId?: string;
+      storeGraphqlId?: string;
+      /** 대사용 PG사 가맹점 식별자 */
+      pgSpecifier: components["schemas"]["ReconciliationPgSpecifier"];
+      /**
+       * 정산 금액
+       * Format: int64
+       */
+      settlementAmount: number;
+      /**
+       * 정산 건 수
+       * Format: int64
+       */
+      settlementCount: number;
+      /**
+       * PG 수수료
+       * Format: int64
+       */
+      feeAmount: number;
+      /**
+       * PG 수수료 부가세
+       * Format: int64
+       */
+      feeVatAmount: number;
+      /**
+       * 취소 금액
+       * Format: int64
+       */
+      cancelAmount: number;
+      /**
+       * 취소 건 수
+       * Format: int64
+       */
+      cancelCount: number;
+      /**
+       * 거래 합계 금액
+       * Format: int64
+       */
+      transactionAmount: number;
+    };
+    /**
+     * 거래대사 정산 요약 엑셀 파일 필터
+     * @description <p>거래대사 정산 요약 엑셀 파일 필터</p>
+     * <p>필드 중복으로 적용됩니다.</p>
+     */
+    PaymentReconciliationSettlementSummaryExcelFileFilterInput: {
+      /** PG사 가맹점 식별자 필터 */
+      pgSpecifiers?: components["schemas"]["ReconciliationPgSpecifier"][];
+      /**
+       * 하위 상점 아이디 필터
+       * @description <p>storeId가 존재하지 않는 건을 검색하고 싶은 경우 빈 문자열을 포함시켜주세요.</p>
+       */
+      storeIds?: string[];
+    };
+    /**
+     * 거래대사 정산 요약 내역 필터
+     * @description <p>거래대사 정산 요약 내역 필터</p>
+     */
+    PaymentReconciliationSettlementSummaryFilterInput: {
+      /** PG사 가맹점 식별자 필터 */
+      pgSpecifiers?: components["schemas"]["ReconciliationPgSpecifier"][];
+      /** 하위 상점 아이디 필터 */
+      storeIds?: string[];
+    };
+    PaymentReconciliationSettlementSummaryWithCursor: {
+      item: components["schemas"]["PaymentReconciliationSettlementSummary"];
+      cursor: string;
+    };
+    /**
+     * 결제 건의 대사 상태
+     * @description <p>결제 건의 대사 상태</p>
+     *
+     * @enum {string}
+     */
+    PaymentReconciliationStatus: "INCOMPARABLE" | "MATCHED" | "NOT_COLLECTED" | "NOT_MATCHED";
+    /**
+     * 거래대사 거래내역 일별 요약
+     * @description <p>거래대사 거래내역 일별 요약</p>
+     */
+    PaymentReconciliationTransactionSummary: {
+      /**
+       * 거래일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      date: string;
+      /** 거래 통화 */
+      currency: components["schemas"]["Currency"];
+      /** 거래내역 합산 데이터 */
+      aggregate: components["schemas"]["PaymentReconciliationTransactionSummaryAggregate"];
+      /** 거래내역 상세 데이터 목록 */
+      details: components["schemas"]["PaymentReconciliationTransactionSummaryDetail"][];
+    };
+    PaymentReconciliationTransactionSummaryAggregate: {
+      /**
+       * 거래 금액
+       * Format: int64
+       */
+      transactionAmount: number;
+      /**
+       * 거래 건 수
+       * Format: int64
+       */
+      transactionCount: number;
+      /**
+       * 거래 취소 금액
+       * Format: int64
+       */
+      cancelAmount: number;
+      /**
+       * 거래 취소 건 수
+       * Format: int64
+       */
+      cancelCount: number;
+      /**
+       * 거래 이상 금액
+       * Format: int64
+       */
+      anomalyAmount: number;
+      /**
+       * 거래 이상 건 수
+       * Format: int64
+       */
+      anomalyCount: number;
+      /**
+       * 대사불일치 건 수
+       * Format: int64
+       */
+      notMatchedCount: number;
+      /**
+       * 대사불능 건 수
+       * Format: int64
+       */
+      incomparableCount: number;
+    };
+    /**
+     * 거래대사 정산 요약 내역 엑셀파일 필드
+     * @description <p>거래대사 정산 요약 내역 엑셀파일 필드</p>
+     *
+     * @enum {string}
+     */
+    PaymentReconciliationTransactionSummaryColumn: "ANOMALY_AMOUNT" | "ANOMALY_COUNT" | "CANCEL_AMOUNT" | "CANCEL_COUNT" | "RECONCILIATION_PG_SPECIFIER" | "RECONCILIATION_STATUS" | "STORE_ID" | "TRANSACTION_AMOUNT" | "TRANSACTION_COUNT" | "TRANSACTION_DATE";
+    PaymentReconciliationTransactionSummaryDetail: {
+      /** 상점 ID */
+      storeId?: string;
+      storeGraphqlId?: string;
+      /** 대사용 PG사 가맹점 식별자 */
+      pgSpecifier: components["schemas"]["ReconciliationPgSpecifier"];
+      /**
+       * 거래 금액
+       * Format: int64
+       */
+      transactionAmount: number;
+      /**
+       * 거래 건 수
+       * Format: int64
+       */
+      transactionCount: number;
+      /**
+       * 거래 취소 금액
+       * Format: int64
+       */
+      cancelAmount: number;
+      /**
+       * 거래 취소 건 수
+       * Format: int64
+       */
+      cancelCount: number;
+      /**
+       * 거래 이상 금액
+       * Format: int64
+       */
+      anomalyAmount: number;
+      /**
+       * 거래 이상 건 수
+       * Format: int64
+       */
+      anomalyCount: number;
+      /**
+       * 대사불일치 건 수
+       * Format: int64
+       */
+      notMatchedCount: number;
+      /**
+       * 대사불능 건 수
+       * Format: int64
+       */
+      incomparableCount: number;
+    };
+    /**
+     * 거래대사 거래 요약 엑셀 파일 필터
+     * @description <p>거래대사 거래 요약 엑셀 파일 필터</p>
+     * <p>필드 중복으로 적용됩니다.</p>
+     */
+    PaymentReconciliationTransactionSummaryExcelFilterInput: {
+      /** 대사 상태 필터 */
+      reconciliationStatuses?: components["schemas"]["PaymentReconciliationStatus"][];
+      /** 대사용 PG사 가맹점 식별자 필터 */
+      pgSpecifiers?: components["schemas"]["ReconciliationPgSpecifier"][];
+      /**
+       * 하위 상점 아이디 필터
+       * @description <p>storeId가 존재하지 않는 건을 검색하고 싶은 경우 빈 문자열을 포함시켜주세요.</p>
+       */
+      storeIds?: string[];
+    };
+    PaymentReconciliationTransactionSummaryWithCursor: {
+      item: components["schemas"]["PaymentReconciliationTransactionSummary"];
+      cursor: string;
+    };
+    PaymentReconciliationWithCursor: {
+      item: components["schemas"]["PaymentReconciliation"];
+      cursor: string;
+    };
     /**
      * 결제 예약 건
      * @description <p>결제 예약 건</p>
@@ -7467,17 +9113,7 @@ export interface components {
       /** 해당 결제 건의 커서 정보 */
       cursor: string;
     };
-    PayoutPartnerSettlementsResponse: {
-      items: components["schemas"]["PlatformPayoutPartnerSettlement"][];
-      page: components["schemas"]["PageInfo"];
-    };
-    PayoutSheet: {
-      payoutId: string;
-      contractId?: string;
-      settlementCurrency: components["schemas"]["Currency"];
-      payoutCurrency: components["schemas"]["Currency"];
-      name: string;
-    };
+    PaymentsExcelDownloadError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 결제 대기 상태
      * @description <p>결제 대기 상태</p>
@@ -7487,7 +9123,7 @@ export interface components {
       status: string;
       /** 결제 예약 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -7553,22 +9189,27 @@ export interface components {
       completedAt: string;
     };
     /**
+     * 채널 별 빌링키 발급 응답
+     * @description <p>채널 별 빌링키 발급 응답</p>
+     */
+    PgBillingKeyIssueResponse: components["schemas"]["FailedPgBillingKeyIssueResponse"] | components["schemas"]["IssuedPgBillingKeyIssueResponse"];
+    /**
      * PG사
      * @description <p>PG사</p>
      *
      * @enum {string}
      */
-    PgCompany: "ALIPAY" | "BLUEWALNUT" | "CHAI" | "DANAL" | "DAOU" | "EXIMBAY" | "GALAXIA" | "INICIS" | "JTNET" | "KAKAOPAY" | "KCP" | "KICC" | "KPN" | "KSNET" | "MOBILIANS" | "NAVERPAY" | "NICE" | "PAYCO" | "PAYMENTWALL" | "PAYPAL" | "PAYPLE" | "SETTLE" | "SMARTRO" | "SMILEPAY" | "SYRUP" | "TOSSPAY" | "TOSSPAYMENTS" | "WELCOME";
+    PgCompany: "ALIPAY" | "BLUEWALNUT" | "CHAI" | "DANAL" | "DAOU" | "EXIMBAY" | "GALAXIA" | "HYPHEN" | "INICIS" | "JTNET" | "KAKAO" | "KAKAOPAY" | "KCP" | "KICC" | "KPN" | "KSNET" | "MOBILIANS" | "NAVERPAY" | "NICE" | "PAYCO" | "PAYMENTWALL" | "PAYPAL" | "PAYPLE" | "SETTLE" | "SMARTRO" | "SMILEPAY" | "SYRUP" | "TOSSPAY" | "TOSSPAYMENTS" | "WELCOME";
     /**
      * PG사 결제 모듈
      * @description <p>PG사 결제 모듈</p>
      *
      * @enum {string}
      */
-    PgProvider: "ALIPAY" | "BLUEWALNUT" | "CHAI" | "DANAL" | "DANAL_TPAY" | "DAOU" | "EXIMBAY" | "GALAXIA" | "HTML5_INICIS" | "INICIS" | "INICIS_UNIFIED" | "INICIS_V2" | "JTNET" | "KAKAO" | "KAKAOPAY" | "KCP" | "KCP_BILLING" | "KCP_DIRECT" | "KCP_QUICK" | "KICC" | "KPN" | "KSNET" | "MOBILIANS" | "NAVERCO" | "NAVERPAY" | "NICE" | "NICE_V2" | "PAYCO" | "PAYMENTWALL" | "PAYPAL" | "PAYPAL_V2" | "PAYPLE" | "PINPAY" | "SETTLE" | "SETTLE_ACC" | "SETTLE_FIRM" | "SMARTRO" | "SMARTRO_V2" | "SMILEPAY" | "SYRUP" | "TOSSPAY" | "TOSSPAYMENTS" | "TOSSPAY_V2" | "TOSS_BRANDPAY" | "UPLUS" | "WELCOME";
+    PgProvider: "ALIPAY" | "BLUEWALNUT" | "CHAI" | "DANAL" | "DANAL_TPAY" | "DAOU" | "EXIMBAY" | "GALAXIA" | "HTML5_INICIS" | "HYPHEN" | "INICIS" | "INICIS_UNIFIED" | "INICIS_V2" | "JTNET" | "KAKAO" | "KAKAOPAY" | "KCP" | "KCP_BILLING" | "KCP_DIRECT" | "KCP_QUICK" | "KCP_V2" | "KICC" | "KPN" | "KSNET" | "MOBILIANS" | "NAVERCO" | "NAVERPAY" | "NICE" | "NICE_V2" | "PAYCO" | "PAYMENTWALL" | "PAYPAL" | "PAYPAL_V2" | "PAYPLE" | "PINPAY" | "SETTLE" | "SETTLE_ACC" | "SETTLE_FIRM" | "SMARTRO" | "SMARTRO_V2" | "SMILEPAY" | "SYRUP" | "TOSSPAY" | "TOSSPAYMENTS" | "TOSSPAY_V2" | "TOSS_BRANDPAY" | "UPLUS" | "WELCOME";
     /**
-     * PG사에서 오류가 발생한 경우
-     * @description <p>PG사에서 오류가 발생한 경우</p>
+     * PG사에서 오류를 전달한 경우
+     * @description <p>PG사에서 오류를 전달한 경우</p>
      */
     PgProviderError: {
       type: string;
@@ -7577,11 +9218,11 @@ export interface components {
       pgMessage: string;
     };
     /**
-     * 가맹점의 플랫폼 기능 관련 정보
-     * @description <p>가맹점의 플랫폼 기능 관련 정보</p>
+     * 고객사의 플랫폼 기능 관련 정보
+     * @description <p>고객사의 플랫폼 기능 관련 정보</p>
      */
     Platform: {
-      /** 해당 플랫폼의 가맹점 아이디 */
+      /** 해당 플랫폼의 고객사 아이디 */
       merchantId: string;
       graphqlId: string;
       /** 파트너 정산금액의 소수점 처리 방식 */
@@ -7615,6 +9256,8 @@ export interface components {
     PlatformAccountHolder: {
       /** 계좌 예금주 이름 */
       holderName: string;
+      /** 계좌 검증 아이디 */
+      accountVerificationId: string;
     };
     /**
      * 플랫폼 계좌 상태
@@ -7622,7 +9265,31 @@ export interface components {
      *
      * @enum {string}
      */
-    PlatformAccountStatus: "EXPIRED" | "UNKNOWN" | "VERIFIED" | "VERIFYING" | "VERIFY_FAILED";
+    PlatformAccountStatus: "EXPIRED" | "NOT_VERIFIED" | "UNKNOWN" | "VERIFIED" | "VERIFYING" | "VERIFY_FAILED";
+    /**
+     * 파트너 계좌 검증 아이디를 이미 사용한 경우
+     * @description <p>파트너 계좌 검증 아이디를 이미 사용한 경우</p>
+     */
+    PlatformAccountVerificationAlreadyUsedError: {
+      type: string;
+      message?: string;
+    };
+    /**
+     * 파트너 계좌 인증이 실패한 경우
+     * @description <p>파트너 계좌 인증이 실패한 경우</p>
+     */
+    PlatformAccountVerificationFailedError: {
+      type: string;
+      message?: string;
+    };
+    /**
+     * 파트너 계좌 검증 아이디를 찾을 수 없는 경우
+     * @description <p>파트너 계좌 검증 아이디를 찾을 수 없는 경우</p>
+     */
+    PlatformAccountVerificationNotFoundError: {
+      type: string;
+      message?: string;
+    };
     PlatformAdditionalFeePoliciesNotFoundError: {
       type: string;
       ids: string[];
@@ -7632,9 +9299,10 @@ export interface components {
     /**
      * 추가 수수료 정책
      * @description <p>추가 수수료 정책</p>
-     * <p>추가 수수료 정책는 가맹점의 주문건에 대한 중개수수료에 별도로 추가로 부여되는 수수료입니다. 대표적인 사용 예시로 풀필먼트 수수료, 로켓배송 수수료, 마케팅 채널 수수료등이 있습니다.</p>
+     * <p>추가 수수료 정책는 고객사의 주문건에 대한 중개수수료에 별도로 추가로 부여되는 수수료입니다. 대표적인 사용 예시로 풀필먼트 수수료, 로켓배송 수수료, 마케팅 채널 수수료등이 있습니다.</p>
      */
     PlatformAdditionalFeePolicy: {
+      /** 추가 수수료 정책 고유 아이디 */
       id: string;
       graphqlId: string;
       /** 추가 수수료 정책 이름 */
@@ -7664,7 +9332,7 @@ export interface components {
     PlatformAdditionalFeePolicyFilterInput: {
       /**
        * 보관 조회 여부
-       * @description <p>true 이면 보관된 추가 수수료 정책의 필터 옵션을 조회하고, false 이면 보관되지 않은 추가 수수료 정책의 필터 옵션을 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+       * @description <p>true 이면 보관된 추가 수수료 정책의 필터 옵션을 조회하고, false 이면 보관되지 않은 추가 수수료 정책의 필터 옵션을 조회합니다. 기본값은 false 입니다.</p>
        */
       isArchived?: boolean;
       /**
@@ -7744,16 +9412,101 @@ export interface components {
       type: string;
       message?: string;
     };
+    PlatformBulkPayout: {
+      /** 일괄 지급 고유 아이디 */
+      id: string;
+      graphqlId: string;
+      name: string;
+      creatorId: string;
+      method: components["schemas"]["PlatformPayoutMethod"];
+      arePayoutsGenerated: boolean;
+      /** Format: int64 */
+      totalPayoutAmount: number;
+      status: components["schemas"]["PlatformBulkPayoutStatus"];
+      payoutStats: components["schemas"]["PlatformBulkPayoutStats"];
+      /** Format: date-time */
+      statusUpdatedAt: string;
+      /** Format: date-time */
+      createdAt: string;
+      /** Format: date-time */
+      updatedAt: string;
+    };
+    PlatformBulkPayoutFilterInput: {
+      statuses?: components["schemas"]["PlatformBulkPayoutStatus"][];
+      methods?: components["schemas"]["PlatformPayoutMethod"][];
+      criteria?: components["schemas"]["PlatformBulkPayoutFilterInputCriteria"];
+    };
+    PlatformBulkPayoutFilterInputCriteria: {
+      timestampRange?: components["schemas"]["DateTimeRange"];
+      bulkPayoutId?: string;
+    };
+    /**
+     * 일괄 지급이 존재하지 않는 경우
+     * @description <p>일괄 지급이 존재하지 않는 경우</p>
+     */
+    PlatformBulkPayoutNotFoundError: {
+      type: string;
+      message?: string;
+    };
+    PlatformBulkPayoutPartnerSettlement: {
+      bulkPayoutId: string;
+      partnerSettlement: components["schemas"]["PlatformPartnerSettlement"];
+      isSelected: boolean;
+    };
+    PlatformBulkPayoutPartnerSettlementsFilterInput: {
+      partnerIds: string[];
+      /** 정산 상태 */
+      statuses: components["schemas"]["PlatformPartnerSettlementStatus"][];
+    };
+    PlatformBulkPayoutStats: {
+      amount: components["schemas"]["PlatformPayoutStatusStats"];
+      count: components["schemas"]["PlatformPayoutStatusStats"];
+    };
+    /** @enum {string} */
+    PlatformBulkPayoutStatus: "CANCELLED" | "COMPLETED" | "ONGOING" | "PREPARED" | "PREPARING" | "STOPPED";
+    PlatformBulkPayoutStatusStats: {
+      /** Format: int64 */
+      preparing: number;
+      /** Format: int64 */
+      prepared: number;
+      /** Format: int64 */
+      ongoing: number;
+      /** Format: int64 */
+      stopped: number;
+      /** Format: int64 */
+      cancelled: number;
+      /** Format: int64 */
+      completed: number;
+    };
+    /**
+     * 다운로드 할 시트 컬럼
+     * @description <p>다운로드 할 시트 컬럼</p>
+     *
+     * @enum {string}
+     */
+    PlatformBulkPayoutsSheetField: "BULK_PAYOUT_ID" | "CREATED_AT" | "CREATOR_ID" | "METHOD" | "NAME" | "PAYOUT_CANCELLED_AMOUNT" | "PAYOUT_CANCELLED_COUNT" | "PAYOUT_FAILED_AMOUNT" | "PAYOUT_FAILED_COUNT" | "PAYOUT_PREPARED_AMOUNT" | "PAYOUT_PREPARED_COUNT" | "PAYOUT_STOPPED_AMOUNT" | "PAYOUT_STOPPED_COUNT" | "PAYOUT_SUCCEEDED_AMOUNT" | "PAYOUT_SUCCEEDED_COUNT" | "STATUS" | "STATUS_UPDATED_AT" | "TOTAL_PAYOUT_AMOUNT";
     PlatformCancelOrderTransfersExistsError: {
       type: string;
       message?: string;
     };
+    /**
+     * 취소 가능한 금액이 초과한 경우
+     * @description <p>취소 가능한 금액이 초과한 경우</p>
+     */
     PlatformCancellableAmountExceededError: {
       type: string;
       /** Format: int64 */
       cancellableAmount: number;
+      amountType: components["schemas"]["PlatformCancellableAmountType"];
       message?: string;
     };
+    /**
+     * 금액 타입
+     * @description <p>금액 타입</p>
+     *
+     * @enum {string}
+     */
+    PlatformCancellableAmountType: "SUPPLY_WITH_VAT" | "TAX_FREE";
     PlatformCancellableDiscountAmountExceededError: {
       type: string;
       discountSharePolicyId: string;
@@ -7810,19 +9563,13 @@ export interface components {
       type: string;
       message?: string;
     };
-    PlatformCompletedPayout: {
-      status: string;
-      id: string;
-      graphqlId: string;
-      creatorId: string;
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
-      settlementDate: string;
-      summary: components["schemas"]["PlatformPayoutSummary"];
-      filter: components["schemas"]["PlatformPartnerSettlementFilter"];
-      /** Format: date-time */
-      createdAt: string;
-      /** Format: date-time */
-      paidOutAt: string;
+    /**
+     * 정산 건 식별에 실패한 경우
+     * @description <p>정산 건 식별에 실패한 경우</p>
+     */
+    PlatformCannotSpecifyTransferError: {
+      type: string;
+      message?: string;
     };
     /**
      * 플랫폼 파트너 담당자 연락 정보
@@ -7833,15 +9580,15 @@ export interface components {
       /** 담당자 이름 */
       name: string;
       /** 담당자 휴대폰 번호 */
-      phoneNumber: string;
+      phoneNumber?: string;
       /** 담당자 이메일 */
       email: string;
     };
     /**
      * 계약
      * @description <p>계약</p>
-     * <p>계약은 플랫폼 가맹점이 파트너에게 정산해줄 대금과 정산일을 계산하는 데 적용되는 정보입니다.
-     * 가맹점의 플랫폼에서 재화 및 서비스를 판매하기 위한 중개수수료와 판매금에 대한 정산일로 구성되어 있습니다.</p>
+     * <p>계약은 플랫폼 고객사가 파트너에게 정산해줄 대금과 정산일을 계산하는 데 적용되는 정보입니다.
+     * 고객사의 플랫폼에서 재화 및 서비스를 판매하기 위한 중개수수료와 판매금에 대한 정산일로 구성되어 있습니다.</p>
      */
     PlatformContract: {
       /** 계약 고유 아이디 */
@@ -7896,7 +9643,7 @@ export interface components {
       datePolicies?: components["schemas"]["PlatformSettlementCycleDatePolicy"][];
       /**
        * 보관 조회 여부
-       * @description <p>true 이면 보관된 계약을 조회하고, false 이면 보관되지 않은 계약을 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+       * @description <p>true 이면 보관된 계약을 조회하고, false 이면 보관되지 않은 계약을 조회합니다. 기본값은 false 입니다.</p>
        */
       isArchived?: boolean;
       /** 검색 키워드 */
@@ -7935,6 +9682,14 @@ export interface components {
       graphqlIds: string[];
       message?: string;
     };
+    /**
+     * 지원 되지 않는 통화를 선택한 경우
+     * @description <p>지원 되지 않는 통화를 선택한 경우</p>
+     */
+    PlatformCurrencyNotSupportedError: {
+      type: string;
+      message?: string;
+    };
     PlatformDiscountCancelExceededOrderCancelAmountError: {
       type: string;
       message?: string;
@@ -7952,7 +9707,7 @@ export interface components {
     /**
      * 할인 분담 정책
      * @description <p>할인 분담 정책</p>
-     * <p>할인 분담은 가맹점의 주문건에 쿠폰 및 포인트와 같은 할인금액이 적용될 때, 파트너 정산 시 할인금액에 대한 분담 정책을 가지는 객체입니다.
+     * <p>할인 분담은 고객사의 주문건에 쿠폰 및 포인트와 같은 할인금액이 적용될 때, 파트너 정산 시 할인금액에 대한 분담 정책을 가지는 객체입니다.
      * 할인 유형에 대한 아이디와 메모, 그리고 파트너 분담율을 가집니다.</p>
      */
     PlatformDiscountSharePolicy: {
@@ -7987,7 +9742,7 @@ export interface components {
     PlatformDiscountSharePolicyFilterInput: {
       /**
        * 보관 조회 여부
-       * @description <p>true 이면 보관된 할인 분담 정책을 조회하고, false 이면 보관되지 않은 할인 분담 정책을 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+       * @description <p>true 이면 보관된 할인 분담 정책을 조회하고, false 이면 보관되지 않은 할인 분담 정책을 조회합니다. 기본값은 false 입니다.</p>
        */
       isArchived?: boolean;
       /** @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 파트너 분담율을 가진 할인 분담 정책만 조회합니다.</p> */
@@ -8044,13 +9799,24 @@ export interface components {
       type: string;
       message?: string;
     };
+    /**
+     * 외부 결제 정보
+     * @description <p>외부 결제 정보</p>
+     */
     PlatformExternalPayment: {
       type: string;
+      /** 결제 아이디 */
       id: string;
+      /** 주문 명 */
       orderName?: string;
+      /** 통화 */
       currency: components["schemas"]["Currency"];
+      /** 결제 수단 */
       method?: components["schemas"]["PlatformPaymentMethod"];
-      /** Format: date-time */
+      /**
+       * 결제 일시
+       * Format: date-time
+       */
       paidAt?: string;
     };
     /**
@@ -8103,6 +9869,27 @@ export interface components {
        */
       rate: number;
     };
+    /**
+     * 공휴일
+     * @description <p>공휴일</p>
+     */
+    PlatformHoliday: {
+      /** 이름 */
+      name: string;
+      /**
+       * 날짜
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      date: string;
+    };
+    /**
+     * 파트너 타입 수정에 필요한 데이터가 부족한 경우
+     * @description <p>파트너 타입 수정에 필요한 데이터가 부족한 경우</p>
+     */
+    PlatformInsufficientDataToChangePartnerTypeError: {
+      type: string;
+      message?: string;
+    };
     PlatformInvalidSettlementFormulaError: {
       type: string;
       platformFee?: components["schemas"]["PlatformSettlementFormulaError"];
@@ -8110,20 +9897,38 @@ export interface components {
       additionalFee?: components["schemas"]["PlatformSettlementFormulaError"];
       message?: string;
     };
+    /**
+     * 수기 정산건
+     * @description <p>수기 정산건</p>
+     */
     PlatformManualTransfer: {
       type: string;
+      /** 정산건 아이디 */
       id: string;
       graphqlId: string;
+      /** 파트너 */
       partner: components["schemas"]["PlatformPartner"];
+      /** 정산 상태 */
       status: components["schemas"]["PlatformTransferStatus"];
+      /** 메모 */
       memo?: string;
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementDate: string;
+      /** 정산 통화 */
       settlementCurrency: components["schemas"]["Currency"];
       payoutId?: string;
       payoutGraphqlId?: string;
+      /** 테스트 모드 여부 */
       isForTest: boolean;
-      /** Format: int64 */
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+      /**
+       * 정산 금액
+       * Format: int64
+       */
       settlementAmount: number;
     };
     PlatformManualTransferSummary: {
@@ -8137,10 +9942,18 @@ export interface components {
       settlementDate: string;
       settlementCurrency: components["schemas"]["Currency"];
       isForTest: boolean;
+      /** 사용자 정의 속성 */
+      partnerUserDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
       /** Format: int64 */
       settlementAmount: number;
     };
-    PlatformNoPayablePartnerSettlementsError: {
+    /**
+     * 업데이트 불가능한 상태를 업데이트하려는 경우
+     * @description <p>업데이트 불가능한 상태를 업데이트하려는 경우</p>
+     */
+    PlatformNonUpdatableStatusError: {
       type: string;
       message?: string;
     };
@@ -8152,44 +9965,63 @@ export interface components {
       type: string;
       message?: string;
     };
-    PlatformOngoingPayout: {
-      status: string;
-      id: string;
-      graphqlId: string;
-      creatorId: string;
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
-      settlementDate: string;
-      summary: components["schemas"]["PlatformPayoutSummary"];
-      filter: components["schemas"]["PlatformPartnerSettlementFilter"];
-      /** Format: date-time */
-      createdAt: string;
-    };
-    PlatformOngoingPayoutExistsError: {
+    /**
+     * 지원하지 않는 은행인 경우
+     * @description <p>지원하지 않는 은행인 경우</p>
+     */
+    PlatformNotSupportedBankError: {
       type: string;
       message?: string;
     };
+    /**
+     * 주문 취소 정산건
+     * @description <p>주문 취소 정산건</p>
+     */
     PlatformOrderCancelTransfer: {
       type: string;
+      /** 정산건 아이디 */
       id: string;
       graphqlId: string;
+      /** 파트너 */
       partner: components["schemas"]["PlatformPartner"];
+      /** 정산 상태 */
       status: components["schemas"]["PlatformTransferStatus"];
+      /** 메모 */
       memo?: string;
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementDate: string;
+      /** 정산 통화 */
       settlementCurrency: components["schemas"]["Currency"];
       payoutId?: string;
       payoutGraphqlId?: string;
+      /** 테스트 모드 여부 */
       isForTest: boolean;
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+      /** 정산 금액 정보 */
       amount: components["schemas"]["PlatformOrderSettlementAmount"];
+      /** 계약 */
       contract: components["schemas"]["PlatformContract"];
+      /** 결제 정보 */
       payment: components["schemas"]["PlatformPayment"];
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 정산 시작일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementStartDate: string;
+      /** 주문 항목 리스트 */
       orderLines: components["schemas"]["PlatformOrderTransferOrderLine"][];
+      /** 정산 금액 계산 시 사용된 추가 수수료 정보 */
       additionalFees: components["schemas"]["PlatformOrderTransferAdditionalFee"][];
+      /** 정산 금액 계산 시 사용된 할인 정보 */
       discounts: components["schemas"]["PlatformOrderTransferDiscount"][];
+      /** 주문 취소 정보 */
       cancellation: components["schemas"]["PlatformOrderTransferCancellation"];
+      /** 정산 파라미터 (실험기능) */
+      parameters: components["schemas"]["TransferParameters"];
     };
     PlatformOrderCancelTransferSummary: {
       type: string;
@@ -8203,6 +10035,10 @@ export interface components {
       settlementDate: string;
       settlementCurrency: components["schemas"]["Currency"];
       isForTest: boolean;
+      /** 사용자 정의 속성 */
+      partnerUserDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
       amount: components["schemas"]["PlatformOrderSettlementAmount"];
       payment: components["schemas"]["PlatformTransferSummaryPayment"];
       /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
@@ -8212,6 +10048,11 @@ export interface components {
       type: string;
       message?: string;
     };
+    /**
+     * 정산 금액 정보
+     * @description <p>정산 금액 정보</p>
+     * <p>정산 금액과 정산 금액 계산에 사용된 금액 정보들 입니다.</p>
+     */
     PlatformOrderSettlementAmount: {
       /**
        * 정산 금액
@@ -8234,6 +10075,16 @@ export interface components {
        * @description <p>참조된 계약의 결제 금액 부가세 감액 여부에 따라 false인 경우 0원, true인 경우 결제 금액 부가세입니다.</p>
        */
       paymentVatBurden: number;
+      /**
+       * 면세 금액
+       * Format: int64
+       */
+      taxFree: number;
+      /**
+       * 공급가액
+       * Format: int64
+       */
+      supply: number;
       /**
        * 주문 금액
        * Format: int64
@@ -8270,64 +10121,146 @@ export interface components {
        */
       discountShare: number;
     };
+    /**
+     * 주문 정산건
+     * @description <p>주문 정산건</p>
+     */
     PlatformOrderTransfer: {
       type: string;
+      /** 정산건 아이디 */
       id: string;
       graphqlId: string;
+      /** 파트너 */
       partner: components["schemas"]["PlatformPartner"];
+      /** 정산 상태 */
       status: components["schemas"]["PlatformTransferStatus"];
+      /** 메모 */
       memo?: string;
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementDate: string;
+      /** 정산 통화 */
       settlementCurrency: components["schemas"]["Currency"];
       payoutId?: string;
       payoutGraphqlId?: string;
+      /** 테스트 모드 여부 */
       isForTest: boolean;
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+      /** 정산 금액 정보 */
       amount: components["schemas"]["PlatformOrderSettlementAmount"];
+      /** 계약 */
       contract: components["schemas"]["PlatformContract"];
+      /** 결제 정보 */
       payment: components["schemas"]["PlatformPayment"];
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /**
+       * 정산 시작일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementStartDate: string;
+      /** 주문 항목 리스트 */
       orderLines: components["schemas"]["PlatformOrderTransferOrderLine"][];
+      /** 정산 금액 계산 시 사용된 추가 수수료 정보 */
       additionalFees: components["schemas"]["PlatformOrderTransferAdditionalFee"][];
+      /** 정산 금액 계산 시 사용된 할인 정보 */
       discounts: components["schemas"]["PlatformOrderTransferDiscount"][];
+      /** 정산 파라미터 (실험기능) */
+      parameters: components["schemas"]["TransferParameters"];
     };
+    /**
+     * 추가 수수료 정보
+     * @description <p>추가 수수료 정보</p>
+     */
     PlatformOrderTransferAdditionalFee: {
+      /** 추가 수수료 정책 */
       policy: components["schemas"]["PlatformAdditionalFeePolicy"];
-      /** Format: int64 */
+      /**
+       * 추가 수수료 금액
+       * Format: int64
+       */
       amount: number;
-      /** Format: int64 */
+      /**
+       * 추가 수수료 부가세 금액
+       * Format: int64
+       */
       vat: number;
     };
     PlatformOrderTransferAlreadyCancelledError: {
       type: string;
       message?: string;
     };
+    /**
+     * 주문 취소 정보
+     * @description <p>주문 취소 정보</p>
+     */
     PlatformOrderTransferCancellation: {
+      /** 주문 취소 아이디 */
       id: string;
-      /** Format: date-time */
+      /**
+       * 취소 일시
+       * Format: date-time
+       */
       cancelledAt: string;
     };
+    /**
+     * 할인 정보
+     * @description <p>할인 정보</p>
+     */
     PlatformOrderTransferDiscount: {
+      /** 할인 분담 정책 */
       sharePolicy: components["schemas"]["PlatformDiscountSharePolicy"];
-      /** Format: int64 */
+      /**
+       * 할인 금액
+       * Format: int64
+       */
       amount: number;
-      /** Format: int64 */
+      /**
+       * 할인 분담 금액
+       * Format: int64
+       */
       shareAmount: number;
     };
+    /**
+     * 주문 항목
+     * @description <p>주문 항목</p>
+     */
     PlatformOrderTransferOrderLine: {
+      /** 상품 */
       product: components["schemas"]["PlatformOrderTransferProduct"];
-      /** Format: int32 */
+      /**
+       * 상품 수량
+       * Format: int32
+       */
       quantity: number;
+      /** 상품 할인 정보 */
       discounts: components["schemas"]["PlatformOrderTransferDiscount"][];
+      /** 상품 추가 수수료 정보 */
       additionalFees: components["schemas"]["PlatformOrderTransferAdditionalFee"][];
+      /** 상품 정산 금액 정보 */
       amount: components["schemas"]["PlatformOrderSettlementAmount"];
     };
+    /**
+     * 상품
+     * @description <p>상품</p>
+     */
     PlatformOrderTransferProduct: {
+      /** 상품 아이디 */
       id: string;
+      /** 상품 이름 */
       name: string;
-      /** Format: int64 */
+      /**
+       * 상품 금액
+       * Format: int64
+       */
       amount: number;
+      /**
+       * 상품 면세 금액
+       * Format: int64
+       */
+      taxFreeAmount: number;
+      /** 태그 */
       tag?: string;
     };
     PlatformOrderTransferSummary: {
@@ -8342,6 +10275,10 @@ export interface components {
       settlementDate: string;
       settlementCurrency: components["schemas"]["Currency"];
       isForTest: boolean;
+      /** 사용자 정의 속성 */
+      partnerUserDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformUserDefinedPropertyKeyValue"][];
       amount: components["schemas"]["PlatformOrderSettlementAmount"];
       payment: components["schemas"]["PlatformTransferSummaryPayment"];
       /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
@@ -8350,7 +10287,7 @@ export interface components {
     /**
      * 파트너
      * @description <p>파트너</p>
-     * <p>파트너는 가맹점이 정산해주어야 할 대상입니다.
+     * <p>파트너는 고객사가 정산해주어야 할 대상입니다.
      * 기본 사업자 정보와 정산정보, 그리고 적용될 계약의 정보를 등록 및 관리할 수 있습니다.</p>
      */
     PlatformPartner: {
@@ -8365,13 +10302,14 @@ export interface components {
       account: components["schemas"]["PlatformAccount"];
       /** 파트너의 상태 */
       status: components["schemas"]["PlatformPartnerStatus"];
+      /** 파트너에 설정된 기본 계약 아이디 */
       defaultContractId: string;
       /** 파트너에 대한 메모 */
       memo?: string;
       /** 파트너의 태그 리스트 */
       tags: string[];
       /** 파트너 유형별 정보 */
-      type?: components["schemas"]["PlatformPartnerType"];
+      type: components["schemas"]["PlatformPartnerType"];
       /** 보관 여부 */
       isArchived: boolean;
       /**
@@ -8379,7 +10317,16 @@ export interface components {
        * Format: date-time
        */
       appliedAt: string;
+      /** 사용자 정의 속성 */
+      userDefinedProperties: components["schemas"]["PlatformProperties"];
     };
+    /**
+     * 플랫폼 파트너 사업자 상태
+     * @description <p>플랫폼 파트너 사업자 상태</p>
+     *
+     * @enum {string}
+     */
+    PlatformPartnerBusinessStatus: "CLOSED" | "IN_BUSINESS" | "NOT_FOUND" | "NOT_VERIFIED" | "SUSPENDED" | "VERIFYING" | "VERIFY_FAILED";
     /**
      * 파트너 계약 요약 정보
      * @description <p>파트너 계약 요약 정보</p>
@@ -8428,7 +10375,7 @@ export interface components {
     PlatformPartnerFilterInput: {
       /**
        * 보관 조회 여부
-       * @description <p>true 이면 보관된 파트너를 조회하고, false 이면 보관되지 않은 파트너를 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+       * @description <p>true 이면 보관된 파트너를 조회하고, false 이면 보관되지 않은 파트너를 조회합니다. 기본값은 false 입니다.</p>
        */
       isArchived?: boolean;
       /** @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 태그를 하나 이상 가지는 파트너만 조회합니다.</p> */
@@ -8501,29 +10448,86 @@ export interface components {
     };
     PlatformPartnerManualSettlement: {
       type: string;
-      partner: components["schemas"]["PlatformPartnerSettlementPartner"];
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /** 정산내역 아이디 */
+      id: string;
+      graphqlId: string;
+      /** 파트너 */
+      partner: components["schemas"]["PlatformPartner"];
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementDate: string;
-      /** Format: int64 */
-      settlementAmount: number;
+      /** 정산 통화 */
       settlementCurrency: components["schemas"]["Currency"];
-      payoutCurrency: components["schemas"]["Currency"];
+      /** 정산 상태 */
+      status: components["schemas"]["PlatformPartnerSettlementStatus"];
+      /** 메모 */
+      memo?: string;
+      /**
+       * 정산 금액
+       * Format: int64
+       */
+      amount: number;
+      /** 테스트 모드 여부 */
       isForTest: boolean;
     };
     PlatformPartnerNotFoundError: {
       type: string;
       message?: string;
     };
+    PlatformPartnerOrderCancelSettlement: {
+      type: string;
+      /** 정산내역 아이디 */
+      id: string;
+      graphqlId: string;
+      /** 파트너 */
+      partner: components["schemas"]["PlatformPartner"];
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      settlementDate: string;
+      /** 정산 통화 */
+      settlementCurrency: components["schemas"]["Currency"];
+      /** 정산 상태 */
+      status: components["schemas"]["PlatformPartnerSettlementStatus"];
+      /** 메모 */
+      memo?: string;
+      /** 계약 */
+      contract: components["schemas"]["PlatformContract"];
+      /** 정산 시작 일 범위 */
+      settlementStartDateRange: components["schemas"]["DateRange"];
+      /** 금액 정보 */
+      amount: components["schemas"]["PlatformOrderSettlementAmount"];
+      /** 테스트 모드 여부 */
+      isForTest: boolean;
+    };
     PlatformPartnerOrderSettlement: {
       type: string;
-      partner: components["schemas"]["PlatformPartnerSettlementPartner"];
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
+      /** 정산내역 아이디 */
+      id: string;
+      graphqlId: string;
+      /** 파트너 */
+      partner: components["schemas"]["PlatformPartner"];
+      /**
+       * 정산 일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       settlementDate: string;
+      /** 정산 통화 */
       settlementCurrency: components["schemas"]["Currency"];
-      payoutCurrency: components["schemas"]["Currency"];
-      contractId: string;
+      /** 정산 상태 */
+      status: components["schemas"]["PlatformPartnerSettlementStatus"];
+      /** 메모 */
+      memo?: string;
+      /** 계약 */
+      contract: components["schemas"]["PlatformContract"];
+      /** 정산 시작 일 범위 */
       settlementStartDateRange: components["schemas"]["DateRange"];
+      /** 금액 정보 */
       amount: components["schemas"]["PlatformOrderSettlementAmount"];
+      /** 테스트 모드 여부 */
       isForTest: boolean;
     };
     PlatformPartnerScheduleAlreadyExistsError: {
@@ -8536,88 +10540,105 @@ export interface components {
       graphqlIds: string[];
       message?: string;
     };
-    PlatformPartnerSettlement: components["schemas"]["PlatformPartnerManualSettlement"] | components["schemas"]["PlatformPartnerOrderSettlement"];
-    PlatformPartnerSettlementFilter: {
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
-      settlementDate: string;
-      settlementStartDateRange: components["schemas"]["DateRange"];
-      contractIds: string[];
-      transferTypes: components["schemas"]["PlatformTransferType"][];
-      transferStatuses: components["schemas"]["PlatformTransferStatus"][];
-      /** 은행 */
-      banks: components["schemas"]["Bank"][];
-      paymentMethodTypes: components["schemas"]["PaymentMethodType"][];
-      /** 통화 단위 */
-      settlementCurrencies: components["schemas"]["Currency"][];
-      /** 통화 단위 */
-      payoutCurrencies: components["schemas"]["Currency"][];
-      partnerTags: string[];
-      keyword?: components["schemas"]["PlatformPartnerSettlementFilterKeyword"];
-      isForTest: boolean;
+    PlatformPartnerSettlement: components["schemas"]["PlatformPartnerManualSettlement"] | components["schemas"]["PlatformPartnerOrderCancelSettlement"] | components["schemas"]["PlatformPartnerOrderSettlement"];
+    /**
+     * 정산내역 대시보드
+     * @description <p>정산내역 대시보드</p>
+     */
+    PlatformPartnerSettlementDashboard: {
+      /** 정산 통화별 정산내역 통계 리스트 */
+      currencyStats: components["schemas"]["PlatformPartnerSettlementDashboardCurrencyStat"][];
     };
-    PlatformPartnerSettlementFilterDateOption: {
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
-      settlementDate: string;
-      settlementStartDateRange: components["schemas"]["DateRange"];
+    /**
+     * 정산 통화별 정산내역 통계
+     * @description <p>정산 통화별 정산내역 통계</p>
+     */
+    PlatformPartnerSettlementDashboardCurrencyStat: {
+      /** 정산 통화 */
+      currency: components["schemas"]["Currency"];
+      /**
+       * 총 정산 금액
+       * Format: int64
+       */
+      settlementAmount: number;
+      /**
+       * 총 주문 금액
+       * Format: int64
+       */
+      orderAmount: number;
+      /**
+       * 총 정산 수수료 금액
+       * Format: int64
+       * @description <p>중개 수수료, 중개 수수료 부가세, 추가 수수료, 추가 수수료 부가세, 할인 분담금, 결제금액 부가세 부담금을 더한 금액 입니다.</p>
+       */
+      feeAmount: number;
+      /**
+       * 총 수기 정산 금액
+       * Format: int64
+       */
+      manualAmount: number;
+      /** 상태별 총 정산 금액 */
+      statusSettlementAmount: components["schemas"]["PlatformPartnerSettlementStatusStats"];
     };
     PlatformPartnerSettlementFilterInput: {
-      /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
-      settlementDate: string;
-      settlementStartDateRange: components["schemas"]["DateRange"];
+      settlementDates?: string[];
       contractIds?: string[];
-      transferTypes?: components["schemas"]["PlatformTransferType"][];
-      transferStatuses?: components["schemas"]["PlatformTransferStatus"][];
-      /** 은행 */
-      banks?: components["schemas"]["Bank"][];
-      paymentMethodTypes?: components["schemas"]["PaymentMethodType"][];
+      partnerTags?: string[];
       /** 통화 단위 */
       settlementCurrencies?: components["schemas"]["Currency"][];
-      /** 통화 단위 */
-      payoutCurrencies?: components["schemas"]["Currency"][];
-      partnerTags?: string[];
+      /** 정산 상태 */
+      statuses?: components["schemas"]["PlatformPartnerSettlementStatus"][];
+      partnerIds?: string[];
+      /** 정산 유형 */
+      settlementTypes?: components["schemas"]["PlatformPartnerSettlementType"][];
       keyword?: components["schemas"]["PlatformPartnerSettlementFilterKeywordInput"];
-      isForTest?: boolean;
-    };
-    PlatformPartnerSettlementFilterKeyword: {
-      type: components["schemas"]["PlatformPartnerSettlementFilterKeywordType"];
-      value: string;
     };
     PlatformPartnerSettlementFilterKeywordInput: {
-      partnerId?: string;
-      partnerEmail?: string;
-      partnerBusinessRegistrationNumber?: string;
-      partnerMemo?: string;
-      platformFee?: string;
-      contractMemo?: string;
-      additionalFeePolicyId?: string;
-      additionalFeePolicyFee?: string;
-      additionalFeePolicyMemo?: string;
-      discountSharePolicyId?: string;
-      discountSharePolicyRate?: string;
-      discountSharePolicyMemo?: string;
-      productId?: string;
+      partnerSettlementId?: string;
+      payoutId?: string;
+      bulkPayoutId?: string;
     };
-    /** @enum {string} */
-    PlatformPartnerSettlementFilterKeywordType: "ADDITIONAL_FEE_POLICY_FEE" | "ADDITIONAL_FEE_POLICY_ID" | "ADDITIONAL_FEE_POLICY_MEMO" | "CONTRACT_MEMO" | "DISCOUNT_SHARE_POLICY_ID" | "DISCOUNT_SHARE_POLICY_MEMO" | "DISCOUNT_SHARE_POLICY_RATE" | "PARTNER_BUSINESS_REGISTRATION_NUMBER" | "PARTNER_EMAIL" | "PARTNER_ID" | "PARTNER_MEMO" | "PLATFORM_FEE" | "PRODUCT_ID";
-    PlatformPartnerSettlementFilterOptions: {
-      contractIds: string[];
-      dateOptions: components["schemas"]["PlatformPartnerSettlementFilterDateOption"][];
-      /** 은행 */
-      banks: components["schemas"]["Bank"][];
-      /** 통화 단위 */
-      settlementCurrencies: components["schemas"]["Currency"][];
-      /** 통화 단위 */
-      payoutCurrencies: components["schemas"]["Currency"][];
-      partnerTags: string[];
+    /**
+     * 정산내역을 찾을 수 없는 경우
+     * @description <p>정산내역을 찾을 수 없는 경우</p>
+     */
+    PlatformPartnerSettlementNotFoundError: {
+      type: string;
+      message?: string;
     };
-    PlatformPartnerSettlementPartner: {
-      id: string;
-      graphqlId: string;
-      name: string;
-      bank: components["schemas"]["Bank"];
-      accountHolder: string;
-      accountNumber: string;
+    /**
+     * 다운로드 할 시트 컬럼
+     * @description <p>다운로드 할 시트 컬럼</p>
+     *
+     * @enum {string}
+     */
+    PlatformPartnerSettlementSheetField: "CONTRACT_ID" | "CONTRACT_NAME" | "INCOME_TYPE" | "MEMO" | "PARTNER_ACCOUNT_BANK" | "PARTNER_ACCOUNT_NUMBER" | "PARTNER_ID" | "PARTNER_NAME" | "PARTNER_SETTLEMENT_ID" | "PARTNER_TYPE" | "SETTLEMENT_ADDITIONAL_FEE_AMOUNT" | "SETTLEMENT_ADDITIONAL_FEE_VAT_AMOUNT" | "SETTLEMENT_AMOUNT" | "SETTLEMENT_CURRENCY" | "SETTLEMENT_DATE" | "SETTLEMENT_DISCOUNT_AMOUNT" | "SETTLEMENT_DISCOUNT_SHARE_AMOUNT" | "SETTLEMENT_ORDER_AMOUNT" | "SETTLEMENT_PAYMENT_AMOUNT" | "SETTLEMENT_PAYMENT_VAT_AMOUNT" | "SETTLEMENT_PAYMENT_VAT_BURDEN_AMOUNT" | "SETTLEMENT_PLATFORM_FEE_AMOUNT" | "SETTLEMENT_PLATFORM_FEE_VAT_AMOUNT" | "SETTLEMENT_START_DATE_RANGE" | "SETTLEMENT_SUPPLY_AMOUNT" | "SETTLEMENT_TAX_FREE_AMOUNT" | "SETTLEMENT_TYPE" | "STATUS" | "TAXATION_TYPE" | "TAXATION_TYPE_OR_INCOME_TYPE";
+    /**
+     * 정산 상태
+     * @description <p>정산 상태</p>
+     *
+     * @enum {string}
+     */
+    PlatformPartnerSettlementStatus: "IN_PAYOUT" | "PAID_OUT" | "PAYOUT_FAILED" | "PAYOUT_PREPARED" | "PAYOUT_WITHHELD";
+    PlatformPartnerSettlementStatusStats: {
+      /** Format: int64 */
+      payoutPrepared: number;
+      /** Format: int64 */
+      payoutWithheld: number;
+      /** Format: int64 */
+      payoutFailed: number;
+      /** Format: int64 */
+      inPayout: number;
+      /** Format: int64 */
+      paidOut: number;
     };
+    /**
+     * 정산 유형
+     * @description <p>정산 유형</p>
+     *
+     * @enum {string}
+     */
+    PlatformPartnerSettlementType: "MANUAL" | "ORDER" | "ORDER_CANCEL";
     /**
      * 플랫폼 파트너 상태
      * @description <p>플랫폼 파트너 상태</p>
@@ -8626,10 +10647,17 @@ export interface components {
      */
     PlatformPartnerStatus: "APPROVED" | "PENDING" | "REJECTED";
     /**
+     * 플랫폼 파트너 과세 유형
+     * @description <p>플랫폼 파트너 과세 유형</p>
+     *
+     * @enum {string}
+     */
+    PlatformPartnerTaxationType: "NORMAL" | "SIMPLE" | "SIMPLE_TAX_INVOICE_ISSUER" | "TAX_FREE";
+    /**
      * 파트너 유형별 추가 정보
      * @description <p>파트너 유형별 추가 정보</p>
      */
-    PlatformPartnerType: components["schemas"]["PlatformPartnerTypeBusiness"] | components["schemas"]["PlatformPartnerTypeWhtPayer"];
+    PlatformPartnerType: components["schemas"]["PlatformPartnerTypeBusiness"] | components["schemas"]["PlatformPartnerTypeNonWhtPayer"] | components["schemas"]["PlatformPartnerTypeWhtPayer"];
     /**
      * 사업자 파트너 정보
      * @description <p>사업자 파트너 정보</p>
@@ -8639,6 +10667,10 @@ export interface components {
       type: string;
       /** 상호명 */
       companyName: string;
+      /** 과세 유형 */
+      taxationType: components["schemas"]["PlatformPartnerTaxationType"];
+      /** 사업자 상태 */
+      businessStatus: components["schemas"]["PlatformPartnerBusinessStatus"];
       /** 사업자등록번호 */
       businessRegistrationNumber: string;
       /** 대표자 이름 */
@@ -8651,14 +10683,30 @@ export interface components {
       businessClass?: string;
     };
     /**
-     * 원천징수대상자 파트너 정보
-     * @description <p>원천징수대상자 파트너 정보</p>
+     * 원천징수 비대상자 파트너 정보
+     * @description <p>원천징수 비대상자 파트너 정보</p>
+     * <p>비사업자 유형의 파트너 추가 정보 입니다.</p>
+     */
+    PlatformPartnerTypeNonWhtPayer: {
+      type: string;
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      birthdate?: string;
+    };
+    /**
+     * 원천징수 대상자 파트너 정보
+     * @description <p>원천징수 대상자 파트너 정보</p>
      * <p>비사업자 유형의 파트너 추가 정보 입니다.</p>
      */
     PlatformPartnerTypeWhtPayer: {
       type: string;
-      /** 생년월일 */
-      birthdate: string;
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      birthdate?: string;
     };
     /**
      * 금액 부담 주체
@@ -8668,48 +10716,107 @@ export interface components {
      * @enum {string}
      */
     PlatformPayer: "MERCHANT" | "PARTNER";
+    /**
+     * 결제 정보
+     * @description <p>결제 정보</p>
+     */
     PlatformPayment: components["schemas"]["PlatformExternalPayment"] | components["schemas"]["PlatformPortOnePayment"];
+    /**
+     * 채널
+     * @description <p>채널</p>
+     */
     PlatformPaymentChannel: {
+      /** 채널 아이디 */
       id: string;
+      /** 채널 키 */
       key: string;
+      /** 채널 이름 */
       name: string;
+      /** PG사 가맹점 식별 아이디 */
       pgMerchantId: string;
+      /** PG사 */
       pgCompany?: components["schemas"]["PgCompany"];
     };
+    /**
+     * 결제 수단
+     * @description <p>결제 수단</p>
+     */
     PlatformPaymentMethod: components["schemas"]["PlatformPaymentMethodCard"] | components["schemas"]["PlatformPaymentMethodEasyPay"] | components["schemas"]["PlatformPaymentMethodGiftCertificate"] | components["schemas"]["PlatformPaymentMethodMobile"] | components["schemas"]["PlatformPaymentMethodTransfer"] | components["schemas"]["PlatformPaymentMethodVirtualAccount"];
+    /**
+     * 카드
+     * @description <p>카드</p>
+     */
     PlatformPaymentMethodCard: {
       type: string;
     };
     PlatformPaymentMethodCardInput: Record<string, never>;
+    /**
+     * 간편 결제
+     * @description <p>간편 결제</p>
+     */
     PlatformPaymentMethodEasyPay: {
       type: string;
+      /** 간편 결제사 */
       provider?: components["schemas"]["EasyPayProvider"];
+      /** 간편 결제 수단 */
       methodType?: components["schemas"]["EasyPayMethodType"];
     };
+    /**
+     * 간편 결제 입력 정보
+     * @description <p>간편 결제 입력 정보</p>
+     */
     PlatformPaymentMethodEasyPayInput: {
+      /** 간편 결제사 */
       provider?: components["schemas"]["EasyPayProvider"];
+      /** 간편 결제 수단 */
       methodType?: components["schemas"]["EasyPayMethodType"];
     };
+    /**
+     * 상품권
+     * @description <p>상품권</p>
+     */
     PlatformPaymentMethodGiftCertificate: {
       type: string;
     };
     PlatformPaymentMethodGiftCertificateInput: Record<string, never>;
+    /**
+     * 결제 수단 입력 정보
+     * @description <p>결제 수단 입력 정보</p>
+     */
     PlatformPaymentMethodInput: {
+      /** 카드 */
       card?: components["schemas"]["PlatformPaymentMethodCardInput"];
+      /** 계좌이체 */
       transfer?: components["schemas"]["PlatformPaymentMethodTransferInput"];
+      /** 가상계좌 */
       virtualAccount?: components["schemas"]["PlatformPaymentMethodVirtualAccountInput"];
+      /** 상품권 */
       giftCertificate?: components["schemas"]["PlatformPaymentMethodGiftCertificateInput"];
+      /** 모바일 */
       mobile?: components["schemas"]["PlatformPaymentMethodMobileInput"];
+      /** 간편 결제 */
       easyPay?: components["schemas"]["PlatformPaymentMethodEasyPayInput"];
     };
+    /**
+     * 모바일
+     * @description <p>모바일</p>
+     */
     PlatformPaymentMethodMobile: {
       type: string;
     };
     PlatformPaymentMethodMobileInput: Record<string, never>;
+    /**
+     * 계좌이체
+     * @description <p>계좌이체</p>
+     */
     PlatformPaymentMethodTransfer: {
       type: string;
     };
     PlatformPaymentMethodTransferInput: Record<string, never>;
+    /**
+     * 가상계좌
+     * @description <p>가상계좌</p>
+     */
     PlatformPaymentMethodVirtualAccount: {
       type: string;
     };
@@ -8718,69 +10825,115 @@ export interface components {
       type: string;
       message?: string;
     };
-    PlatformPayout: components["schemas"]["PlatformCompletedPayout"] | components["schemas"]["PlatformOngoingPayout"];
-    PlatformPayoutAlreadyCompletedError: {
-      type: string;
-      message?: string;
+    PlatformPayout: {
+      /** 지급 고유 아이디 */
+      id: string;
+      graphqlId: string;
+      method: components["schemas"]["PlatformPayoutMethod"];
+      status: components["schemas"]["PlatformPayoutStatus"];
+      /** Format: date-time */
+      statusUpdatedAt: string;
+      memo?: string;
+      partner: components["schemas"]["PlatformPartner"];
+      account: components["schemas"]["PlatformPayoutAccount"];
+      currency: components["schemas"]["Currency"];
+      /** Format: int64 */
+      amount: number;
+      /** Format: int64 */
+      settlementAmount: number;
+      /** Format: int64 */
+      incomeTaxAmount: number;
+      /** Format: int64 */
+      localIncomeTaxAmount: number;
+      withdrawalMemo?: string;
+      depositMemo?: string;
+      /** Format: date-time */
+      createdAt: string;
     };
-    PlatformPayoutCreatorMismatchedError: {
-      type: string;
-      creatorId: string;
-      message?: string;
+    PlatformPayoutAccount: {
+      bank: components["schemas"]["Bank"];
+      number: string;
+      holder: string;
     };
     PlatformPayoutFilterInput: {
       statuses?: components["schemas"]["PlatformPayoutStatus"][];
-      isForTest?: boolean;
+      partnerIds?: string[];
+      criteria: components["schemas"]["PlatformPayoutFilterInputCriteria"];
+      /** 은행 */
+      payoutAccountBanks?: components["schemas"]["Bank"][];
+      partnerTags?: string[];
+      /** 통화 단위 */
+      payoutCurrencies?: components["schemas"]["Currency"][];
     };
+    /**
+     * 검색 기준 입력 정보
+     * @description <p>검색 기준 입력 정보</p>
+     */
+    PlatformPayoutFilterInputCriteria: {
+      timestampRange?: components["schemas"]["DateTimeRange"];
+      payoutId?: string;
+      bulkPayoutId?: string;
+    };
+    /** @enum {string} */
+    PlatformPayoutMethod: "AGENCY" | "DIRECT";
     PlatformPayoutNotFoundError: {
       type: string;
       message?: string;
     };
-    PlatformPayoutPartnerSettlement: {
-      id: string;
-      graphqlId: string;
-      payoutId: string;
-      payoutGraphqlId: string;
-      status: components["schemas"]["PlatformPayoutPartnerSettlementStatus"];
-      partnerSettlement: components["schemas"]["PlatformPartnerSettlement"];
-    };
-    PlatformPayoutPartnerSettlementAlreadyPaidOutError: {
-      type: string;
-      message?: string;
-    };
-    PlatformPayoutPartnerSettlementNotFoundError: {
-      type: string;
-      message?: string;
-    };
     /** @enum {string} */
-    PlatformPayoutPartnerSettlementStatus: "PAID_OUT" | "WITHHELD";
-    PlatformPayoutSheetNotFoundError: {
-      type: string;
-      message?: string;
-    };
-    /** @enum {string} */
-    PlatformPayoutStatus: "COMPLETED" | "ONGOING";
-    PlatformPayoutSummary: {
-      /** Format: int32 */
-      partnerCount: number;
+    PlatformPayoutStatus: "CANCELLED" | "FAILED" | "PREPARED" | "PROCESSING" | "STOPPED" | "SUCCEEDED";
+    PlatformPayoutStatusStats: {
       /** Format: int64 */
-      totalSettlementAmount: number;
-      /** Format: int32 */
-      paidOutPartnerSettlementCount: number;
-      /** Format: int32 */
-      totalPartnerSettlementCount: number;
+      prepared: number;
+      /** Format: int64 */
+      cancelled: number;
+      /** Format: int64 */
+      stopped: number;
+      /** Format: int64 */
+      processing: number;
+      /** Format: int64 */
+      succeeded: number;
+      /** Format: int64 */
+      failed: number;
     };
+    /**
+     * 다운로드 할 시트 컬럼
+     * @description <p>다운로드 할 시트 컬럼</p>
+     *
+     * @enum {string}
+     */
+    PlatformPayoutsSheetField: "ACCOUNT_BANK" | "ACCOUNT_HOLDER" | "ACCOUNT_NUMBER" | "AMOUNT" | "CREATED_AT" | "CURRENCY" | "DEPOSIT_MEMO" | "INCOME_TAX_AMOUNT" | "INCOME_TYPE" | "LOCAL_INCOME_TAX_AMOUNT" | "MEMO" | "METHOD" | "PARTNER_ID" | "PARTNER_NAME" | "PARTNER_TYPE" | "PAYOUT_ID" | "SETTLEMENT_AMOUNT" | "STATUS" | "STATUS_UPDATED_AT" | "TAXATION_TYPE" | "TAXATION_TYPE_OR_INCOME_TYPE" | "WITHDRAWAL_MEMO";
+    /**
+     * 포트원 결제 정보
+     * @description <p>포트원 결제 정보</p>
+     */
     PlatformPortOnePayment: {
       type: string;
+      /** 결제 아이디 */
       id: string;
+      /** 상점 아이디 */
       storeId: string;
+      /** 채널 키 */
       channelKey: string;
+      /** 주문 명 */
       orderName: string;
+      /** 결제 수단 */
       method?: components["schemas"]["PlatformPaymentMethod"];
+      /** 통화 */
       currency: components["schemas"]["Currency"];
-      /** Format: date-time */
+      /**
+       * 결제 일시
+       * Format: date-time
+       */
       paidAt: string;
     };
+    /**
+     * 금액 타입
+     * @description <p>금액 타입</p>
+     *
+     * @enum {string}
+     */
+    PlatformPortOnePaymentCancelAmountType: "SUPPLY_WITH_VAT" | "TAX_FREE";
     PlatformProductIdDuplicatedError: {
       type: string;
       id: string;
@@ -8791,6 +10944,9 @@ export interface components {
       id: string;
       message?: string;
     };
+    PlatformProperties: {
+      [key: string]: components["schemas"]["PlatformUserDefinedPropertyValue"];
+    };
     /**
      * 금액에 대한 소수점 처리 방식
      * @description <p>금액에 대한 소수점 처리 방식</p>
@@ -8798,6 +10954,10 @@ export interface components {
      * @enum {string}
      */
     PlatformRoundType: "DOWN" | "OFF" | "UP";
+    /**
+     * 정산 취소 요청 금액이 포트원 결제 취소 내역의 취소 금액을 초과한 경우
+     * @description <p>정산 취소 요청 금액이 포트원 결제 취소 내역의 취소 금액을 초과한 경우</p>
+     */
     PlatformSettlementCancelAmountExceededPortOneCancelError: {
       type: string;
       /** Format: int64 */
@@ -8806,6 +10966,7 @@ export interface components {
       requestSettlementCancelAmount: number;
       /** Format: int64 */
       portOneCancelAmount: number;
+      amountType: components["schemas"]["PlatformPortOnePaymentCancelAmountType"];
       message?: string;
     };
     /**
@@ -8980,6 +11141,28 @@ export interface components {
       name: string;
       position: components["schemas"]["PlatformSettlementFormulaPosition"];
     };
+    /**
+     * 플랫폼 정산 파라미터 값
+     * @description <p>플랫폼 정산 파라미터 값</p>
+     */
+    PlatformSettlementParameterValue: {
+      /**
+       * 크기가 조정되지 않은 숫자
+       * Format: int64
+       */
+      decimal: number;
+      /**
+       * 소수 자리수
+       * Format: int32
+       * @description <p>정산 시 필요한 <code>decimalScale</code>이 지정되지 않은 경우 기본값으로 0을 사용합니다.
+       * 입력 가능한 법위는 0 ~ 5 입니다.</p>
+       */
+      decimalScale?: number;
+    };
+    /**
+     * 정산 요청 결제 금액이 포트원 결제 내역의 결제 금액을 초과한 경우
+     * @description <p>정산 요청 결제 금액이 포트원 결제 내역의 결제 금액을 초과한 경우</p>
+     */
     PlatformSettlementPaymentAmountExceededPortOnePaymentError: {
       type: string;
       /** Format: int64 */
@@ -8999,7 +11182,51 @@ export interface components {
       supportsMultipleOrderTransfersPerPartner: boolean;
       /** 정산일이 정산시작일보다 작거나 같을 경우 공휴일 후 영업일로 정산일 다시 계산 여부 */
       adjustSettlementDateAfterHolidayIfEarlier: boolean;
+      /** 지급 금액에서 원천징수세 차감 여부 */
+      subtractWhtInPayoutAmount: boolean;
     };
+    /**
+     * 정산 요청 공급대가가 포트원 결제 내역의 공급대가를 초과한 경우
+     * @description <p>정산 요청 공급대가가 포트원 결제 내역의 공급대가를 초과한 경우</p>
+     */
+    PlatformSettlementSupplyWithVatAmountExceededPortOnePaymentError: {
+      type: string;
+      /** Format: int64 */
+      registeredSettlementSupplyWithVatAmount: number;
+      /** Format: int64 */
+      requestSettlementSupplyWithVatAmount: number;
+      /** Format: int64 */
+      portOneSupplyWithVatAmount: number;
+      message?: string;
+    };
+    /**
+     * 정산 요청 면세 금액이 포트원 결제 내역의 면세 금액을 초과한 경우
+     * @description <p>정산 요청 면세 금액이 포트원 결제 내역의 면세 금액을 초과한 경우</p>
+     */
+    PlatformSettlementTaxFreeAmountExceededPortOnePaymentError: {
+      type: string;
+      /** Format: int64 */
+      registeredSettlementTaxFreeAmount: number;
+      /** Format: int64 */
+      requestSettlementTaxFreeAmount: number;
+      /** Format: int64 */
+      portOneTaxFreeAmount: number;
+      message?: string;
+    };
+    /**
+     * 면세 금액이 결제금액을 초과한 경우
+     * @description <p>면세 금액이 결제금액을 초과한 경우</p>
+     */
+    PlatformTaxFreeAmountOverFlowError: {
+      type: string;
+      message?: string;
+    };
+    /**
+     * 정산건
+     * @description <p>정산건</p>
+     * <p>정산건은 파트너에 정산해줄 정산 금액과 정산 방식 등이 포함되어 있는 정산 정보입니다.
+     * 정산 방식은은 주문 정산, 주문 취소 정산, 수기 정산이 있습니다.</p>
+     */
     PlatformTransfer: components["schemas"]["PlatformManualTransfer"] | components["schemas"]["PlatformOrderCancelTransfer"] | components["schemas"]["PlatformOrderTransfer"];
     PlatformTransferAlreadyExistsError: {
       type: string;
@@ -9023,29 +11250,84 @@ export interface components {
       productId?: string;
       message?: string;
     };
+    /**
+     * 정산건 필터 입력 정보
+     * @description <p>정산건 필터 입력 정보</p>
+     * <p>정산 시작일 범위와 정산 일 범위는 둘 중 하나만 입력 가능합니다.</p>
+     */
     PlatformTransferFilterInput: {
+      /** 정산 시작일 범위 */
       settlementStartDateRange?: components["schemas"]["DateRange"];
+      /** 정산 일 범위 */
       settlementDateRange?: components["schemas"]["DateRange"];
+      /**
+       * 파트너 태그 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 태그를 하나 이상 가지는 파트너에 대한 정산건만 조회합니다.</p>
+       */
       partnerTags?: string[];
+      /**
+       * 계약 아이디 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 계약 아이디를 가지는 정산건만 조회합니다.</p>
+       */
       contractIds?: string[];
+      /**
+       * 할인 분담 정책 아이디 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 할인 분담 정책 아이디를 하나 이상 가지는 정산건만 조회합니다.</p>
+       */
       discountSharePolicyIds?: string[];
+      /**
+       * 추가 수수료 정책 아이디 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 추가 수수료 아이디를 하나 이상 가지는 정산건만 조회합니다.</p>
+       */
       additionalFeePolicyIds?: string[];
+      /**
+       * 결제 수단 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 결제 수단을 가지는 파트너만 조회합니다.</p>
+       */
       paymentMethodTypes?: components["schemas"]["PaymentMethodType"][];
+      /**
+       * 채널 키 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 채널 키를 가지는 정산건만 조회합니다.</p>
+       */
       channelKeys?: string[];
+      /**
+       * 정산 방식 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 정산 방식의 정산건만 조회합니다.</p>
+       */
       types?: components["schemas"]["PlatformTransferType"][];
+      /**
+       * 정산 상태 리스트
+       * @description <p>하나 이상의 값이 존재하는 경우 해당 리스트에 포함되는 정산 상태인 정산건만 조회합니다.</p>
+       */
       statuses?: components["schemas"]["PlatformTransferStatus"][];
+      /** 검색 키워드 */
       keyword?: components["schemas"]["PlatformTransferFilterInputKeyword"];
+      /** 테스트 모드 여부 */
       isForTest?: boolean;
     };
+    /**
+     * 정산건 검색 키워드 입력 정보
+     * @description <p>정산건 검색 키워드 입력 정보</p>
+     * <p>검색 키워드 적용을 위한 옵션으로, 명시된 키워드를 포함하는 정산건만 조회합니다. 하나의 하위 필드에만 값을 명시하여 요청합니다.</p>
+     */
     PlatformTransferFilterInputKeyword: {
+      /** @description <p>해당 값이 포함된 정보를 가진 정산건만 조회합니다.</p> */
       all?: string;
+      /** @description <p>해당 값이랑 일치하는 paymentId 를 가진 정산건만 조회합니다.</p> */
       paymentId?: string;
+      /** @description <p>해당 값이랑 일치하는 transferId 를 가진 정산건만 조회합니다.</p> */
       transferId?: string;
+      /** @description <p>해당 값이 포함된 transferMemo 를 가진 정산건만 조회합니다.</p> */
       transferMemo?: string;
+      /** @description <p>해당 값이랑 일치하는 productId 를 가진 정산건만 조회합니다.</p> */
       productId?: string;
+      /** @description <p>해당 값이랑 일치하는 productName 을 가진 정산건만 조회합니다.</p> */
       productName?: string;
+      /** @description <p>해당 값이랑 일치하는 partnerId 를 가진 정산건만 조회합니다.</p> */
       partnerId?: string;
+      /** @description <p>해당 값이 포함된 partnerName 을 가진 정산건만 조회합니다.</p> */
       partnerName?: string;
+      /** @description <p>해당 값이 포함된 partnerMemo 를 가진 정산건만 조회합니다.</p> */
       partnerMemo?: string;
     };
     PlatformTransferFilterOptions: {
@@ -9053,6 +11335,7 @@ export interface components {
       contractIds: string[];
       additionalFeePolicyIds: string[];
       discountSharePolicyIds: string[];
+      /** 채널 */
       paymentChannels: components["schemas"]["PlatformPaymentChannel"][];
     };
     PlatformTransferNonDeletableStatusError: {
@@ -9063,7 +11346,19 @@ export interface components {
       type: string;
       message?: string;
     };
-    /** @enum {string} */
+    /**
+     * 다운로드 할 시트 컬럼
+     * @description <p>다운로드 할 시트 컬럼</p>
+     *
+     * @enum {string}
+     */
+    PlatformTransferSheetField: "INCOME_TYPE" | "ORDER_NAME" | "PARTNER_NAME" | "PARTNER_TYPE" | "PAYMENT_ID" | "PAYMENT_METHOD" | "SETTLEMENT_ADDITIONAL_FEE_AMOUNT" | "SETTLEMENT_ADDITIONAL_FEE_VAT_AMOUNT" | "SETTLEMENT_AMOUNT" | "SETTLEMENT_CURRENCY" | "SETTLEMENT_DATE" | "SETTLEMENT_DISCOUNT_AMOUNT" | "SETTLEMENT_DISCOUNT_SHARE_AMOUNT" | "SETTLEMENT_ORDER_AMOUNT" | "SETTLEMENT_PAYMENT_AMOUNT" | "SETTLEMENT_PAYMENT_VAT_AMOUNT" | "SETTLEMENT_PAYMENT_VAT_BURDEN_AMOUNT" | "SETTLEMENT_PLATFORM_FEE_AMOUNT" | "SETTLEMENT_PLATFORM_FEE_VAT_AMOUNT" | "SETTLEMENT_START_DATE" | "SETTLEMENT_SUPPLY_AMOUNT" | "SETTLEMENT_TAX_FREE_AMOUNT" | "STATUS" | "TAXATION_TYPE" | "TAXATION_TYPE_OR_INCOME_TYPE" | "TRANSFER_ID" | "TYPE";
+    /**
+     * 정산 상태
+     * @description <p>정산 상태</p>
+     *
+     * @enum {string}
+     */
     PlatformTransferStatus: "IN_PAYOUT" | "IN_PROCESS" | "PAID_OUT" | "SCHEDULED" | "SETTLED";
     PlatformTransferSummary: components["schemas"]["PlatformManualTransferSummary"] | components["schemas"]["PlatformOrderCancelTransferSummary"] | components["schemas"]["PlatformOrderTransferSummary"];
     PlatformTransferSummaryExternalPayment: {
@@ -9077,7 +11372,16 @@ export interface components {
       id: string;
       graphqlId: string;
       name: string;
+      type: components["schemas"]["PlatformTransferSummaryPartnerType"];
+      taxationType?: components["schemas"]["PlatformPartnerTaxationType"];
     };
+    /**
+     * 파트너 유형
+     * @description <p>파트너 유형</p>
+     *
+     * @enum {string}
+     */
+    PlatformTransferSummaryPartnerType: "BUSINESS" | "NON_WHT_PAYER" | "WHT_PAYER";
     PlatformTransferSummaryPayment: components["schemas"]["PlatformTransferSummaryExternalPayment"] | components["schemas"]["PlatformTransferSummaryPortOnePayment"];
     PlatformTransferSummaryPortOnePayment: {
       type: string;
@@ -9098,6 +11402,27 @@ export interface components {
       /** @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p> */
       settlementDate: string;
       message?: string;
+    };
+    /**
+     * 사용자 정의 속성
+     * @description <p>사용자 정의 속성</p>
+     */
+    PlatformUserDefinedPropertyKeyValue: {
+      /** 사용자 정의 속성 키 */
+      key: string;
+      /** 사용자 정의 속성 값 */
+      value: components["schemas"]["PlatformUserDefinedPropertyValue"];
+    };
+    /**
+     * 사용자 정의 속성이 존재 하지 않는 경우
+     * @description <p>사용자 정의 속성이 존재 하지 않는 경우</p>
+     */
+    PlatformUserDefinedPropertyNotFoundError: {
+      type: string;
+      message?: string;
+    };
+    PlatformUserDefinedPropertyValue: {
+      string: string;
     };
     /**
      * 포트원 버전
@@ -9135,6 +11460,52 @@ export interface components {
      * @description <p>결제 사전 등록 성공 응답</p>
      */
     PreRegisterPaymentResponse: Record<string, never>;
+    /**
+     * 프로모션
+     * @description <p>프로모션</p>
+     */
+    Promotion: components["schemas"]["CardPromotion"];
+    PromotionAmountDiscount: {
+      /** 프로모션 할인 유형 */
+      type: string;
+      /** Format: int64 */
+      amount: number;
+    };
+    /**
+     * 프로모션 적용 가능한 카드사
+     * @description <p>프로모션 적용 가능한 카드사</p>
+     *
+     * @enum {string}
+     */
+    PromotionCardCompany: "BC_CARD" | "HANA_CARD" | "HYUNDAI_CARD" | "KOOKMIN_CARD" | "LOTTE_CARD" | "NH_CARD" | "SAMSUNG_CARD" | "SHINHAN_CARD" | "WOORI_CARD";
+    PromotionDiscount: components["schemas"]["PromotionAmountDiscount"] | components["schemas"]["PromotionPercentDiscount"];
+    /**
+     * 프로모션이 존재하지 않는 경우
+     * @description <p>프로모션이 존재하지 않는 경우</p>
+     */
+    PromotionNotFoundError: {
+      type: string;
+      message?: string;
+    };
+    /**
+     * 결제수단이 프로모션에 지정된 것과 일치하지 않는 경우
+     * @description <p>결제수단이 프로모션에 지정된 것과 일치하지 않는 경우</p>
+     */
+    PromotionPayMethodDoesNotMatchError: {
+      type: string;
+      message?: string;
+    };
+    PromotionPercentDiscount: {
+      /** 프로모션 할인 유형 */
+      type: string;
+      /** Format: int32 */
+      percent: number;
+    };
+    /** @enum {string} */
+    PromotionStatus: "BUDGET_EXHAUSTED" | "COMPLETED" | "IN_PROGRESS" | "PAUSED" | "SCHEDULED" | "TERMINATED";
+    /** @enum {string} */
+    PromotionTimeRangeField: "CREATED_AT" | "START_AT";
+    PromotionsExcelDownloadError: components["schemas"]["InvalidRequestError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 준비 상태의 본인인증 내역
      * @description <p>준비 상태의 본인인증 내역</p>
@@ -9180,7 +11551,7 @@ export interface components {
        * @description <p>V1 결제 건의 경우 imp_uid에 해당합니다.</p>
        */
       transactionId: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -9188,6 +11559,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel?: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -9246,7 +11619,149 @@ export interface components {
       /** 국가 코드 */
       country?: components["schemas"]["Country"];
     };
-    RecoverPlatformAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    /**
+     * 거래 대사 날짜 범위 조회 필드
+     * @description <p>거래 대사 날짜 범위 조회 필드</p>
+     * <p>필드 중 하나만 적용됩니다.</p>
+     */
+    ReconciliationDateConditionInput: {
+      /** 정산일 범위 */
+      settlementDateRange?: components["schemas"]["DateRange"];
+      /** 결제일 범위 */
+      transactionDateRange?: components["schemas"]["DateRange"];
+    };
+    ReconciliationEasyPayMethod: components["schemas"]["ReconciliationPaymentMethodCard"] | components["schemas"]["ReconciliationPaymentMethodCharge"] | components["schemas"]["ReconciliationPaymentMethodEtc"] | components["schemas"]["ReconciliationPaymentMethodMobile"] | components["schemas"]["ReconciliationPaymentMethodTransfer"] | components["schemas"]["ReconciliationPaymentMethodVirtualAccount"];
+    /**
+     * 대사용 간편 결제 PG사
+     * @description <p>대사용 간편 결제 PG사</p>
+     *
+     * @enum {string}
+     */
+    ReconciliationEasyPayProvider: "ALIPAY" | "APPLEPAY" | "CHAI" | "KAKAOPAY" | "KB_APP" | "KPAY" | "LGPAY" | "LPAY" | "NAVERPAY" | "PAYCO" | "PAYPAL" | "PINPAY" | "SAMSUNGPAY" | "SKPAY" | "SSGPAY" | "TMONEYPAY" | "TOSSPAY" | "TOSS_BRANDPAY" | "WECHATPAY";
+    ReconciliationPaymentMethod: components["schemas"]["ReconciliationPaymentMethodArs"] | components["schemas"]["ReconciliationPaymentMethodCard"] | components["schemas"]["ReconciliationPaymentMethodCharge"] | components["schemas"]["ReconciliationPaymentMethodEasyPay"] | components["schemas"]["ReconciliationPaymentMethodEtc"] | components["schemas"]["ReconciliationPaymentMethodGiftCertificate"] | components["schemas"]["ReconciliationPaymentMethodMobile"] | components["schemas"]["ReconciliationPaymentMethodTransfer"] | components["schemas"]["ReconciliationPaymentMethodVirtualAccount"];
+    /**
+     * ARS 결제
+     * @description <p>ARS 결제</p>
+     */
+    ReconciliationPaymentMethodArs: {
+      /** 대사용 결제 수단 */
+      type: string;
+    };
+    /**
+     * 카드 결제
+     * @description <p>카드 결제</p>
+     */
+    ReconciliationPaymentMethodCard: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 카드 발급사 */
+      issuer?: components["schemas"]["CardCompany"];
+      /** 카드 매입사 */
+      acquirer?: components["schemas"]["CardCompany"];
+      /** 카드 승인 번호 */
+      approvalNumber?: string;
+      /**
+       * 카드 할부 개월 수
+       * Format: int32
+       */
+      installmentMonth?: number;
+    };
+    /**
+     * 간편결제 충전
+     * @description <p>간편결제 충전</p>
+     */
+    ReconciliationPaymentMethodCharge: {
+      /** 간편결제 결제 수단 */
+      type: string;
+    };
+    /**
+     * 간편 결제
+     * @description <p>간편 결제</p>
+     */
+    ReconciliationPaymentMethodEasyPay: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 간편 결제 PG사 */
+      provider?: components["schemas"]["ReconciliationEasyPayProvider"];
+      /** 간편 결제 결제 수단 */
+      method?: components["schemas"]["ReconciliationEasyPayMethod"];
+    };
+    /**
+     * 기타 결제
+     * @description <p>기타 결제</p>
+     */
+    ReconciliationPaymentMethodEtc: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 기타 결제 이름 */
+      name: string;
+    };
+    /**
+     * 상품권 결제
+     * @description <p>상품권 결제</p>
+     */
+    ReconciliationPaymentMethodGiftCertificate: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 상품권 승인 번호 */
+      approvalNumber?: string;
+      /** 상품권 종류 */
+      giftCertificateType?: components["schemas"]["GiftCertificateType"];
+    };
+    /**
+     * 모바일 결제
+     * @description <p>모바일 결제</p>
+     */
+    ReconciliationPaymentMethodMobile: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 통신사 */
+      carrier?: components["schemas"]["Carrier"];
+    };
+    /**
+     * 계좌이체
+     * @description <p>계좌이체</p>
+     */
+    ReconciliationPaymentMethodTransfer: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 계좌 이체 은행 */
+      bank?: components["schemas"]["Bank"];
+      /** 계좌 이체 승인 번호 */
+      approvalNumber?: string;
+    };
+    /**
+     * 대사용 결제수단 목록
+     * @description <p>대사용 결제수단 목록</p>
+     *
+     * @enum {string}
+     */
+    ReconciliationPaymentMethodType: "ARS" | "CARD" | "CHARGE" | "EASY_PAY_ALIPAY" | "EASY_PAY_APPLEPAY" | "EASY_PAY_CHAI" | "EASY_PAY_ETC" | "EASY_PAY_KAKAOPAY" | "EASY_PAY_KB_APP" | "EASY_PAY_KPAY" | "EASY_PAY_LGPAY" | "EASY_PAY_LPAY" | "EASY_PAY_NAVERPAY" | "EASY_PAY_PAYCO" | "EASY_PAY_PAYPAL" | "EASY_PAY_PINPAY" | "EASY_PAY_SAMSUNGPAY" | "EASY_PAY_SKPAY" | "EASY_PAY_SSGPAY" | "EASY_PAY_TMONEYPAY" | "EASY_PAY_TOSSPAY" | "EASY_PAY_TOSS_BRANDPAY" | "EASY_PAY_WECHATPAY" | "ETC" | "GIFT_CERTIFICATE" | "MOBILE" | "TRANSFER" | "VIRTUAL_ACCOUNT";
+    /**
+     * 가상계좌 결제
+     * @description <p>가상계좌 결제</p>
+     */
+    ReconciliationPaymentMethodVirtualAccount: {
+      /** 대사용 결제 수단 */
+      type: string;
+      /** 가상계좌  은행 */
+      bank?: components["schemas"]["Bank"];
+      /** 가상계좌 은행 */
+      approvalNumber?: string;
+    };
+    /** @enum {string} */
+    ReconciliationPgProvider: "DANAL" | "EXIMBAY" | "HECTO" | "INICIS" | "KAKAOPAY" | "KCP" | "NAVERPAY" | "NICEPAY" | "PAYCO" | "TOSSPAY" | "TOSSPAYMENTS" | "UPLUS";
+    /**
+     * 대사용 PG사 가맹점 식별자
+     * @description <p>대사용 PG사 가맹점 식별자</p>
+     */
+    ReconciliationPgSpecifier: {
+      /** PG사 가맹점 식별 아이디 */
+      pgMerchantId: string;
+      /** PG사 */
+      pgProvider: components["schemas"]["ReconciliationPgProvider"];
+    };
+    RecoverPlatformAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 복원 성공 응답
      * @description <p>추가 수수료 정책 복원 성공 응답</p>
@@ -9255,7 +11770,7 @@ export interface components {
       /** 복원된 추가 수수료 정책 */
       additionalFeePolicy: components["schemas"]["PlatformAdditionalFeePolicy"];
     };
-    RecoverPlatformContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    RecoverPlatformContractError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 복원 성공 응답
      * @description <p>계약 복원 성공 응답</p>
@@ -9264,7 +11779,7 @@ export interface components {
       /** 복원된 계약 */
       contract: components["schemas"]["PlatformContract"];
     };
-    RecoverPlatformDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    RecoverPlatformDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 할인 분담 복원 성공 응답
      * @description <p>할인 분담 복원 성공 응답</p>
@@ -9273,7 +11788,7 @@ export interface components {
       /** 복원된 할인 분담 */
       discountSharePolicy: components["schemas"]["PlatformDiscountSharePolicy"];
     };
-    RecoverPlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    RecoverPlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 복원 성공 응답
      * @description <p>파트너 복원 성공 응답</p>
@@ -9473,7 +11988,7 @@ export interface components {
       /** 파트너 메모. 값이 명시되지 않은 경우 업데이트하지 않습니다. */
       memo?: string;
     };
-    RejectPlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    RejectPlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 거절 성공 응답
      * @description <p>파트너 거절 성공 응답</p>
@@ -9503,6 +12018,14 @@ export interface components {
        * Format: date-time
        */
       appliedAt?: string;
+    };
+    /**
+     * 부분 취소 시, 취소하게 될 경우 남은 금액이 프로모션의 최소 결제 금액보다 작아지는 경우
+     * @description <p>부분 취소 시, 취소하게 될 경우 남은 금액이 프로모션의 최소 결제 금액보다 작아지는 경우</p>
+     */
+    RemainedAmountLessThanPromotionMinPaymentAmountError: {
+      type: string;
+      message?: string;
     };
     /**
      * 세금계산서 임시 저장 정보
@@ -9585,10 +12108,10 @@ export interface components {
        */
       requestedAt: string;
     };
-    RescheduleAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    RescheduleAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     RescheduleContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    RescheduleDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    ReschedulePartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    RescheduleDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    ReschedulePartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 예약 업데이트 재설정을 위한 입력 정보
      * @description <p>추가 수수료 정책 예약 업데이트 재설정을 위한 입력 정보</p>
@@ -9744,7 +12267,7 @@ export interface components {
       status: string;
       /** 결제 예약 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -9804,10 +12327,10 @@ export interface components {
        */
       revokedAt: string;
     };
-    ScheduleAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformAdditionalFeePolicyScheduleAlreadyExistsError"] | components["schemas"]["PlatformArchivedAdditionalFeePolicyError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    ScheduleAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformAdditionalFeePolicyScheduleAlreadyExistsError"] | components["schemas"]["PlatformArchivedAdditionalFeePolicyError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     ScheduleContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedContractError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformContractScheduleAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    ScheduleDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformDiscountSharePolicyScheduleAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
-    SchedulePartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformPartnerScheduleAlreadyExistsError"] | components["schemas"]["UnauthorizedError"];
+    ScheduleDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformDiscountSharePolicyScheduleAlreadyExistsError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    SchedulePartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAccountVerificationAlreadyUsedError"] | components["schemas"]["PlatformAccountVerificationFailedError"] | components["schemas"]["PlatformAccountVerificationNotFoundError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformInsufficientDataToChangePartnerTypeError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformPartnerScheduleAlreadyExistsError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 업데이트 예약을 위한 입력 정보
      * @description <p>추가 수수료 정책 업데이트 예약을 위한 입력 정보</p>
@@ -9906,6 +12429,7 @@ export interface components {
       defaultContractId?: string;
       memo?: string;
       tags?: string[];
+      userDefinedProperties?: components["schemas"]["PlatformProperties"];
     };
     /**
      * 파트너 계좌 업데이트를 위한 입력 정보
@@ -9920,6 +12444,8 @@ export interface components {
       number: string;
       /** 예금주명 */
       holder: string;
+      /** 계좌 검증 아이디 */
+      accountVerificationId?: string;
     };
     /**
      * 파트너 업데이트를 위한 유형별 추가 정보
@@ -9942,12 +12468,16 @@ export interface components {
     SchedulePlatformPartnersBodyUpdateType: {
       /** 사업자 추가 정보 */
       business?: components["schemas"]["SchedulePlatformPartnersBodyUpdateTypeBusiness"];
-      /** 원천징수대상자 추가 정보 */
+      /** 원천징수 대상자 추가 정보 */
       whtPayer?: components["schemas"]["SchedulePlatformPartnersBodyUpdateTypeWhtPayer"];
+      /** 원천징수 비대상자 추가 정보 */
+      nonWhtPayer?: components["schemas"]["SchedulePlatformPartnersBodyUpdateTypeNonWhtPayer"];
     };
     SchedulePlatformPartnersBodyUpdateTypeBusiness: {
       /** 상호명 */
       companyName?: string;
+      /** 사업자 유형 */
+      taxationType?: components["schemas"]["PlatformPartnerTaxationType"];
       /** 사업자등록번호 */
       businessRegistrationNumber?: string;
       /** 대표자 이름 */
@@ -9959,11 +12489,21 @@ export interface components {
       /** 업종 */
       businessClass?: string;
     };
-    SchedulePlatformPartnersBodyUpdateTypeWhtPayer: {
-      /** 생년월일 */
+    SchedulePlatformPartnersBodyUpdateTypeNonWhtPayer: {
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       birthdate?: string;
     };
-    SchedulePlatformPartnersError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnersCannotBeScheduledError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerSchedulesAlreadyExistError"] | components["schemas"]["UnauthorizedError"];
+    SchedulePlatformPartnersBodyUpdateTypeWhtPayer: {
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      birthdate?: string;
+    };
+    SchedulePlatformPartnersError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnersCannotBeScheduledError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerSchedulesAlreadyExistError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
     SchedulePlatformPartnersResponse: Record<string, never>;
     /**
      * 결제 예약 완료 상태
@@ -9974,7 +12514,7 @@ export interface components {
       status: string;
       /** 결제 예약 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -10044,7 +12584,7 @@ export interface components {
       name?: string;
       /** PG사 */
       pgProvider: components["schemas"]["PgProvider"];
-      /** PG사 가맹점 식별 아이디 */
+      /** PG사 고객사 식별 아이디 */
       pgMerchantId: string;
     };
     /**
@@ -10096,6 +12636,11 @@ export interface components {
        * @description <p>SMS 방식의 경우 필수로 입력합니다.</p>
        */
       identityNumber?: string;
+      /**
+       * IP 주소
+       * @description <p>고객의 요청 속도 제한에 사용됩니다.</p>
+       */
+      ipAddress: string;
     };
     SendIdentityVerificationError: components["schemas"]["ChannelNotFoundError"] | components["schemas"]["ForbiddenError"] | components["schemas"]["IdentityVerificationAlreadySentError"] | components["schemas"]["IdentityVerificationAlreadyVerifiedError"] | components["schemas"]["IdentityVerificationNotFoundError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PgProviderError"] | components["schemas"]["UnauthorizedError"];
     /**
@@ -10141,6 +12686,34 @@ export interface components {
       country?: components["schemas"]["Country"];
     };
     /**
+     * 정산 정보
+     * @description <p>정산 정보</p>
+     */
+    Settlement: {
+      /**
+       * PG 수수료 요금
+       * Format: int64
+       */
+      feeAmount: number;
+      /**
+       * PG 수수료 부가세
+       * Format: int64
+       */
+      feeVatAmount: number;
+      /**
+       * 정산 금액
+       * Format: int64
+       */
+      settlementAmount: number;
+      /** 정산 통화 */
+      settlementCurrency: components["schemas"]["Currency"];
+      /**
+       * 정산일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      settlementDate: string;
+    };
+    /**
      * 정렬 방식
      * @description <p>정렬 방식</p>
      *
@@ -10156,7 +12729,7 @@ export interface components {
       status: string;
       /** 결제 예약 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -10271,7 +12844,7 @@ export interface components {
       status: string;
       /** 결제 예약 건 아이디 */
       id: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -10353,6 +12926,17 @@ export interface components {
       message?: string;
     };
     /**
+     * 결제 시도 금액이 프로모션 할인 금액보다 적은 경우
+     * @description <p>결제 시도 금액이 프로모션 할인 금액보다 적은 경우</p>
+     */
+    TotalAmountLessThanDiscountAmountError: {
+      type: string;
+      message?: string;
+    };
+    TransferParameters: {
+      [key: string]: components["schemas"]["PlatformSettlementParameterValue"];
+    };
+    /**
      * 인증 정보가 올바르지 않은 경우
      * @description <p>인증 정보가 올바르지 않은 경우</p>
      */
@@ -10408,13 +12992,6 @@ export interface components {
       /** 연동 사업자 정보 */
       memberCompany: components["schemas"]["B2bMemberCompany"];
     };
-    UpdatePayoutAllPartnerSettlementsBody: {
-      status: components["schemas"]["PlatformPayoutPartnerSettlementStatus"];
-    };
-    UpdatePayoutAllPartnerSettlementsError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutAlreadyCompletedError"] | components["schemas"]["PlatformPayoutCreatorMismatchedError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    UpdatePayoutAllPartnerSettlementsResponse: {
-      payout: components["schemas"]["PlatformPayout"];
-    };
     /**
      * 추가 수수료 정책 업데이트를 위한 입력 정보
      * @description <p>추가 수수료 정책 업데이트를 위한 입력 정보</p>
@@ -10430,7 +13007,7 @@ export interface components {
       /** 부가세를 부담할 주체 */
       vatPayer?: components["schemas"]["PlatformPayer"];
     };
-    UpdatePlatformAdditionalFeePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformArchivedAdditionalFeePolicyError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    UpdatePlatformAdditionalFeePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAdditionalFeePolicyNotFoundError"] | components["schemas"]["PlatformArchivedAdditionalFeePolicyError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 추가 수수료 정책 업데이트 성공 응답
      * @description <p>추가 수수료 정책 업데이트 성공 응답</p>
@@ -10475,6 +13052,8 @@ export interface components {
       supportsMultipleOrderTransfersPerPartner?: boolean;
       /** 정산일이 정산시작일보다 작거나 같을 경우 공휴일 후 영업일로 정산일 다시 계산 여부 */
       adjustSettlementDateAfterHolidayIfEarlier?: boolean;
+      /** 지급 금액에서 원천징수세 차감 여부 */
+      subtractWhtInPayoutAmount?: boolean;
     };
     /**
      * 계약 업데이트를 위한 입력 정보. 값이 명시되지 않은 필드는 업데이트되지 않습니다.
@@ -10495,7 +13074,7 @@ export interface components {
       /** 정산 시 결제금액 부가세 감액 여부 */
       subtractPaymentVatAmount?: boolean;
     };
-    UpdatePlatformContractError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedContractError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    UpdatePlatformContractError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedContractError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 계약 객체 업데이트 성공 응답
      * @description <p>계약 객체 업데이트 성공 응답</p>
@@ -10521,7 +13100,7 @@ export interface components {
       /** 해당 할인 분담에 대한 메모 */
       memo?: string;
     };
-    UpdatePlatformDiscountSharePolicyError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedDiscountSharePolicyError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    UpdatePlatformDiscountSharePolicyError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedDiscountSharePolicyError"] | components["schemas"]["PlatformDiscountSharePolicyNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 할인 분담 정책 업데이트 성공 응답
      * @description <p>할인 분담 정책 업데이트 성공 응답</p>
@@ -10530,7 +13109,7 @@ export interface components {
       /** 업데이트된 할인 분담 정책 */
       discountSharePolicy: components["schemas"]["PlatformDiscountSharePolicy"];
     };
-    UpdatePlatformError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformInvalidSettlementFormulaError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
+    UpdatePlatformError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformInvalidSettlementFormulaError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 업데이트를 위한 입력 정보
      * @description <p>파트너 업데이트를 위한 입력 정보</p>
@@ -10551,6 +13130,8 @@ export interface components {
       tags?: string[];
       /** 파트너 유형별 정보 */
       type?: components["schemas"]["UpdatePlatformPartnerBodyType"];
+      /** 사용자 정의 속성 */
+      userDefinedProperties?: components["schemas"]["PlatformProperties"];
     };
     /**
      * 파트너 계좌 업데이트를 위한 입력 정보
@@ -10565,6 +13146,8 @@ export interface components {
       number: string;
       /** 예금주명 */
       holder: string;
+      /** 계좌 검증 아이디 */
+      accountVerificationId?: string;
     };
     /**
      * 파트너 담당자 업데이트를 위한 정보
@@ -10587,12 +13170,16 @@ export interface components {
     UpdatePlatformPartnerBodyType: {
       /** 사업자 추가 정보 */
       business?: components["schemas"]["UpdatePlatformPartnerBodyTypeBusiness"];
-      /** 원천징수대상자 추가 정보 */
+      /** 원천징수 대상자 추가 정보 */
       whtPayer?: components["schemas"]["UpdatePlatformPartnerBodyTypeWhtPayer"];
+      /** 원천징수 비대상자 추가 정보 */
+      nonWhtPayer?: components["schemas"]["UpdatePlatformPartnerBodyTypeNonWhtPayer"];
     };
     UpdatePlatformPartnerBodyTypeBusiness: {
       /** 상호명 */
       companyName?: string;
+      /** 사업자 유형 */
+      taxationType?: components["schemas"]["PlatformPartnerTaxationType"];
       /** 사업자등록번호 */
       businessRegistrationNumber?: string;
       /** 대표자 이름 */
@@ -10604,11 +13191,21 @@ export interface components {
       /** 업종 */
       businessClass?: string;
     };
-    UpdatePlatformPartnerBodyTypeWhtPayer: {
-      /** 생년월일 */
+    UpdatePlatformPartnerBodyTypeNonWhtPayer: {
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
       birthdate?: string;
     };
-    UpdatePlatformPartnerError: components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["UnauthorizedError"];
+    UpdatePlatformPartnerBodyTypeWhtPayer: {
+      /**
+       * 생년월일
+       * @description <p>날짜를 나타내는 문자열로, <code>yyyy-MM-dd</code> 형식을 따릅니다.</p>
+       */
+      birthdate?: string;
+    };
+    UpdatePlatformPartnerError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformAccountVerificationAlreadyUsedError"] | components["schemas"]["PlatformAccountVerificationFailedError"] | components["schemas"]["PlatformAccountVerificationNotFoundError"] | components["schemas"]["PlatformArchivedPartnerError"] | components["schemas"]["PlatformContractNotFoundError"] | components["schemas"]["PlatformInsufficientDataToChangePartnerTypeError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPartnerNotFoundError"] | components["schemas"]["PlatformUserDefinedPropertyNotFoundError"] | components["schemas"]["UnauthorizedError"];
     /**
      * 파트너 업데이트 성공 응답
      * @description <p>파트너 업데이트 성공 응답</p>
@@ -10617,13 +13214,17 @@ export interface components {
       /** 업데이트된 파트너 */
       partner: components["schemas"]["PlatformPartner"];
     };
-    UpdatePlatformPayoutPartnerSettlementBody: {
-      status: components["schemas"]["PlatformPayoutPartnerSettlementStatus"];
+    UpdatePlatformPartnerSettlementStatusBody: {
+      partnerSettlementId: string;
+      status: components["schemas"]["PlatformPartnerSettlementStatus"];
+      memo?: string;
     };
-    UpdatePlatformPayoutPartnerSettlementError: components["schemas"]["ForbiddenError"] | components["schemas"]["InvalidRequestError"] | components["schemas"]["PlatformNotEnabledError"] | components["schemas"]["PlatformPayoutCreatorMismatchedError"] | components["schemas"]["PlatformPayoutNotFoundError"] | components["schemas"]["PlatformPayoutPartnerSettlementAlreadyPaidOutError"] | components["schemas"]["PlatformPayoutPartnerSettlementNotFoundError"] | components["schemas"]["UnauthorizedError"];
-    UpdatePlatformPayoutPartnerSettlementResponse: {
-      payoutPartnerSettlement: components["schemas"]["PlatformPayoutPartnerSettlement"];
-      payout: components["schemas"]["PlatformPayout"];
+    /**
+     * 정산내역 상태 업데이트 결과
+     * @description <p>정산내역 상태 업데이트 결과</p>
+     */
+    UpdatePlatformPartnerSettlementStatusResponse: {
+      partnerSettlement: components["schemas"]["PlatformPartnerSettlement"];
     };
     /**
      * 플랫폼 업데이트 결과 정보
@@ -10687,7 +13288,7 @@ export interface components {
        * @description <p>V1 결제 건의 경우 imp_uid에 해당합니다.</p>
        */
       transactionId: string;
-      /** 가맹점 아이디 */
+      /** 고객사 아이디 */
       merchantId: string;
       /** 상점 아이디 */
       storeId: string;
@@ -10695,6 +13296,8 @@ export interface components {
       method?: components["schemas"]["PaymentMethod"];
       /** 결제 채널 */
       channel: components["schemas"]["SelectedChannel"];
+      /** 결제 채널 그룹 정보 */
+      channelGroup?: components["schemas"]["ChannelGroupSummary"];
       /** 포트원 버전 */
       version: components["schemas"]["PortOneVersion"];
       /**
@@ -10752,6 +13355,8 @@ export interface components {
       customData?: string;
       /** 국가 코드 */
       country?: components["schemas"]["Country"];
+      /** PG사 거래 아이디 */
+      pgTxId?: string;
     };
     /**
      * 웹훅 내역이 존재하지 않는 경우
@@ -10869,8 +13474,8 @@ export interface operations {
     };
   };
   /**
-   * @description <p>가맹점의 플랫폼 정보를 조회합니다.
-   * 요청된 Authorization header 를 통해 자동으로 요청자의 가맹점을 특정합니다.</p>
+   * @description <p>고객사의 플랫폼 정보를 조회합니다.
+   * 요청된 Authorization header 를 통해 자동으로 요청자의 고객사를 특정합니다.</p>
    */
   getPlatform: {
     responses: {
@@ -10913,8 +13518,8 @@ export interface operations {
     };
   };
   /**
-   * @description <p>가맹점의 플랫폼 관련 정보를 업데이트합니다.
-   * 요청된 Authorization header 를 통해 자동으로 요청자의 가맹점을 특정합니다.</p>
+   * @description <p>고객사의 플랫폼 관련 정보를 업데이트합니다.
+   * 요청된 Authorization header 를 통해 자동으로 요청자의 고객사를 특정합니다.</p>
    */
   updatePlatform: {
     requestBody: {
@@ -10953,6 +13558,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -10968,7 +13574,7 @@ export interface operations {
       query?: {
         /**
          * @description <p>보관 조회 여부</p>
-         * <p>true 이면 보관된 할인 분담의 필터 옵션을 조회하고, false 이면 보관되지 않은 할인 분담의 필터 옵션을 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+         * <p>true 이면 보관된 할인 분담의 필터 옵션을 조회하고, false 이면 보관되지 않은 할인 분담의 필터 옵션을 조회합니다. 기본값은 false 입니다.</p>
          */
         isArchived?: boolean;
       };
@@ -11003,6 +13609,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11012,15 +13619,25 @@ export interface operations {
       };
     };
   };
-  /** @description <p>여러 할인 분담을 조회합니다.</p> */
+  /**
+   * <p>할인 분담 정책 다건 조회</p>
+   *
+   * @description <p>할인 분담 정책 다건 조회</p>
+   * <p>여러 할인 분담을 조회합니다.</p>
+   */
   getPlatformDiscountSharePolicies: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetPlatformDiscountSharePoliciesBody"];
       };
     };
     responses: {
-      /** @description <p>성공 응답으로 조회된 파트너 리스트와 페이지 정보가 반환됩니다.</p> */
+      /** @description <p>성공 응답으로 조회된 할인 분담 정책 리스트와 페이지 정보가 반환됩니다.</p> */
       200: {
         content: {
           "application/json": components["schemas"]["GetPlatformDiscountSharePoliciesResponse"];
@@ -11049,6 +13666,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11058,7 +13676,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>새로운 할인 분담을 생성합니다.</p> */
+  /**
+   * <p>할인 분담 정책 생성</p>
+   *
+   * @description <p>할인 분담 정책 생성</p>
+   * <p>새로운 할인 분담을 생성합니다.</p>
+   */
   createPlatformDiscountSharePolicy: {
     requestBody: {
       content: {
@@ -11095,6 +13718,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11114,7 +13738,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>주어진 아이디에 대응되는 할인 분담을 조회합니다.</p> */
+  /**
+   * <p>할인 분담 정책 조회</p>
+   *
+   * @description <p>할인 분담 정책 조회</p>
+   * <p>주어진 아이디에 대응되는 할인 분담을 조회합니다.</p>
+   */
   getPlatformDiscountSharePolicy: {
     parameters: {
       path: {
@@ -11152,6 +13781,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11171,7 +13801,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>주어진 아이디에 대응되는 할인 분담을 업데이트합니다.</p> */
+  /**
+   * <p>할인 분담 정책 수정</p>
+   *
+   * @description <p>할인 분담 정책 수정</p>
+   * <p>주어진 아이디에 대응되는 할인 분담을 업데이트합니다.</p>
+   */
   updatePlatformDiscountSharePolicy: {
     parameters: {
       path: {
@@ -11214,6 +13849,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11281,6 +13917,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11343,6 +13980,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11405,6 +14043,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11472,6 +14111,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11491,9 +14131,155 @@ export interface operations {
       };
     };
   };
-  /** @description <p>여러 추가 수수료 정책을 조회합니다.</p> */
+  /**
+   * <p>할인 분담 정책 보관</p>
+   *
+   * @description <p>할인 분담 정책 보관</p>
+   * <p>주어진 아이디에 대응되는 할인 분담을 보관합니다.</p>
+   */
+  archivePlatformDiscountSharePolicy: {
+    parameters: {
+      path: {
+        /** @description <p>할인 분담 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 보관된 할인 분담 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformDiscountSharePolicyResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformDiscountSharePolicyNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformCannotArchiveScheduledDiscountSharePolicyError</code>: 예약된 업데이트가 있는 할인 분담 정책을 보관하려고 하는 경우</li>
+       * </ul>
+       */
+      409: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformDiscountSharePolicyError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>할인 분담 정책 복원</p>
+   *
+   * @description <p>할인 분담 정책 복원</p>
+   * <p>주어진 아이디에 대응되는 할인 분담을 복원합니다.</p>
+   */
+  recoverPlatformDiscountSharePolicy: {
+    parameters: {
+      path: {
+        /** @description <p>할인 분담 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 복원된 할인 분담 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformDiscountSharePolicyResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformDiscountSharePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformDiscountSharePolicyNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformDiscountSharePolicyError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>추가 수수료 정책 다건 조회</p>
+   *
+   * @description <p>추가 수수료 정책 다건 조회</p>
+   * <p>여러 추가 수수료 정책을 조회합니다.</p>
+   */
   getPlatformAdditionalFeePolicies: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetPlatformAdditionalFeePoliciesBody"];
       };
@@ -11528,6 +14314,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11537,7 +14324,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>새로운 추가 수수료 정책을 생성합니다.</p> */
+  /**
+   * <p>추가 수수료 정책 생성</p>
+   *
+   * @description <p>추가 수수료 정책 생성</p>
+   * <p>새로운 추가 수수료 정책을 생성합니다.</p>
+   */
   createPlatformAdditionalFeePolicy: {
     requestBody: {
       content: {
@@ -11574,6 +14366,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11593,7 +14386,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.</p> */
+  /**
+   * <p>추가 수수료 정책 조회</p>
+   *
+   * @description <p>추가 수수료 정책 조회</p>
+   * <p>주어진 아이디에 대응되는 추가 수수료 정책을 조회합니다.</p>
+   */
   getPlatformAdditionalFeePolicy: {
     parameters: {
       path: {
@@ -11631,6 +14429,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11650,7 +14449,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.</p> */
+  /**
+   * <p>추가 수수료 정책 수정</p>
+   *
+   * @description <p>추가 수수료 정책 수정</p>
+   * <p>주어진 아이디에 대응되는 추가 수수료 정책을 업데이트합니다.</p>
+   */
   updatePlatformAdditionalFeePolicy: {
     parameters: {
       path: {
@@ -11693,6 +14497,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11760,6 +14565,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11821,6 +14627,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11883,6 +14690,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11951,6 +14759,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -11970,13 +14779,149 @@ export interface operations {
       };
     };
   };
+  /**
+   * <p>추가 수수료 정책 보관</p>
+   *
+   * @description <p>추가 수수료 정책 보관</p>
+   * <p>주어진 아이디에 대응되는 추가 수수료 정책을 보관합니다.</p>
+   */
+  archivePlatformAdditionalFeePolicy: {
+    parameters: {
+      path: {
+        /** @description <p>추가 수수료 정책 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 보관된 추가 수수료 정책 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformAdditionalFeePolicyResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformAdditionalFeePolicyNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformCannotArchiveScheduledAdditionalFeePolicyError</code>: 예약된 업데이트가 있는 추가 수수료 정책을 보관하려고 하는 경우</li>
+       * </ul>
+       */
+      409: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformAdditionalFeePolicyError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>추가 수수료 정책 복원</p>
+   *
+   * @description <p>추가 수수료 정책 복원</p>
+   * <p>주어진 아이디에 대응되는 추가 수수료 정책을 복원합니다.</p>
+   */
+  recoverPlatformAdditionalFeePolicy: {
+    parameters: {
+      path: {
+        /** @description <p>추가 수수료 정책 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 복원된 추가 수수료 정책 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformAdditionalFeePolicyResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformAdditionalFeePolicyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformAdditionalFeePolicyNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformAdditionalFeePolicyError"];
+        };
+      };
+    };
+  };
   /** @description <p>파트너 다건 조회 시 필요한 필터 옵션을 조회합니다.</p> */
   getPlatformPartnerFilterOptions: {
     parameters: {
       query?: {
         /**
          * @description <p>보관 조회 여부</p>
-         * <p>true 이면 보관된 파트너의 필터 옵션을 조회하고, false 이면 보관되지 않은 파트너의 필터 옵션을 조회합니다. 아무 값도 넘기지 않을 경우 기본값은 false 입니다.</p>
+         * <p>true 이면 보관된 파트너의 필터 옵션을 조회하고, false 이면 보관되지 않은 파트너의 필터 옵션을 조회합니다. 기본값은 false 입니다.</p>
          */
         isArchived?: boolean;
       };
@@ -12011,6 +14956,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12020,9 +14966,19 @@ export interface operations {
       };
     };
   };
-  /** @description <p>여러 파트너를 조회합니다.</p> */
+  /**
+   * <p>파트너 다건 조회</p>
+   *
+   * @description <p>파트너 다건 조회</p>
+   * <p>여러 파트너를 조회합니다.</p>
+   */
   getPlatformPartners: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetPlatformPartnersBody"];
       };
@@ -12057,6 +15013,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12066,7 +15023,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>새로운 파트너를 생성합니다.</p> */
+  /**
+   * <p>파트너 생성</p>
+   *
+   * @description <p>파트너 생성</p>
+   * <p>새로운 파트너를 생성합니다.</p>
+   */
   createPlatformPartner: {
     requestBody: {
       content: {
@@ -12083,6 +15045,8 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>PlatformAccountVerificationFailedError</code>: 파트너 계좌 인증이 실패한 경우</li>
+       * <li><code>PlatformCurrencyNotSupportedError</code>: 지원 되지 않는 통화를 선택한 경우</li>
        * </ul>
        */
       400: {
@@ -12103,6 +15067,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12113,6 +15078,8 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformContractNotFoundError</code></li>
+       * <li><code>PlatformAccountVerificationNotFoundError</code>: 파트너 계좌 검증 아이디를 찾을 수 없는 경우</li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -12123,6 +15090,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformPartnerIdAlreadyExistsError</code></li>
+       * <li><code>PlatformAccountVerificationAlreadyUsedError</code>: 파트너 계좌 검증 아이디를 이미 사용한 경우</li>
        * </ul>
        */
       409: {
@@ -12132,7 +15100,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>파트너 객체를 조회합니다.</p> */
+  /**
+   * <p>파트너 조회</p>
+   *
+   * @description <p>파트너 조회</p>
+   * <p>파트너 객체를 조회합니다.</p>
+   */
   getPlatformPartner: {
     parameters: {
       path: {
@@ -12170,6 +15143,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12189,7 +15163,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.</p> */
+  /**
+   * <p>파트너 수정</p>
+   *
+   * @description <p>파트너 수정</p>
+   * <p>주어진 아이디에 대응되는 파트너 정보를 업데이트합니다.</p>
+   */
   updatePlatformPartner: {
     parameters: {
       path: {
@@ -12212,6 +15191,8 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>PlatformAccountVerificationFailedError</code>: 파트너 계좌 인증이 실패한 경우</li>
+       * <li><code>PlatformInsufficientDataToChangePartnerTypeError</code>: 파트너 타입 수정에 필요한 데이터가 부족한 경우</li>
        * </ul>
        */
       400: {
@@ -12232,6 +15213,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12243,6 +15225,8 @@ export interface operations {
        * @description <ul>
        * <li><code>PlatformPartnerNotFoundError</code></li>
        * <li><code>PlatformContractNotFoundError</code></li>
+       * <li><code>PlatformAccountVerificationNotFoundError</code>: 파트너 계좌 검증 아이디를 찾을 수 없는 경우</li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -12253,6 +15237,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformArchivedPartnerError</code>: 보관된 파트너를 업데이트하려고 하는 경우</li>
+       * <li><code>PlatformAccountVerificationAlreadyUsedError</code>: 파트너 계좌 검증 아이디를 이미 사용한 경우</li>
        * </ul>
        */
       409: {
@@ -12262,7 +15247,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>새로운 파트너를 다건 생성합니다.</p> */
+  /**
+   * <p>파트너 다건 생성</p>
+   *
+   * @description <p>파트너 다건 생성</p>
+   * <p>새로운 파트너를 다건 생성합니다.</p>
+   */
   createPlatformPartners: {
     requestBody: {
       content: {
@@ -12280,6 +15270,7 @@ export interface operations {
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
        * <li><code>PlatformPartnerIdsDuplicatedError</code></li>
+       * <li><code>PlatformCurrencyNotSupportedError</code>: 지원 되지 않는 통화를 선택한 경우</li>
        * </ul>
        */
       400: {
@@ -12300,6 +15291,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12310,6 +15302,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformContractsNotFoundError</code></li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -12367,6 +15360,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12429,6 +15423,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12472,6 +15467,8 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>PlatformAccountVerificationFailedError</code>: 파트너 계좌 인증이 실패한 경우</li>
+       * <li><code>PlatformInsufficientDataToChangePartnerTypeError</code>: 파트너 타입 수정에 필요한 데이터가 부족한 경우</li>
        * </ul>
        */
       400: {
@@ -12492,6 +15489,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12503,6 +15501,8 @@ export interface operations {
        * @description <ul>
        * <li><code>PlatformPartnerNotFoundError</code></li>
        * <li><code>PlatformContractNotFoundError</code></li>
+       * <li><code>PlatformAccountVerificationNotFoundError</code>: 파트너 계좌 검증 아이디를 찾을 수 없는 경우</li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -12514,6 +15514,7 @@ export interface operations {
        * @description <ul>
        * <li><code>PlatformPartnerScheduleAlreadyExistsError</code></li>
        * <li><code>PlatformArchivedPartnerError</code>: 보관된 파트너를 업데이트하려고 하는 경우</li>
+       * <li><code>PlatformAccountVerificationAlreadyUsedError</code>: 파트너 계좌 검증 아이디를 이미 사용한 경우</li>
        * </ul>
        */
       409: {
@@ -12561,6 +15562,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12615,6 +15617,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12625,6 +15628,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformContractNotFoundError</code></li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -12645,9 +15649,155 @@ export interface operations {
       };
     };
   };
-  /** @description <p>여러 계약을 조회합니다.</p> */
+  /**
+   * <p>파트너 복원</p>
+   *
+   * @description <p>파트너 복원</p>
+   * <p>주어진 아이디에 대응되는 파트너를 보관합니다.</p>
+   */
+  archivePlatformPartner: {
+    parameters: {
+      path: {
+        /** @description <p>파트너 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 보관된 파트너 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformPartnerResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformPartnerNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformCannotArchiveScheduledPartnerError</code>: 예약된 업데이트가 있는 파트너를 보관하려고 하는 경우</li>
+       * </ul>
+       */
+      409: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformPartnerError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>파트너 복원</p>
+   *
+   * @description <p>파트너 복원</p>
+   * <p>주어진 아이디에 대응되는 파트너를 복원합니다.</p>
+   */
+  recoverPlatformPartner: {
+    parameters: {
+      path: {
+        /** @description <p>파트너 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 복원된 파트너 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformPartnerResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformPartnerError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformPartnerNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformPartnerError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>계약 다건 조회</p>
+   *
+   * @description <p>계약 다건 조회</p>
+   * <p>여러 계약을 조회합니다.</p>
+   */
   getPlatformContracts: {
-    requestBody: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
       content: {
         "application/json": components["schemas"]["GetPlatformContractsBody"];
       };
@@ -12682,6 +15832,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12691,7 +15842,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>새로운 계약을 생성합니다.</p> */
+  /**
+   * <p>계약 생성</p>
+   *
+   * @description <p>계약 생성</p>
+   * <p>새로운 계약을 생성합니다.</p>
+   */
   createPlatformContract: {
     requestBody: {
       content: {
@@ -12728,6 +15884,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12747,6 +15904,12 @@ export interface operations {
       };
     };
   };
+  /**
+   * <p>계약 조회</p>
+   *
+   * @description <p>계약 조회</p>
+   * <p>주어진 아이디에 대응되는 계약을 조회합니다.</p>
+   */
   getPlatformContract: {
     parameters: {
       path: {
@@ -12784,6 +15947,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12803,7 +15967,12 @@ export interface operations {
       };
     };
   };
-  /** @description <p>주어진 아이디에 대응되는 계약을 업데이트합니다.</p> */
+  /**
+   * <p>계약 수정</p>
+   *
+   * @description <p>계약 수정</p>
+   * <p>주어진 아이디에 대응되는 계약을 업데이트합니다.</p>
+   */
   updatePlatformContract: {
     parameters: {
       path: {
@@ -12846,6 +16015,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -12913,6 +16083,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13105,6 +16276,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13124,13 +16296,157 @@ export interface operations {
       };
     };
   };
-  getPlatformTransfer: {
+  /**
+   * <p>계약 보관</p>
+   *
+   * @description <p>계약 보관</p>
+   * <p>주어진 아이디에 대응되는 계약을 보관합니다.</p>
+   */
+  archivePlatformContract: {
     parameters: {
       path: {
+        /** @description <p>계약 아이디</p> */
         id: string;
       };
     };
     responses: {
+      /** @description <p>성공 응답으로 보관된 계약 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformContractResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformContractNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformCannotArchiveScheduledContractError</code>: 예약된 업데이트가 있는 계약을 보관하려고 하는 경우</li>
+       * </ul>
+       */
+      409: {
+        content: {
+          "application/json": components["schemas"]["ArchivePlatformContractError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>계약 복원</p>
+   *
+   * @description <p>계약 복원</p>
+   * <p>주어진 아이디에 대응되는 계약을 복원합니다.</p>
+   */
+  recoverPlatformContract: {
+    parameters: {
+      path: {
+        /** @description <p>계약 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 복원된 계약 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformContractResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformContractError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformContractNotFoundError</code></li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["RecoverPlatformContractError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>정산건 조회</p>
+   *
+   * @description <p>정산건 조회</p>
+   * <p>정산건을 조회합니다.</p>
+   */
+  getPlatformTransfer: {
+    parameters: {
+      path: {
+        /** @description <p>조회하고 싶은 정산건 아이디</p> */
+        id: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 정산건 객체가 반환됩니다.</p> */
       200: {
         content: {
           "application/json": components["schemas"]["PlatformTransfer"];
@@ -13159,6 +16475,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13178,6 +16495,12 @@ export interface operations {
       };
     };
   };
+  /**
+   * <p>정산건 삭제</p>
+   *
+   * @description <p>정산건 삭제</p>
+   * <p>scheduled, in_process 상태의 정산건만 삭제가능합니다.</p>
+   */
   deletePlatformTransfer: {
     parameters: {
       path: {
@@ -13216,6 +16539,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13235,6 +16559,68 @@ export interface operations {
       };
     };
   };
+  /**
+   * <p>정산건 다건 조회</p>
+   *
+   * @description <p>정산건 다건 조회</p>
+   * <p>성공 응답으로 조회된 정산건 요약 리스트와 페이지 정보가 반환됩니다.</p>
+   */
+  getPlatformTransferSummaries: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["GetPlatformTransferSummariesBody"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetPlatformTransferSummariesResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["GetPlatformTransferSummariesError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["GetPlatformTransferSummariesError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["GetPlatformTransferSummariesError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>주문 정산건 생성</p>
+   *
+   * @description <p>주문 정산건 생성</p>
+   * <p>성공 응답으로 생성된 주문 정산건 객체가 반환됩니다.</p>
+   */
   createPlatformOrderTransfer: {
     requestBody: {
       content: {
@@ -13252,9 +16638,13 @@ export interface operations {
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
        * <li><code>PlatformDiscountExceededOrderAmountError</code></li>
        * <li><code>PlatformProductIdDuplicatedError</code></li>
-       * <li><code>PlatformSettlementPaymentAmountExceededPortOnePaymentError</code></li>
+       * <li><code>PlatformSettlementPaymentAmountExceededPortOnePaymentError</code>: 정산 요청 결제 금액이 포트원 결제 내역의 결제 금액을 초과한 경우</li>
+       * <li><code>PlatformSettlementTaxFreeAmountExceededPortOnePaymentError</code>: 정산 요청 면세 금액이 포트원 결제 내역의 면세 금액을 초과한 경우</li>
+       * <li><code>PlatformSettlementSupplyWithVatAmountExceededPortOnePaymentError</code>: 정산 요청 공급대가가 포트원 결제 내역의 공급대가를 초과한 경우</li>
        * <li><code>PlatformContractPlatformFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError</code></li>
        * <li><code>PlatformAdditionalFixedAmountFeeCurrencyAndSettlementCurrencyMismatchedError</code></li>
+       * <li><code>PlatformCurrencyNotSupportedError</code>: 지원 되지 않는 통화를 선택한 경우</li>
+       * <li><code>PlatformTaxFreeAmountOverFlowError</code>: 면세 금액이 결제금액을 초과한 경우</li>
        * </ul>
        */
       400: {
@@ -13275,6 +16665,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13289,6 +16680,7 @@ export interface operations {
        * <li><code>PlatformAdditionalFeePoliciesNotFoundError</code></li>
        * <li><code>PlatformDiscountSharePoliciesNotFoundError</code></li>
        * <li><code>PlatformPaymentNotFoundError</code></li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -13308,6 +16700,12 @@ export interface operations {
       };
     };
   };
+  /**
+   * <p>주문 취소 정산건 생성</p>
+   *
+   * @description <p>주문 취소 정산건 생성</p>
+   * <p>성공 응답으로 생성된 주문 취소 정산건 객체가 반환됩니다.</p>
+   */
   createPlatformOrderCancelTransfer: {
     requestBody: {
       content: {
@@ -13325,14 +16723,16 @@ export interface operations {
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
        * <li><code>PlatformOrderDetailMismatchedError</code></li>
        * <li><code>PlatformDiscountSharePolicyIdDuplicatedError</code></li>
-       * <li><code>PlatformCancellableAmountExceededError</code></li>
+       * <li><code>PlatformCancellableAmountExceededError</code>: 취소 가능한 금액이 초과한 경우</li>
        * <li><code>PlatformCancellableDiscountAmountExceededError</code></li>
        * <li><code>PlatformProductIdDuplicatedError</code></li>
        * <li><code>PlatformCancellableProductQuantityExceededError</code></li>
        * <li><code>PlatformOrderTransferAlreadyCancelledError</code></li>
        * <li><code>PlatformDiscountCancelExceededOrderCancelAmountError</code></li>
        * <li><code>PlatformCancellationAndPaymentTypeMismatchedError</code></li>
-       * <li><code>PlatformSettlementCancelAmountExceededPortOneCancelError</code></li>
+       * <li><code>PlatformSettlementCancelAmountExceededPortOneCancelError</code>: 정산 취소 요청 금액이 포트원 결제 취소 내역의 취소 금액을 초과한 경우</li>
+       * <li><code>PlatformCannotSpecifyTransferError</code>: 정산 건 식별에 실패한 경우</li>
+       * <li><code>PlatformTaxFreeAmountOverFlowError</code>: 면세 금액이 결제금액을 초과한 경우</li>
        * </ul>
        */
       400: {
@@ -13353,6 +16753,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13367,6 +16768,7 @@ export interface operations {
        * <li><code>PlatformPaymentNotFoundError</code></li>
        * <li><code>PlatformProductIdNotFoundError</code></li>
        * <li><code>PlatformTransferDiscountSharePolicyNotFoundError</code></li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -13386,6 +16788,12 @@ export interface operations {
       };
     };
   };
+  /**
+   * <p>수기 정산건 생성</p>
+   *
+   * @description <p>수기 정산건 생성</p>
+   * <p>성공 응답으로 생성된 수기 정산건 객체가 반환됩니다.</p>
+   */
   createPlatformManualTransfer: {
     requestBody: {
       content: {
@@ -13422,6 +16830,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13432,11 +16841,57 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformPartnerNotFoundError</code></li>
+       * <li><code>PlatformUserDefinedPropertyNotFoundError</code>: 사용자 정의 속성이 존재 하지 않는 경우</li>
        * </ul>
        */
       404: {
         content: {
           "application/json": components["schemas"]["CreatePlatformManualTransferError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>정산 상세 내역 다운로드</p>
+   *
+   * @description <p>정산 상세 내역 다운로드</p>
+   * <p>정산 상세 내역을 csv 파일로 다운로드 합니다.</p>
+   */
+  downloadPlatformTransferSheet: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["DownloadPlatformTransferSheetBody"];
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "text/csv": string;
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["DownloadPlatformTransferSheetError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["DownloadPlatformTransferSheetError"];
         };
       };
     };
@@ -13452,12 +16907,12 @@ export interface operations {
       query?: {
         /**
          * @description <p>생년월일</p>
-         * <p>실명 조회를 위해 추가로 보낼 수 있습니다. birthDate과 businessRegistrationNumber 중 하나만 사용해야 합니다.</p>
+         * <p>실명 조회를 위해 추가로 보낼 수 있습니다. birthdate과 businessRegistrationNumber 중 하나만 사용해야 합니다.</p>
          */
-        birthDate?: string;
+        birthdate?: string;
         /**
          * @description <p>사업자등록번호</p>
-         * <p>실명 조회를 위해 추가로 보낼 수 있습니다. birthDate과 businessRegistrationNumber 중 하나만 사용해야 합니다.</p>
+         * <p>실명 조회를 위해 추가로 보낼 수 있습니다. birthdate과 businessRegistrationNumber 중 하나만 사용해야 합니다.</p>
          */
         businessRegistrationNumber?: string;
       };
@@ -13478,6 +16933,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>PlatformNotSupportedBankError</code>: 지원하지 않는 은행인 경우</li>
        * </ul>
        */
       400: {
@@ -13498,6 +16954,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>PlatformNotEnabledError</code>: 플랫폼 기능이 활성화되지 않아 요청을 처리할 수 없는 경우</li>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
        * </ul>
        */
       403: {
@@ -13672,7 +17129,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -13760,7 +17217,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -13850,7 +17307,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -14077,12 +17534,141 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
+       * <li><code>ChannelSpecificError</code>: 여러 채널을 지정한 요청에서, 채널 각각에서 오류가 발생한 경우</li>
        * </ul>
        */
       502: {
         content: {
           "application/json": components["schemas"]["DeleteBillingKeyError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>빌링키 다건 조회</p>
+   *
+   * @description <p>빌링키 다건 조회</p>
+   * <p>주어진 조건에 맞는 빌링키들을 페이지 기반으로 조회합니다.</p>
+   */
+  getBillingKeyInfos: {
+    parameters: {
+      query?: {
+        requestBody?: string;
+      };
+    };
+    requestBody?: {
+      content: {
+        "application/json": components["schemas"]["GetBillingKeyInfosBody"];
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 조회된 빌링키 리스트와 페이지 정보가 반환됩니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["GetBillingKeyInfosResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["GetBillingKeyInfosError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["GetBillingKeyInfosError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["GetBillingKeyInfosError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>빌링키 발급</p>
+   *
+   * @description <p>빌링키 발급</p>
+   * <p>빌링키 발급을 요청합니다.</p>
+   */
+  issueBillingKey: {
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["IssueBillingKeyBody"];
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["IssueBillingKeyResponse"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["IssueBillingKeyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["IssueBillingKeyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["IssueBillingKeyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>ChannelNotFoundError</code>: 요청된 채널이 존재하지 않는 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["IssueBillingKeyError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
+       * <li><code>ChannelSpecificError</code>: 여러 채널을 지정한 요청에서, 채널 각각에서 오류가 발생한 경우</li>
+       * </ul>
+       */
+      502: {
+        content: {
+          "application/json": components["schemas"]["IssueBillingKeyError"];
         };
       };
     };
@@ -14407,7 +17993,8 @@ export interface operations {
    * <p>결제 예약 다건 조회</p>
    *
    * @description <p>결제 예약 다건 조회</p>
-   * <p>주어진 조건에 맞는 결제 예약 건들을 조회합니다.</p>
+   * <p>주어진 조건에 맞는 결제 예약 건들을 조회합니다.
+   * <code>filter.from</code>, <code>filter.until</code> 파라미터의 기본값이 결제 시점 기준 지난 90일에 속하는 건을 조회하도록 되어 있으니, 미래 예약 상태의 건을 조회하기 위해서는 해당 파라미터를 직접 설정해 주셔야 합니다.</p>
    */
   getPaymentSchedules: {
     parameters: {
@@ -14692,6 +18279,7 @@ export interface operations {
        * <li><code>SumOfPartsExceedsCancelAmountError</code>: 면세 금액 등 하위 항목들의 합이 전체 취소 금액을 초과한 경우</li>
        * <li><code>CancelTaxFreeAmountExceedsCancellableTaxFreeAmountError</code>: 취소 면세 금액이 취소 가능한 면세 금액을 초과한 경우</li>
        * <li><code>CancelTaxAmountExceedsCancellableTaxAmountError</code>: 취소 과세 금액이 취소 가능한 과세 금액을 초과한 경우</li>
+       * <li><code>RemainedAmountLessThanPromotionMinPaymentAmountError</code>: 부분 취소 시, 취소하게 될 경우 남은 금액이 프로모션의 최소 결제 금액보다 작아지는 경우</li>
        * </ul>
        */
       409: {
@@ -14701,7 +18289,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -14739,6 +18327,8 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>PromotionPayMethodDoesNotMatchError</code>: 결제수단이 프로모션에 지정된 것과 일치하지 않는 경우</li>
+       * <li><code>TotalAmountLessThanDiscountAmountError</code>: 결제 시도 금액이 프로모션 할인 금액보다 적은 경우</li>
        * </ul>
        */
       400: {
@@ -14769,6 +18359,7 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>BillingKeyNotFoundError</code>: 빌링키가 존재하지 않는 경우</li>
+       * <li><code>ChannelNotFoundError</code>: 요청된 채널이 존재하지 않는 경우</li>
        * </ul>
        */
       404: {
@@ -14790,7 +18381,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -14828,6 +18419,8 @@ export interface operations {
       /**
        * @description <ul>
        * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * <li><code>PromotionPayMethodDoesNotMatchError</code>: 결제수단이 프로모션에 지정된 것과 일치하지 않는 경우</li>
+       * <li><code>TotalAmountLessThanDiscountAmountError</code>: 결제 시도 금액이 프로모션 할인 금액보다 적은 경우</li>
        * </ul>
        */
       400: {
@@ -14878,83 +18471,12 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
         content: {
           "application/json": components["schemas"]["PayInstantlyError"];
-        };
-      };
-    };
-  };
-  /**
-   * <p>빌링키 발급</p>
-   *
-   * @description <p>빌링키 발급</p>
-   * <p>빌링키 발급을 요청합니다.</p>
-   */
-  issueBillingKey: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["IssueBillingKeyBody"];
-      };
-    };
-    responses: {
-      /** @description <p>성공 응답</p> */
-      200: {
-        content: {
-          "application/json": components["schemas"]["IssueBillingKeyResponse"];
-        };
-      };
-      /**
-       * @description <ul>
-       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
-       * </ul>
-       */
-      400: {
-        content: {
-          "application/json": components["schemas"]["IssueBillingKeyError"];
-        };
-      };
-      /**
-       * @description <ul>
-       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
-       * </ul>
-       */
-      401: {
-        content: {
-          "application/json": components["schemas"]["IssueBillingKeyError"];
-        };
-      };
-      /**
-       * @description <ul>
-       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
-       * </ul>
-       */
-      403: {
-        content: {
-          "application/json": components["schemas"]["IssueBillingKeyError"];
-        };
-      };
-      /**
-       * @description <ul>
-       * <li><code>ChannelNotFoundError</code>: 요청된 채널이 존재하지 않는 경우</li>
-       * </ul>
-       */
-      404: {
-        content: {
-          "application/json": components["schemas"]["IssueBillingKeyError"];
-        };
-      };
-      /**
-       * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
-       * </ul>
-       */
-      502: {
-        content: {
-          "application/json": components["schemas"]["IssueBillingKeyError"];
         };
       };
     };
@@ -15030,7 +18552,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -15110,7 +18632,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -15199,7 +18721,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -15286,7 +18808,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -15373,7 +18895,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -15460,7 +18982,7 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
@@ -15538,7 +19060,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 결제 현황을 조회합니다.</p> */
   getAnalyticsPaymentChart: {
     requestBody: {
       content: {
@@ -15584,7 +19106,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제 현황 인사이트를 조회합니다.</p> */
+  /** @description <p>고객사의 결제 현황 인사이트를 조회합니다.</p> */
   getAnalyticsPaymentChartInsight: {
     requestBody: {
       content: {
@@ -15630,7 +19152,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 평균 거래액 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 평균 거래액 현황을 조회합니다.</p> */
   getAverageAmountChart: {
     requestBody: {
       content: {
@@ -15676,7 +19198,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제수단 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 결제수단 현황을 조회합니다.</p> */
   getPaymentMethodChart: {
     requestBody: {
       content: {
@@ -15722,7 +19244,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제수단 트렌드를 조회합니다.</p> */
+  /** @description <p>고객사의 결제수단 트렌드를 조회합니다.</p> */
   getPaymentMethodTrendChart: {
     requestBody: {
       content: {
@@ -15768,7 +19290,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 카드결제 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 카드결제 현황을 조회합니다.</p> */
   getAnalyticsCardChart: {
     requestBody: {
       content: {
@@ -15814,7 +19336,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 카드사별 결제 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 카드사별 결제 현황을 조회합니다.</p> */
   getAnalyticsCardCompanyChart: {
     requestBody: {
       content: {
@@ -15860,7 +19382,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 간편결제 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 간편결제 현황을 조회합니다.</p> */
   getAnalyticsEasyPayChart: {
     requestBody: {
       content: {
@@ -15906,7 +19428,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 간편결제사별 결제 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 간편결제사별 결제 현황을 조회합니다.</p> */
   getAnalyticsEasyPayProviderChart: {
     requestBody: {
       content: {
@@ -15952,7 +19474,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제대행사 현황을 조회합니다.</p> */
+  /** @description <p>고객사의 결제대행사 현황을 조회합니다.</p> */
   getPgCompanyChart: {
     requestBody: {
       content: {
@@ -15998,7 +19520,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제대행사별 거래 추이를 조회합니다.</p> */
+  /** @description <p>고객사의 결제대행사별 거래 추이를 조회합니다.</p> */
   getPgCompanyTrendChart: {
     requestBody: {
       content: {
@@ -16044,7 +19566,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 해외 결제 사용 여부를 조회합니다.</p> */
+  /** @description <p>고객사의 해외 결제 사용 여부를 조회합니다.</p> */
   getAnalyticsOverseasPaymentUsage: {
     responses: {
       /** @description <p>성공 응답으로 해외 결제 사용 여부을 반환합니다.</p> */
@@ -16075,7 +19597,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 환불율을 조회합니다.</p> */
+  /** @description <p>고객사의 환불율을 조회합니다.</p> */
   getAnalyticsCancellationRate: {
     requestBody: {
       content: {
@@ -16121,7 +19643,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제상태 이력 집계를 조회합니다.</p> */
+  /** @description <p>고객사의 결제상태 이력 집계를 조회합니다.</p> */
   getPaymentStatusChart: {
     requestBody: {
       content: {
@@ -16167,7 +19689,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제수단별 결제전환율을 조회합니다.</p> */
+  /** @description <p>고객사의 결제수단별 결제전환율을 조회합니다.</p> */
   getPaymentStatusByPaymentMethodChart: {
     requestBody: {
       content: {
@@ -16213,7 +19735,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 PG사별 결제전환율을 조회합니다.</p> */
+  /** @description <p>고객사의 PG사별 결제전환율을 조회합니다.</p> */
   getPaymentStatusByPgCompanyChart: {
     requestBody: {
       content: {
@@ -16259,7 +19781,7 @@ export interface operations {
       };
     };
   };
-  /** @description <p>가맹점의 결제환경별 결제전환율을 조회합니다.</p> */
+  /** @description <p>고객사의 결제환경별 결제전환율을 조회합니다.</p> */
   getPaymentStatusByPaymentClientChart: {
     requestBody: {
       content: {
@@ -18518,7 +22040,7 @@ export interface operations {
       query: {
         /** @description <p>카카오페이 주문 번호 (tid)</p> */
         pgTxId: string;
-        /** @description <p>채널키</p> */
+        /** @description <p>채널 키</p> */
         channelKey: string;
       };
     };
@@ -18630,12 +22152,74 @@ export interface operations {
       };
       /**
        * @description <ul>
-       * <li><code>PgProviderError</code>: PG사에서 오류가 발생한 경우</li>
+       * <li><code>PgProviderError</code>: PG사에서 오류를 전달한 경우</li>
        * </ul>
        */
       502: {
         content: {
           "application/json": components["schemas"]["RegisterStoreReceiptError"];
+        };
+      };
+    };
+  };
+  /**
+   * <p>프로모션 단건 조회</p>
+   *
+   * @description <p>프로모션 단건 조회</p>
+   * <p>주어진 아이디에 대응되는 프로모션을 조회합니다.</p>
+   */
+  getPromotion: {
+    parameters: {
+      path: {
+        /** @description <p>조회할 프로모션 아이디</p> */
+        promotionId: string;
+      };
+    };
+    responses: {
+      /** @description <p>성공 응답으로 프로모션 객체를 반환합니다.</p> */
+      200: {
+        content: {
+          "application/json": components["schemas"]["Promotion"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>InvalidRequestError</code>: 요청된 입력 정보가 유효하지 않은 경우</li>
+       * </ul>
+       */
+      400: {
+        content: {
+          "application/json": components["schemas"]["GetPromotionError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>UnauthorizedError</code>: 인증 정보가 올바르지 않은 경우</li>
+       * </ul>
+       */
+      401: {
+        content: {
+          "application/json": components["schemas"]["GetPromotionError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>ForbiddenError</code>: 요청이 거절된 경우</li>
+       * </ul>
+       */
+      403: {
+        content: {
+          "application/json": components["schemas"]["GetPromotionError"];
+        };
+      };
+      /**
+       * @description <ul>
+       * <li><code>PromotionNotFoundError</code>: 프로모션이 존재하지 않는 경우</li>
+       * </ul>
+       */
+      404: {
+        content: {
+          "application/json": components["schemas"]["GetPromotionError"];
         };
       };
     };

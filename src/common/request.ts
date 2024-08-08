@@ -23,7 +23,7 @@ export function createRequestInstance(
       PATCH: defaultFunction,
       TRACE: defaultFunction,
       use: () => {},
-      eject: () => {}
+      eject: () => {},
     };
   }
 
