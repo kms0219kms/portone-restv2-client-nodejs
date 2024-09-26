@@ -1,5 +1,11 @@
 # [PortOne](https://portone-landing.vercel.app/korea/ko) v2 API Client (Unofficial) &middot; [![Apache 2.0 License](https://img.shields.io/badge/license-Apache2.0-blue.svg)](./LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](.github/CONTRIBUTING.md)
 
+## DEPRECATION NOTICE
+
+이 라이브러리는 [PortOne 공식 SDK](https://github.com/portone-io/server-sdk-js.git) 가 출시되는 대로, Deprecation 될 예정입니다.<br />
+신규로 연동하시는 경우, 위 공식 SDK를 사용해 주세요.
+<hr>
+
 이 라이브러리는 [PortOne](https://portone-landing.vercel.app/korea/ko)에서 제공하는 v2 API를 쉽게 이용할 수 있는 TypeScript/JavaScript Client이에요.<br />
 B2B 서비스 API(Alpha)를 제외한 모든 최신 v2 API에 대한 요청을 지원해요.
 
