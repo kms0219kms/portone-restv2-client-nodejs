@@ -2,8 +2,8 @@
 
 ## DEPRECATION NOTICE
 
-이 라이브러리는 [PortOne 공식 SDK](https://github.com/portone-io/server-sdk-js.git) 가 출시되는 대로, Deprecation 될 예정입니다.<br />
-신규로 연동하시는 경우, 위 공식 SDK를 사용해 주세요.
+이 라이브러리는 [PortOne 공식 SDK](https://github.com/portone-io/server-sdk/tree/main/javascript) 로 대체되어 Deprecated 되었습니다.<br />
+신규로 연동하시는 경우, 위 공식 SDK를 사용해 주시기 바라며, 본 라이브러리는 더 이상 업데이트 되지 않습니다.
 <hr>
 
 이 라이브러리는 [PortOne](https://portone-landing.vercel.app/korea/ko)에서 제공하는 v2 API를 쉽게 이용할 수 있는 TypeScript/JavaScript Client이에요.<br />
